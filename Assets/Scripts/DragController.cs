@@ -5,14 +5,8 @@ using UnityEngine;
 
 public class DragController : MonoBehaviour
 {
-    public Ingredient draggingIngredient;
+    public Draggable draggingIngredient;
     
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -47,6 +41,18 @@ public class DragController : MonoBehaviour
                              draggingIngredient = draggingingredient.GetComponent<Ingredient>();
                          }
                      }
+                     else
+                     {
+                         var dish =  hit.transform.GetComponent<Dish>();
+                         if (dish)
+                         {
+                             draggingIngredient = dish;
+                             dish.transform.parent = null;
+                             //var kichenTool = ingredient.GetComponentInParent<KichenTool>();
+                             //kichenTool.RemoveIngredient(draggingIngredient);
+                             
+                         }
+                     }
                  }
              }
          }
@@ -68,10 +74,10 @@ public class DragController : MonoBehaviour
                  if (hit)
                  {
                      var kichenTool = hit.transform.GetComponent<KichenTool>();
-                     if (kichenTool != null && kichenTool.CanAddIngredient(draggingIngredient))
+                     if (kichenTool != null && kichenTool.CanAddIngredient(draggingIngredient as IngredientBase))
                      {
                          
-                         kichenTool.AddIngredient(draggingIngredient);
+                         kichenTool.AddIngredient(draggingIngredient as IngredientBase);
                      }
                      else
                      {

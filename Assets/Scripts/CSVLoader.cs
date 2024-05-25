@@ -3,25 +3,27 @@ using System.Collections.Generic;
 using Sinbad;
 using UnityEngine;
 
-public class IngredientInfo
+public class IngredientInfo:BaseInfo
 {
-    public string id;
-    public string name;
     public int startCount;
     public int cost;
     public bool isMeat;
 }
 
-public class KichenToolInfo
+public class KichenToolInfo:BaseInfo
 {
     
     public string id;
     public string name;
 }
-public class DishInfo
+
+public class BaseInfo
 {
     public string id;
     public string name;
+}
+public class DishInfo:BaseInfo
+{
     public int cost;
     public bool isFinalDish;
     public List<string> ingredients;
