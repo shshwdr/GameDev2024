@@ -5,7 +5,8 @@ using UnityEngine;
 public class KichenToolManager : Singleton<KichenToolManager>
 {
     public Transform kichenToolParent;
-    List<Transform> kichenToolTransforms = new List<Transform>();
+    [HideInInspector]
+    public List<Transform> kichenToolTransforms = new List<Transform>();
     
     public void Init()
     {

@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3002960789622940731}
   - component: {fileID: 693444916404502706}
   - component: {fileID: 1909131704758922831}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Dish
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -72,6 +72,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bbc11847cc1b1484e84247c264018dad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInPot: 0
   spriteRenderer: {fileID: 3002960790600718867}
 --- !u!1 &3002960790600718865
 GameObject:
@@ -83,7 +84,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3002960790600718866}
   - component: {fileID: 3002960790600718867}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: potato
   m_TagString: Untagged
   m_Icon: {fileID: 0}

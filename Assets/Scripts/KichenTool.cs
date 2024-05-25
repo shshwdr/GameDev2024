@@ -132,8 +132,7 @@ public class KichenTool : MonoBehaviour
                 var dishIngredientBasesStr = string.Join(",", dishIngredientBases);
                 if (currentIngredientBasesStr == dishIngredientBasesStr)
                 {
-                    var dish = Instantiate(Resources.Load<GameObject>("Dish/Dish"), kichenToolTransforms[0]);
-                    dish.GetComponent<Dish>().Init(dishInfo);
+                    CreateDish(dishInfo);
                 }
             }
             
@@ -141,5 +140,11 @@ public class KichenTool : MonoBehaviour
         }
 
         return true;
+    }
+
+    public void CreateDish(DishInfo info)
+    {
+        var dish = Instantiate(Resources.Load<GameObject>("Dish/Dish"), kichenToolTransforms[0]);
+        dish.GetComponent<Dish>().Init(info);
     }
 }
