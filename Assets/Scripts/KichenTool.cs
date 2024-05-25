@@ -3,16 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class KichenTool : MonoBehaviour
-{
-    // Start is called before the first frame update
-    void Start()
+{ 
+    KichenToolInfo info;
+    public KichenToolInfo Info => info;
+    public void Init(KichenToolInfo info )
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+         this.info = info;
     }
 }

@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour
     {
         CSVLoader.Instance.Init();
         IngredientManager.Instance.Init();
+        KichenToolManager.Instance.Init();
     }
 
     // Update is called once per frame

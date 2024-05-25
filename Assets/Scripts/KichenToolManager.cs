@@ -2,17 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class KichenToolManager : MonoBehaviour
+public class KichenToolManager : Singleton<KichenToolManager>
 {
-    // Start is called before the first frame update
-    void Start()
+    public Transform kichenToolParent;
+    List<Transform> kichenToolTransforms = new List<Transform>();
+    
+    public void Init()
     {
+        foreach (Transform trans in kichenToolParent)
+        {
+            kichenToolTransforms.Add(trans);
+            
+        }
         
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
         
+        int i = 0;
+        foreach (var info in CSVLoader.Instance.KichenToolInfoDict.Values)
+        {
+            var kichenTool = Instantiate(Resources.Load<GameObject>("KichenTool/"+info.name), kichenToolTransforms[i]);
+            kichenTool.GetComponent<KichenTool>().Init(info);
+            i++;
+        }
     }
 }
