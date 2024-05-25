@@ -49,5 +49,30 @@ public class DragController : MonoBehaviour
                  draggingIngredient.transform.position = mousePosition;
              }
          }
+
+         if (Input.GetMouseButtonUp(0))
+         {
+             if(draggingIngredient != null){
+                 
+                 RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+                 if (hit)
+                 {
+                     var kichenTool = hit.transform.GetComponent<KichenTool>();
+                     if (kichenTool != null && kichenTool.CanAddIngredient(draggingIngredient))
+                     {
+                         
+                         kichenTool.AddIngredient(draggingIngredient);
+                     }
+                 }
+                 else
+                 {
+                     
+                     Destroy(draggingIngredient.gameObject);
+                 }
+                 
+                 draggingIngredient = null;
+                 
+             }
+         }
     }
 }

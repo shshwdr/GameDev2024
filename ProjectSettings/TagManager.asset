@@ -44,6 +44,12 @@ TagManager:
   - name: Customer
     uniqueID: 2255292619
     locked: 0
+  - name: Kichen
+    uniqueID: 502681855
+    locked: 0
+  - name: Ingredient
+    uniqueID: 2679263167
+    locked: 0
   - name: UI
     uniqueID: 3718112751
     locked: 0
