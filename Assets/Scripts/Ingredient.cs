@@ -5,6 +5,7 @@ using UnityEngine;
 public class Ingredient : MonoBehaviour
 {
     IngredientInfo info;
+    public bool isInPot = false;
     public IngredientInfo Info => info;
     public SpriteRenderer spriteRenderer;
     public void Init(IngredientInfo info)

@@ -31,11 +31,21 @@ public class DragController : MonoBehaviour
                      var ingredient = hit.transform.GetComponent<Ingredient>();
                      if (ingredient != null)
                      {
+                         if (ingredient.isInPot)
+                         {
+                             draggingIngredient = ingredient;
+                             ingredient.transform.parent = null;
+                             //var kichenTool = ingredient.GetComponentInParent<KichenTool>();
+                             //kichenTool.RemoveIngredient(draggingIngredient);
+                         }
+                         else
+                         {
+                             
+                             var draggingingredient = Instantiate(Resources.Load<GameObject>("Ingredient/ingredient"),ingredient.transform.position,quaternion.identity);
+                             draggingingredient.GetComponent<Ingredient>().Init(ingredient.GetComponent<Ingredient>().Info);
                          
-                         var draggingingredient = Instantiate(Resources.Load<GameObject>("Ingredient/ingredient"),ingredient.transform.position,quaternion.identity);
-                         draggingingredient.GetComponent<Ingredient>().Init(ingredient.GetComponent<Ingredient>().Info);
-                         
-                         draggingIngredient = draggingingredient.GetComponent<Ingredient>();
+                             draggingIngredient = draggingingredient.GetComponent<Ingredient>();
+                         }
                      }
                  }
              }
@@ -62,6 +72,11 @@ public class DragController : MonoBehaviour
                      {
                          
                          kichenTool.AddIngredient(draggingIngredient);
+                     }
+                     else
+                     {
+                         
+                         Destroy(draggingIngredient.gameObject);
                      }
                  }
                  else
