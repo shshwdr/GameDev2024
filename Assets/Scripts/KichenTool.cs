@@ -29,7 +29,7 @@ public class KichenTool : MonoBehaviour
          }
     }
 
-    public void AddIngredient(Ingredient ingredient)
+    public void AddIngredient(IngredientBase ingredient)
     {
         ingredient.isInPot = true;
         foreach (var trans in kichenToolTransforms)
@@ -43,7 +43,7 @@ public class KichenTool : MonoBehaviour
         }
     }
 
-    public bool CanAddIngredient(Ingredient ingredient)
+    public bool CanAddIngredient(IngredientBase ingredient)
     {
         bool hasSlot = false;
         foreach (var trans in kichenToolTransforms)
@@ -58,7 +58,7 @@ public class KichenTool : MonoBehaviour
         return false;
     }
 
-    public void RemoveIngredient(Ingredient ingredient)
+    public void RemoveIngredient(IngredientBase ingredient)
     {
         foreach (var trans in kichenToolTransforms)
         {
@@ -86,7 +86,7 @@ public class KichenTool : MonoBehaviour
         {
             if (trans.childCount != 0)
             {
-                Destroy(trans.gameObject);
+                Destroy(trans.GetChild(0).gameObject);
             }
         }
     }
@@ -108,29 +108,31 @@ public class KichenTool : MonoBehaviour
             }
         }
 
+        
+        var currentIngredientBases = new List<string>();
+                
+        foreach (var trans in kichenToolTransforms)
+        {
+            currentIngredientBases.Add(trans.GetChild(0).GetComponent<IngredientBase>().Id);
+        }
+
+        currentIngredientBases.Sort();
+        var currentIngredientBasesStr = string.Join(",", currentIngredientBases);
+        
+
         RemoveAllIngredient();
 
         foreach (var dishInfo in CSVLoader.Instance.DishInfoDict.Values)
         {
-            var currentIngredients = new List<string>();
-                
-            foreach (var trans in kichenToolTransforms)
-            {
-                currentIngredients.Add(trans.GetChild(0).GetComponent<Ingredient>().Info.id);
-            }
-
-            currentIngredients.Sort();
-            var currentIngredientsStr = string.Join(",", currentIngredients);
             if (dishInfo.kichenUtil == info.id)
             {
                 
-                var  dishIngredients = dishInfo.ingredients;
-                dishIngredients.Sort();
-                var dishIngredientsStr = string.Join(",", dishIngredients);
-                if (currentIngredientsStr == dishIngredientsStr)
+                var  dishIngredientBases = dishInfo.ingredients;
+                dishIngredientBases.Sort();
+                var dishIngredientBasesStr = string.Join(",", dishIngredientBases);
+                if (currentIngredientBasesStr == dishIngredientBasesStr)
                 {
-                    var dish = Instantiate(Resources.Load<GameObject>("Dish/Dish"), kichenToolParent);
-                    dish.GetComponent<Dish>().Init(dishInfo);
+                    CreateDish(dishInfo);
                 }
             }
             
@@ -138,5 +140,11 @@ public class KichenTool : MonoBehaviour
         }
 
         return true;
+    }
+
+    public void CreateDish(DishInfo info)
+    {
+        var dish = Instantiate(Resources.Load<GameObject>("Dish/Dish"), kichenToolTransforms[0]);
+        dish.GetComponent<Dish>().Init(info);
     }
 }

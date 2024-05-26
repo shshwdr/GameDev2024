@@ -2,10 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ingredient : MonoBehaviour
+public class Ingredient : IngredientBase
 {
     IngredientInfo info;
-    public bool isInPot = false;
+    public override string Id=>info.id;
     public IngredientInfo Info => info;
     public SpriteRenderer spriteRenderer;
     public void Init(IngredientInfo info)

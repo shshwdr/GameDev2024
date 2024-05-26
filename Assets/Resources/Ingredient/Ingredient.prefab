@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3002960789622940731}
   - component: {fileID: 7531366541590460786}
   - component: {fileID: 693444916404502706}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Ingredient
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 58f31f0fc838cd74984401820a0e557e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isInPot: 0
   spriteRenderer: {fileID: 3002960790600718867}
 --- !u!61 &693444916404502706
 BoxCollider2D:
@@ -83,7 +84,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3002960790600718866}
   - component: {fileID: 3002960790600718867}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: potato
   m_TagString: Untagged
   m_Icon: {fileID: 0}
