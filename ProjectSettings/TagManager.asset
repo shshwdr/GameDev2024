@@ -50,9 +50,9 @@ TagManager:
   - name: Ingredient
     uniqueID: 2679263167
     locked: 0
-  - name: UI
-    uniqueID: 3718112751
-    locked: 0
   - name: enemy
     uniqueID: 4144123785
+    locked: 0
+  - name: UI
+    uniqueID: 3718112751
     locked: 0

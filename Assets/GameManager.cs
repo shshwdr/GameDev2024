@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
         IngredientManager.Instance.Init();
         KichenToolManager.Instance.Init();
         EnemyManager.Instance.Init();
-        
+        CustomerManager.Instance.Init();
     }
 
     // Update is called once per frame

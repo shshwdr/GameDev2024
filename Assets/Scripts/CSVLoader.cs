@@ -26,6 +26,21 @@ public class BaseInfo
 public class EnemyInfo : BaseInfo
 {
     public float moveSpeed;
+    public int hp;
+}
+
+public class CustomerRequirementInfo
+{
+    public string description;
+    public string requirementType;
+    public string subType;
+}
+
+public class CustomerInfo : BaseInfo
+{
+    public float moveSpeed;
+    public int attack;
+    public float attackInterval;
 }
 
 public class DishInfo:BaseInfo
@@ -48,6 +63,8 @@ public class CSVLoader : Singleton<CSVLoader>
     public Dictionary<string, DishInfo> DishInfoDict = new Dictionary<string, DishInfo>();
     public Dictionary<string, KichenToolInfo> KichenToolInfoDict = new Dictionary<string, KichenToolInfo>();
     public Dictionary<string, EnemyInfo> EnemyInfoDict = new Dictionary<string, EnemyInfo>();
+    public Dictionary<string, CustomerInfo> CustomerInfoDict = new Dictionary<string, CustomerInfo>();
+    public List<CustomerRequirementInfo> CustomerRequirementInfos = new List<CustomerRequirementInfo>();
     public void Init()
     {
         var ingredientInfos = CsvUtil.LoadObjects<IngredientInfo>("ingredient");
@@ -71,5 +88,11 @@ public class CSVLoader : Singleton<CSVLoader>
          {
              EnemyInfoDict[info.id] = info;
          }
+         var customerInfos = CsvUtil.LoadObjects<CustomerInfo>("customer");
+         foreach (var info in customerInfos)
+         {
+             CustomerInfoDict[info.id] = info;
+         }
+         CustomerRequirementInfos = CsvUtil.LoadObjects<CustomerRequirementInfo>("customerRequirement");
     }
 }

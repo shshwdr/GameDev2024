@@ -9,16 +9,24 @@ public class Customer : MonoBehaviour
     private float energy;
     private bool isFighting = false;
     private bool isLeaving = false;
-    private float moveSpeed = 0.25f;
+
+    private float attackTimer = 0;
 
     public DialogueBubble dialogueBubble;
 
     public ProgressBar progressBar;
+    private CustomerInfo info;
+    public CustomerInfo Info => info;
+    CustomerRequirementInfo requirement;
 
-    private void Start()
+    public void Init(CustomerInfo info)
     {
-        
+        this.info = info;
+
         progressBar.gameObject.SetActive(false);
+        //fill requirement
+        requirement = CSVLoader.Instance.CustomerRequirementInfos.RandomItem();
+        dialogueBubble.showDialogue(requirement.description);
     }
 
     public void EatDish(Dish dish)
@@ -31,19 +39,25 @@ public class Customer : MonoBehaviour
     public void CustomerLeaveAndFight()
     {
         isFighting = true;
-        dialogueBubble.showDialogue("For the Food Stand!",4);
+        dialogueBubble.showDialogue("For the Food Stand!", 4);
         energy = 15f;
-
     }
 
     private void Update()
     {
+        if (attackTimer > 0)
+        {
+            attackTimer -= Time.deltaTime;
+            return;
+        }
+
         if (isLeaving)
         {
             progressBar.gameObject.SetActive(false);
             if (target != null)
             {
-                transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+                transform.position =
+                    Vector3.MoveTowards(transform.position, target.position, info.moveSpeed * Time.deltaTime);
                 if (Vector3.Distance(transform.position, target.position) < 0.1f)
                 {
                     Destroy(gameObject);
@@ -54,12 +68,12 @@ public class Customer : MonoBehaviour
         {
             progressBar.SetProgress(energy, 15);
             energy -= Time.deltaTime;
-            
+
             if (energy <= 0)
             {
                 isLeaving = true;
 
-                dialogueBubble.showDialogue("I'm hungry..",4);
+                dialogueBubble.showDialogue("I'm hungry..", 4);
                 target = EnemyManager.Instance.enemySpawnTransforms.RandomItem();
             }
 
@@ -75,15 +89,15 @@ public class Customer : MonoBehaviour
             {
                 Transform closestedTrans = null;
                 float closestDistance = float.MaxValue;
-                for (int i = 0;  i < EnemyManager.Instance.enemyTrans.childCount;i++)
+                for (int i = 0; i < EnemyManager.Instance.enemyTrans.childCount; i++)
                 {
                     var enemyTrans = EnemyManager.Instance.enemyTrans.GetChild(i);
-                     var distance = Vector3.Distance(enemyTrans.position, transform.position);
-                     if (distance < closestDistance)
-                     {
-                         closestDistance = distance;
-                         closestedTrans = enemyTrans;
-                     }
+                    var distance = Vector3.Distance(enemyTrans.position, transform.position);
+                    if (distance < closestDistance)
+                    {
+                        closestDistance = distance;
+                        closestedTrans = enemyTrans;
+                    }
                 }
 
                 target = closestedTrans;
@@ -94,8 +108,8 @@ public class Customer : MonoBehaviour
     void Attack(Transform trans)
     {
         var enemy = trans.GetComponentInChildren<Enemy>();
-        Destroy(enemy.gameObject);
-        target = null;
+        enemy.TakeDamage((info.attack));
+        attackTimer = info.attackInterval;
+        //target = null;
     }
-
 }

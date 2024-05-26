@@ -1,2 +1,2 @@
-﻿id,name,moveSpeed
-Seagull,Seagull,0.2
+﻿id,name,moveSpeed,hp
+Seagull,Seagull,0.2,5

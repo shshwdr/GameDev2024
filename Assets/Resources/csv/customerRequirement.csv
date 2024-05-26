@@ -1,0 +1,5 @@
+﻿description,requirementType,subType
+I want Potato,ingredient,Potato
+I want Beef,ingredient,Beef
+I want something hot,hot,TRUE
+I want something cold,hot,FALSE
