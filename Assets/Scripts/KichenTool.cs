@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,13 +11,16 @@ public class KichenTool : MonoBehaviour
     
     public Transform kichenToolParent;
     List<Transform> kichenToolTransforms = new List<Transform>();
-    
-    
+
+    private DishInfo currentDishInfo;
+    private bool isCooking = false;
+
+    public ProgressBar progressBar;
     
     public void Init(KichenToolInfo info )
     {
          this.info = info;
-         
+         progressBar.gameObject.SetActive(false);
          
          foreach (Transform trans in kichenToolParent)
          {
@@ -45,6 +49,10 @@ public class KichenTool : MonoBehaviour
 
     public bool CanAddIngredient(IngredientBase ingredient)
     {
+        if (isCooking)
+        {
+            return false;
+        }
         bool hasSlot = false;
         foreach (var trans in kichenToolTransforms)
         {
@@ -93,21 +101,21 @@ public class KichenTool : MonoBehaviour
 
     public void Use()
     {
-
-        TryUse();
-    }
-    public bool TryUse()
-    {
+        
         bool hasSlot = false;
         foreach (var trans in kichenToolTransforms)
         {
             if (trans.childCount == 0)
             {
                 hasSlot = true;
-                return false;
+                return ;
             }
         }
 
+        TryUse();
+    } 
+    void TryUse()
+    {
         
         var currentIngredientBases = new List<string>();
                 
@@ -118,7 +126,6 @@ public class KichenTool : MonoBehaviour
 
         currentIngredientBases.Sort();
         var currentIngredientBasesStr = string.Join(",", currentIngredientBases);
-        
 
         RemoveAllIngredient();
 
@@ -132,19 +139,47 @@ public class KichenTool : MonoBehaviour
                 var dishIngredientBasesStr = string.Join(",", dishIngredientBases);
                 if (currentIngredientBasesStr == dishIngredientBasesStr)
                 {
-                    CreateDish(dishInfo);
+                    currentDishInfo = dishInfo;
+                    break;
                 }
             }
-            
-            
         }
 
-        return true;
+        isCooking = true;
+        cookTime = currentDishInfo.time;
+        progressBar.gameObject.SetActive(true);
     }
 
+    void FinishCook()
+    {
+        
+        CreateDish(currentDishInfo);
+    }
+    
     public void CreateDish(DishInfo info)
     {
         var dish = Instantiate(Resources.Load<GameObject>("Dish/Dish"), kichenToolTransforms[0]);
         dish.GetComponent<Dish>().Init(info);
+    }
+
+    private float cookTime = 0;
+    private float cookTimer = 0;
+    private void Update()
+    {
+        if (isCooking)
+        {
+            cookTimer += Time.deltaTime;
+            if (cookTimer >= cookTime)
+            {
+                FinishCook();
+                isCooking = false;
+                cookTimer = 0;
+                progressBar.gameObject.SetActive(false);
+            }
+            else
+            {
+                progressBar.SetProgress(cookTimer , cookTime);
+            }
+        }
     }
 }

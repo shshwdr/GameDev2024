@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class KichenToolManager : Singleton<KichenToolManager>
@@ -18,11 +19,20 @@ public class KichenToolManager : Singleton<KichenToolManager>
         
         
         int i = 0;
+        
+        createKichenTool(CSVLoader.Instance.KichenToolInfoDict.Values.ToList()[0],kichenToolTransforms[i]);
+        i++;
         foreach (var info in CSVLoader.Instance.KichenToolInfoDict.Values)
         {
-            var kichenTool = Instantiate(Resources.Load<GameObject>("KichenTool/"+info.name), kichenToolTransforms[i]);
-            kichenTool.GetComponent<KichenTool>().Init(info);
+            createKichenTool(info,kichenToolTransforms[i]);
             i++;
         }
+    }
+
+    void createKichenTool(KichenToolInfo info,Transform trans)
+    {
+        
+        var kichenTool = Instantiate(Resources.Load<GameObject>("KichenTool/"+info.name), trans);
+        kichenTool.GetComponent<KichenTool>().Init(info);
     }
 }

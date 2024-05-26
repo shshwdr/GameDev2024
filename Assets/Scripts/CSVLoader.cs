@@ -37,6 +37,7 @@ public class DishInfo:BaseInfo
     public string description;
     public List<string> sourceIngredients;
     public bool isHot;
+    public float time;
 }
 public class CSVLoader : Singleton<CSVLoader>
 {

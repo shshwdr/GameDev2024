@@ -10,7 +10,7 @@ public class ProgressBar : MonoBehaviour
 
     public TMP_Text label;
     
-    public  void SetProgress(float progress, int max)
+    public  void SetProgress(float progress, float max)
     {
         fill.fillAmount = (float)progress / max;
         if (label)

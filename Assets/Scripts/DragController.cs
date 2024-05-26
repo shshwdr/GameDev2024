@@ -9,6 +9,7 @@ public class DragController : MonoBehaviour
     public Transform draggingTrans;
 
     public LayerMask test;
+
     // Update is called once per frame
     void Update()
     {
@@ -39,7 +40,7 @@ public class DragController : MonoBehaviour
                         else
                         {
                             var draggingingredient = Instantiate(Resources.Load<GameObject>("Ingredient/ingredient"),
-                                ingredient.transform.position, quaternion.identity,draggingTrans);
+                                ingredient.transform.position, quaternion.identity, draggingTrans);
                             draggingingredient.GetComponent<Ingredient>()
                                 .Init(ingredient.GetComponent<Ingredient>().Info);
 
@@ -73,24 +74,33 @@ public class DragController : MonoBehaviour
         {
             if (draggingIngredient != null)
             {
-                RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
-                if (hit)
+                RaycastHit2D[] hits = Physics2D.RaycastAll(mousePosition, Vector2.zero);
+                if (hits.Length > 0)
                 {
-                    var kichenTool = hit.transform.GetComponent<KichenTool>();
-                    if (kichenTool != null && kichenTool.CanAddIngredient(draggingIngredient as IngredientBase))
+                    bool used = false;
+                    foreach (var hit in hits)
                     {
-                        kichenTool.AddIngredient(draggingIngredient as IngredientBase);
-                        draggingIngredient = null;
-                        return;
-                    }
-                    else
-                    {
-                        var customer = hit.transform.GetComponent<Customer>();
-                        if (customer && draggingIngredient is Dish dish && dish.Info.isFinalDish)
+                        var kichenTool = hit.transform.GetComponent<KichenTool>();
+                        if (kichenTool != null && kichenTool.CanAddIngredient(draggingIngredient as IngredientBase))
                         {
-                            customer.EatDish(dish);
+                            kichenTool.AddIngredient(draggingIngredient as IngredientBase);
                             draggingIngredient = null;
+                            used = true;
                             return;
+                        }
+                    }
+
+                    if (!used)
+                    {
+                        foreach (var hit in hits)
+                        {
+                            var customer = hit.transform.GetComponent<Customer>();
+                            if (customer && draggingIngredient is Dish dish && dish.Info.isFinalDish)
+                            {
+                                customer.EatDish(dish);
+                                draggingIngredient = null;
+                                return;
+                            }
                         }
                     }
                 }
