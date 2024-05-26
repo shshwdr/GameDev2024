@@ -22,6 +22,12 @@ public class BaseInfo
     public string id;
     public string name;
 }
+
+public class EnemyInfo : BaseInfo
+{
+    public float moveSpeed;
+}
+
 public class DishInfo:BaseInfo
 {
     public int cost;
@@ -40,6 +46,7 @@ public class CSVLoader : Singleton<CSVLoader>
     public Dictionary<string, IngredientInfo> IngredientInfoDict = new Dictionary<string, IngredientInfo>();
     public Dictionary<string, DishInfo> DishInfoDict = new Dictionary<string, DishInfo>();
     public Dictionary<string, KichenToolInfo> KichenToolInfoDict = new Dictionary<string, KichenToolInfo>();
+    public Dictionary<string, EnemyInfo> EnemyInfoDict = new Dictionary<string, EnemyInfo>();
     public void Init()
     {
         var ingredientInfos = CsvUtil.LoadObjects<IngredientInfo>("ingredient");
@@ -57,6 +64,11 @@ public class CSVLoader : Singleton<CSVLoader>
          foreach (var info in kichenToolInfos)
          {
              KichenToolInfoDict[info.id] = info;
+         }
+         var enemyInfos = CsvUtil.LoadObjects<EnemyInfo>("enemy");
+         foreach (var info in enemyInfos)
+         {
+             EnemyInfoDict[info.id] = info;
          }
     }
 }
