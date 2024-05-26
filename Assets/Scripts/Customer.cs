@@ -9,12 +9,21 @@ public class Customer : MonoBehaviour
     private float energy;
     private bool isFighting = false;
     private bool isLeaving = false;
-    private float moveSpeed = 0.6f;
+    private float moveSpeed = 0.25f;
 
-   // public ProgressBar progressBar;
+    public DialogueBubble dialogueBubble;
+
+    public ProgressBar progressBar;
+
+    private void Start()
+    {
+        
+        progressBar.gameObject.SetActive(false);
+    }
 
     public void EatDish(Dish dish)
     {
+        progressBar.gameObject.SetActive(true);
         Destroy(dish.gameObject);
         CustomerLeaveAndFight();
     }
@@ -22,6 +31,7 @@ public class Customer : MonoBehaviour
     public void CustomerLeaveAndFight()
     {
         isFighting = true;
+        dialogueBubble.showDialogue("For the Food Stand!",4);
         energy = 15f;
 
     }
@@ -30,6 +40,7 @@ public class Customer : MonoBehaviour
     {
         if (isLeaving)
         {
+            progressBar.gameObject.SetActive(false);
             if (target != null)
             {
                 transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
@@ -41,12 +52,14 @@ public class Customer : MonoBehaviour
         }
         else if (isFighting)
         {
+            progressBar.SetProgress(energy, 15);
             energy -= Time.deltaTime;
             
             if (energy <= 0)
             {
                 isLeaving = true;
 
+                dialogueBubble.showDialogue("I'm hungry..",4);
                 target = EnemyManager.Instance.enemySpawnTransforms.RandomItem();
             }
 

@@ -6,6 +6,7 @@ using UnityEngine;
 public class DragController : MonoBehaviour
 {
     public Draggable draggingIngredient;
+    public Transform draggingTrans;
 
     public LayerMask test;
     // Update is called once per frame
@@ -38,7 +39,7 @@ public class DragController : MonoBehaviour
                         else
                         {
                             var draggingingredient = Instantiate(Resources.Load<GameObject>("Ingredient/ingredient"),
-                                ingredient.transform.position, quaternion.identity);
+                                ingredient.transform.position, quaternion.identity,draggingTrans);
                             draggingingredient.GetComponent<Ingredient>()
                                 .Init(ingredient.GetComponent<Ingredient>().Info);
 
@@ -79,6 +80,7 @@ public class DragController : MonoBehaviour
                     if (kichenTool != null && kichenTool.CanAddIngredient(draggingIngredient as IngredientBase))
                     {
                         kichenTool.AddIngredient(draggingIngredient as IngredientBase);
+                        draggingIngredient = null;
                         return;
                     }
                     else
@@ -87,6 +89,7 @@ public class DragController : MonoBehaviour
                         if (customer && draggingIngredient is Dish dish && dish.Info.isFinalDish)
                         {
                             customer.EatDish(dish);
+                            draggingIngredient = null;
                             return;
                         }
                     }
