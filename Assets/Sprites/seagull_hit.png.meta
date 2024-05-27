@@ -146,7 +146,7 @@ TextureImporter:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 128
+        width: 80
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -165,9 +165,9 @@ TextureImporter:
       name: seagull_hit_1
       rect:
         serializedVersion: 2
-        x: 128
+        x: 80
         y: 0
-        width: 128
+        width: 80
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -186,9 +186,9 @@ TextureImporter:
       name: seagull_hit_2
       rect:
         serializedVersion: 2
-        x: 256
+        x: 160
         y: 0
-        width: 128
+        width: 80
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -207,9 +207,9 @@ TextureImporter:
       name: seagull_hit_3
       rect:
         serializedVersion: 2
-        x: 384
+        x: 240
         y: 0
-        width: 128
+        width: 80
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -228,9 +228,9 @@ TextureImporter:
       name: seagull_hit_4
       rect:
         serializedVersion: 2
-        x: 512
+        x: 320
         y: 0
-        width: 128
+        width: 80
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -249,9 +249,9 @@ TextureImporter:
       name: seagull_hit_5
       rect:
         serializedVersion: 2
-        x: 640
+        x: 400
         y: 0
-        width: 128
+        width: 80
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -270,9 +270,9 @@ TextureImporter:
       name: seagull_hit_6
       rect:
         serializedVersion: 2
-        x: 768
+        x: 480
         y: 0
-        width: 128
+        width: 80
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -291,9 +291,9 @@ TextureImporter:
       name: seagull_hit_7
       rect:
         serializedVersion: 2
-        x: 896
+        x: 560
         y: 0
-        width: 128
+        width: 80
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -312,9 +312,9 @@ TextureImporter:
       name: seagull_hit_8
       rect:
         serializedVersion: 2
-        x: 1024
+        x: 640
         y: 0
-        width: 128
+        width: 80
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -333,9 +333,9 @@ TextureImporter:
       name: seagull_hit_9
       rect:
         serializedVersion: 2
-        x: 1152
+        x: 720
         y: 0
-        width: 128
+        width: 80
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -354,9 +354,9 @@ TextureImporter:
       name: seagull_hit_10
       rect:
         serializedVersion: 2
-        x: 1280
+        x: 800
         y: 0
-        width: 128
+        width: 80
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -375,9 +375,9 @@ TextureImporter:
       name: seagull_hit_11
       rect:
         serializedVersion: 2
-        x: 1408
+        x: 880
         y: 0
-        width: 128
+        width: 80
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -396,9 +396,9 @@ TextureImporter:
       name: seagull_hit_12
       rect:
         serializedVersion: 2
-        x: 1536
+        x: 960
         y: 0
-        width: 128
+        width: 80
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -417,9 +417,9 @@ TextureImporter:
       name: seagull_hit_13
       rect:
         serializedVersion: 2
-        x: 1664
+        x: 1040
         y: 0
-        width: 128
+        width: 80
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -438,9 +438,9 @@ TextureImporter:
       name: seagull_hit_14
       rect:
         serializedVersion: 2
-        x: 1792
+        x: 1120
         y: 0
-        width: 128
+        width: 80
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -459,9 +459,9 @@ TextureImporter:
       name: seagull_hit_15
       rect:
         serializedVersion: 2
-        x: 1920
+        x: 1200
         y: 0
-        width: 128
+        width: 80
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -480,9 +480,9 @@ TextureImporter:
       name: seagull_hit_16
       rect:
         serializedVersion: 2
-        x: 2048
+        x: 1280
         y: 0
-        width: 128
+        width: 80
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -501,9 +501,9 @@ TextureImporter:
       name: seagull_hit_17
       rect:
         serializedVersion: 2
-        x: 2176
+        x: 1360
         y: 0
-        width: 128
+        width: 80
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -522,9 +522,9 @@ TextureImporter:
       name: seagull_hit_18
       rect:
         serializedVersion: 2
-        x: 2304
+        x: 1440
         y: 0
-        width: 128
+        width: 80
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
@@ -543,9 +543,9 @@ TextureImporter:
       name: seagull_hit_19
       rect:
         serializedVersion: 2
-        x: 2432
+        x: 1520
         y: 0
-        width: 128
+        width: 80
         height: 64
       alignment: 0
       pivot: {x: 0, y: 0}
