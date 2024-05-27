@@ -41,6 +41,7 @@ public class CustomerInfo : BaseInfo
     public float moveSpeed;
     public int attack;
     public float attackInterval;
+    public float duration;
 }
 
 public class DishInfo:BaseInfo

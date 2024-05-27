@@ -183,7 +183,7 @@ MonoBehaviour:
   HoldingItemTransform: {fileID: 6393931259810350431}
   isBack: 0
   progressBar: {fileID: 1714831809590437361}
-  hitMoveSpeed: 0.5
+  hitMoveSpeed: 0.3
   eatMoveSpeed: 0.1
 --- !u!1 &5139065932329784371
 GameObject:

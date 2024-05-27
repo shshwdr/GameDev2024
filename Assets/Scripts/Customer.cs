@@ -6,7 +6,7 @@ using UnityEngine;
 public class Customer : MonoBehaviour
 {
     Transform target;
-    private float energy;
+    private float duration;
     private bool isFighting = false;
     private bool isLeaving = false;
 
@@ -40,7 +40,7 @@ public class Customer : MonoBehaviour
     {
         isFighting = true;
         dialogueBubble.showDialogue("For the Food Stand!", 4);
-        energy = 15f;
+        duration = info.duration;
     }
 
     private void Update()
@@ -66,10 +66,10 @@ public class Customer : MonoBehaviour
         }
         else if (isFighting)
         {
-            progressBar.SetProgress(energy, 15);
-            energy -= Time.deltaTime;
+            progressBar.SetProgress(duration, 15);
+            duration -= Time.deltaTime;
 
-            if (energy <= 0)
+            if (duration <= 0)
             {
                 isLeaving = true;
 
