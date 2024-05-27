@@ -79,7 +79,7 @@ public class Customer : MonoBehaviour
 
             if (target != null)
             {
-                transform.position = Vector3.MoveTowards(transform.position, target.position, 1f * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, target.position, info.moveSpeed * Time.deltaTime);
                 if (Vector3.Distance(transform.position, target.position) < 0.1f)
                 {
                     Attack(target);
@@ -108,7 +108,7 @@ public class Customer : MonoBehaviour
     void Attack(Transform trans)
     {
         var enemy = trans.GetComponentInChildren<Enemy>();
-        enemy.TakeDamage((info.attack));
+        enemy.TakeDamage(info.attack,transform.position);
         attackTimer = info.attackInterval;
         //target = null;
     }

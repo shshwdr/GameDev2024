@@ -15,24 +15,38 @@ public class Enemy : MonoBehaviour
      private int currentHP;
      public ProgressBar progressBar;
 
-     private float dizzyTime = 0.5f;
-     private float dizzyTimer = 0f;
+     private bool isHitting = false;
+     private bool isEating = false;
+     private bool isBeforeEating = false;
+
+     private Animator animator;
+     private SpriteRenderer spriteRenderer;
+
+     public float hitMoveSpeed = 0.7f;
+     public float eatMoveSpeed = 0.3f;
+     private Vector3 lastAttacker;
     public void Init(EnemyInfo info)
     {
+        animator = GetComponentInChildren<Animator>();
+        spriteRenderer = animator.GetComponent<SpriteRenderer>();
          this.info = info;
-         target = IngredientManager.Instance.IngredientTransforms().RandomItem();
+         target = IngredientManager.Instance.IngredientTransforms().RandomItem().GetComponentInChildren<Ingredient>().eatTransform;
          currentHP = info.hp;
          progressBar.SetProgress(currentHP, info.hp);
+         progressBar.gameObject.SetActive(false);
     }
 
-    public void TakeDamage(int damage)
+    public void TakeDamage(int damage, Vector3 attackerPosition)
     {
-        dizzyTimer = dizzyTime;
+        lastAttacker = attackerPosition;
+        progressBar.gameObject.SetActive(true);
         currentHP -= damage;
         currentHP = math.max(currentHP, 0);
         progressBar.SetProgress(currentHP, info.hp);
         
         //hit back
+        
+        animator.SetTrigger("hit");
         
 
         if (currentHP <= 0)
@@ -41,11 +55,45 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    public void startHitting()
+    {
+        
+        //被攻击了就不宜动了
+        isHitting = true;
+        isEating = false;
+        isBeforeEating = false;
+    }
+    public void finishHitting()
+    {
+        isHitting = false;
+    }
+
+    void move()
+    {
+        
+    }
     private void Update()
     {
-        if (dizzyTimer > 0)
+        if (isHitting)
         {
-            dizzyTimer -= Time.deltaTime;
+            var oppositeLastTarget = (transform.position - lastAttacker).normalized + transform.position;
+            transform.position = Vector3.MoveTowards(transform.position, oppositeLastTarget, hitMoveSpeed * Time.deltaTime);
+            
+            Vector2 movementDirection = oppositeLastTarget - transform.position;
+            updateDirection(movementDirection);
+        }
+
+        if (isBeforeEating)
+        {
+            
+            var oppositeLastTarget = Vector3.right + transform.position;
+            transform.position = Vector3.MoveTowards(transform.position, oppositeLastTarget, eatMoveSpeed * Time.deltaTime);
+            Vector2 movementDirection = oppositeLastTarget - transform.position;
+            updateDirection(movementDirection);
+        }
+        
+        if (isHitting || isEating){
+            
             return;
         }
         if (target)
@@ -57,19 +105,50 @@ public class Enemy : MonoBehaviour
                     Destroy(gameObject);
                     return;
                 }
-                
-                var ingredient = target.GetComponentInChildren<Ingredient>();
-                if (ingredient)
-                {
-                   var ingredientInfo = ingredient.Info;
-                   var ingredientOb = IngredientManager.Instance.CreateIngredient(ingredientInfo, HoldingItemTransform);
-
-                   IngredientManager.Instance.ConsumeIngredient(ingredientInfo.id);
-                }
-                target = EnemyManager.Instance.enemySpawnTransforms.RandomItem();
-                isBack = true;
+                animator.SetTrigger("eat");
+                isBeforeEating = true;
+                isEating = true;
             }
             transform.position = Vector3.MoveTowards(transform.position, target.position, info.moveSpeed * Time.deltaTime);
+            Vector2 movementDirection = target.position - transform.position;
+            updateDirection(movementDirection);
         }
+    }
+
+    void updateDirection(Vector2 movementDirection )
+    {
+
+        if (movementDirection.x > 0)
+        {
+            // Moving right
+            spriteRenderer.flipX = false;
+        }
+        else if (movementDirection.x < 0)
+        {
+            // Moving left
+            spriteRenderer.flipX = true;
+        }
+        
+    }
+
+    public void Eat()
+    {
+        isBeforeEating = false;
+        var ingredient = target.GetComponentInChildren<Ingredient>();
+        if (ingredient)
+        {
+            // var ingredientInfo = ingredient.Info;
+            // var ingredientOb = IngredientManager.Instance.CreateIngredient(ingredientInfo, HoldingItemTransform);
+            //
+            // IngredientManager.Instance.ConsumeIngredient(ingredientInfo.id);
+        }
+        
+        target = EnemyManager.Instance.enemySpawnTransforms.RandomItem();
+        isBack = true;
+    }
+
+    public void FinishEating()
+    {
+        isEating = false;
     }
 }

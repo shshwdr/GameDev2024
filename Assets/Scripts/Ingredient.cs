@@ -5,6 +5,7 @@ using UnityEngine;
 public class Ingredient : IngredientBase
 {
     IngredientInfo info;
+    public Transform eatTransform;
     public override string Id=>info.id;
     public IngredientInfo Info => info;
     public SpriteRenderer spriteRenderer;
