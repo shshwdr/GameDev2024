@@ -134,9 +134,14 @@ public class Enemy : MonoBehaviour
     public void Eat()
     {
         isBeforeEating = false;
-        var ingredient = target.GetComponentInChildren<Ingredient>();
+        var ingredient = target.parent.GetComponentInChildren<Ingredient>();
         if (ingredient)
         {
+            if (IngredientManager.Instance.CanConsumeIngredient(ingredient.Info.id))
+            {
+                
+                IngredientManager.Instance.ConsumeIngredient(ingredient.Info.id);
+            }
             // var ingredientInfo = ingredient.Info;
             // var ingredientOb = IngredientManager.Instance.CreateIngredient(ingredientInfo, HoldingItemTransform);
             //

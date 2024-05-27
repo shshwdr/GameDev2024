@@ -35,7 +35,6 @@ public class KichenTool : MonoBehaviour
 
     public void AddIngredient(IngredientBase ingredient)
     {
-        ingredient.isInPot = true;
         foreach (var trans in kichenToolTransforms)
         {
             if (trans.childCount == 0)

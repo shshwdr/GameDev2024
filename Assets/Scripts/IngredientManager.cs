@@ -8,8 +8,21 @@ public class IngredientManager : Singleton<IngredientManager>
     [HideInInspector]
     public List<Transform> ingredientTransforms = new List<Transform>();
 
-    public Dictionary<string, int> ingredientCount = new Dictionary<string, int>();
+    public Dictionary<string, int> ingredientCountDict = new Dictionary<string, int>();
 
+    void updateIngredientCount()
+    {
+        
+        foreach (var item in ingredientTransforms)
+        {
+            if (item.childCount>0)
+            {
+                var ingredient = item.GetComponentInChildren<Ingredient>();
+                var ingredientCount = ingredientCountDict[ingredient.Info.id];
+                ingredient.countLabel.text = ingredientCount.ToString();
+            }
+        }
+    }
     public List<Transform> IngredientTransforms()
     {
         List<Transform> list = new List<Transform>();
@@ -35,9 +48,10 @@ public class IngredientManager : Singleton<IngredientManager>
         foreach (var info in CSVLoader.Instance.IngredientInfoDict.Values)
         {
             CreateIngredient(info,ingredientTransforms[i]);
-            ingredientCount[info.id] = info.startCount;
+            ingredientCountDict[info.id] = info.startCount;
             i++;
         }
+        updateIngredientCount();
     }
 
     public GameObject CreateIngredient(IngredientInfo info,Transform trans)
@@ -50,7 +64,20 @@ public class IngredientManager : Singleton<IngredientManager>
 
     public void ConsumeIngredient(string ingredient, int amount = 1)
     {
-        ingredientCount[ingredient] -= amount;
+        ingredientCountDict[ingredient] -= amount;
+        updateIngredientCount();
+    }
+
+    public bool CanConsumeIngredient(string ingredient, int amount = 1)
+    {
+        return amount <= ingredientCountDict[ingredient];
+    }
+
+    public void AddIngredient(string ingredient, int amount = 1)
+    {
+       
+        ingredientCountDict[ingredient] += amount;
+        updateIngredientCount();
     }
     
 }

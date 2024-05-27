@@ -32,6 +32,7 @@ public class DragController : MonoBehaviour
                     {
                         if (ingredient.isInPot)
                         {
+                            
                             draggingIngredient = ingredient;
                             ingredient.transform.parent = null;
                             //var kichenTool = ingredient.GetComponentInParent<KichenTool>();
@@ -39,12 +40,17 @@ public class DragController : MonoBehaviour
                         }
                         else
                         {
-                            var draggingingredient = Instantiate(Resources.Load<GameObject>("Ingredient/ingredient"),
-                                ingredient.transform.position, quaternion.identity, draggingTrans);
-                            draggingingredient.GetComponent<Ingredient>()
-                                .Init(ingredient.GetComponent<Ingredient>().Info);
+                            if (IngredientManager.Instance.CanConsumeIngredient(ingredient.Info.id))
+                            {
+                                IngredientManager.Instance.ConsumeIngredient(ingredient.Info.id);
+                                var draggingingredient = Instantiate(Resources.Load<GameObject>("Ingredient/ingredient"),
+                                    ingredient.transform.position, quaternion.identity, draggingTrans);
+                                draggingingredient.GetComponent<Ingredient>()
+                                    .Init(ingredient.GetComponent<Ingredient>().Info);
 
-                            draggingIngredient = draggingingredient.GetComponent<Ingredient>();
+                                draggingIngredient = draggingingredient.GetComponent<Ingredient>();
+                                draggingingredient.GetComponent<Ingredient>().putIntoPot();
+                            }
                         }
                     }
                     else
@@ -105,6 +111,10 @@ public class DragController : MonoBehaviour
                     }
                 }
 
+                if (draggingIngredient is Ingredient ingredient)
+                {
+                    IngredientManager.Instance.AddIngredient(ingredient.Info.id);
+                }
                 Destroy(draggingIngredient.gameObject);
                 draggingIngredient = null;
             }

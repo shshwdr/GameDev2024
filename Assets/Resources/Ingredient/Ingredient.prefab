@@ -127,6 +127,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   isInPot: 0
   eatTransform: {fileID: 1793400602982962486}
+  countLabel: {fileID: 3445297414833717955}
   spriteRenderer: {fileID: 3002960790600718867}
 --- !u!61 &693444916404502706
 BoxCollider2D:
