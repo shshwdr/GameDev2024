@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Text;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -22,7 +23,34 @@ public class Dish : IngredientBase
          this.ingredients = ingredients;
          isInPot = true;
          spriteRenderer.sprite = Resources.Load<Sprite>("Dish/" + info.image);
+         //stringify a dictionary
          nameLabel.text = info.name;
+         if (info.buff.Count > 0)
+         {
+             nameLabel.text = info.name+"\nbuff: "+SerializeDictionary(info.buff);
+         }
+    }
+    
+    static string SerializeDictionary(Dictionary<string, int> dictionary)
+    {
+        StringBuilder sb = new StringBuilder();
+
+        bool first = true;
+        foreach (var kvp in dictionary)
+        {
+            if (!first)
+            {
+                sb.Append(",");
+            }
+
+            sb.Append(kvp.Key);
+            sb.Append(" add ");
+            sb.Append(kvp.Value);
+
+            first = false;
+        }
+
+        return sb.ToString();
     }
 
     public void OnMouseEnter()

@@ -251,7 +251,7 @@ MonoBehaviour:
   customerSpawnTransforms: []
   customerTrans: {fileID: 1254105553}
   customerStartTrans: {fileID: 178395403}
-  spawnTime: 5
+  spawnTime: 8
   spawnTimer: 0
 --- !u!1 &178395402
 GameObject:
@@ -1988,7 +1988,7 @@ MonoBehaviour:
   enemySpawnParent: {fileID: 1207824345}
   enemySpawnTransforms: []
   enemyTrans: {fileID: 889040487}
-  spawnTime: 10
+  spawnTime: 12
   spawnTimer: 0
 --- !u!1 &1654194350
 GameObject:
