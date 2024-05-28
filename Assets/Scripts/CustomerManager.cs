@@ -16,6 +16,8 @@ public class CustomerManager : Singleton<CustomerManager>
     public float spawnTime = 5;
     public float spawnTimer = 0;
     
+    
+    
     public void Init()
     {
         foreach (Transform trans in customerSpawnParent)
@@ -26,32 +28,24 @@ public class CustomerManager : Singleton<CustomerManager>
         
         
     }
-    
+
+    private List<Customer> customers = new List<Customer>();
     public void SpawnCustomer(CustomerInfo customerInfo)
     {
-        var trans = getFirstTransform();
-        if (!trans)
-        {
-            return;
-        }
-        var customer = Instantiate(Resources.Load<GameObject>("Customer/" + customerInfo.name), getFirstTransform().position,quaternion.identity,customerTrans);
-        customer.transform.position = trans.position;
-        customerCount++;
+        var customer = Instantiate(Resources.Load<GameObject>("Customer/" + customerInfo.name), customerStartTrans.position,quaternion.identity,customerTrans);
+        customer.transform.position = customerStartTrans.position;
         customer.GetComponent<Customer>().Init(customerInfo);
+        customers.Add(customer.GetComponent<Customer>());
     }
+    
+    
 
     private int customerCount = 0;
-    Transform getFirstTransform()
-    {
-        if (customerCount >= customerSpawnTransforms.Count)
-        {
-            return null;
-        }
-        return customerSpawnTransforms[customerCount];
-    }
 
     public void SpawnRandomCustomer()
     {
+         
+        
         var customerInfos = CSVLoader.Instance.CustomerInfoDict.Values.ToList();
         var customerInfo = customerInfos.RandomItem();
         SpawnCustomer((customerInfo));
@@ -60,10 +54,31 @@ public class CustomerManager : Singleton<CustomerManager>
     private void Update()
     {
         spawnTimer+= Time.deltaTime;
-        if (spawnTimer > spawnTime)
+        if (spawnTimer > spawnTime && customers.Count<customerSpawnTransforms.Count)
         {
             spawnTimer -= spawnTime;
             SpawnRandomCustomer();
         }
+        
+        //move all customer forward
+        for (int i = 0; i < customers.Count; i++)
+        {
+            if ((customers[i].transform.position - customerSpawnTransforms[i].position).magnitude > 0.1f)
+            {
+                 customers[i].transform.position = Vector3.MoveTowards(customers[i].transform.position, customerSpawnTransforms[i].position, 1f * Time.deltaTime);
+            }
+            else
+            {
+                if (i == 0)
+                {
+                    customers[i].ShowRequirementBubble();
+                }
+            }
+        }
+    }
+
+    public void removeCustomer(Customer cus)
+    {
+        customers.Remove(cus);
     }
 }

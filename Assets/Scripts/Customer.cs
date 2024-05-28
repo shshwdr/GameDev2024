@@ -21,6 +21,7 @@ public class Customer : MonoBehaviour
     public CustomerInfo Info => info;
     CustomerRequirementInfo requirement;
     private float moveSpeed;
+    public bool hasOrdered = false;
 
     public void Init(CustomerInfo info)
     {
@@ -29,6 +30,15 @@ public class Customer : MonoBehaviour
         progressBar.gameObject.SetActive(false);
         //fill requirement
         requirement = CSVLoader.Instance.CustomerRequirementInfos.RandomItem();
+        dialogueBubble.hideDialogue();
+    }
+
+    public void ShowRequirementBubble()
+    {
+        if (!hasOrdered)
+        {
+            hasOrdered = true;
+        }
         dialogueBubble.showDialogue(requirement.description);
     }
 
@@ -62,6 +72,7 @@ public class Customer : MonoBehaviour
 
     public void CustomerLeaveAndFight(DishInfo dishInfo, bool satisfy)
     {
+        CustomerManager.Instance.removeCustomer(this);
         isFighting = true;
         initialDuration = info.duration;
         moveSpeed = info.moveSpeed;

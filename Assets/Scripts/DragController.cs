@@ -137,7 +137,7 @@ public class DragController : MonoBehaviour
                         foreach (var hit in hits)
                         {
                             var customer = hit.transform.GetComponent<Customer>();
-                            if (customer && draggingIngredient is Dish dish && dish.Info.isFinalDish)
+                            if (customer && draggingIngredient is Dish dish && dish.Info.isFinalDish && customer.hasOrdered)
                             {
                                 customer.EatDish(dish);
                                 draggingIngredient = null;
