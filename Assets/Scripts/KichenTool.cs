@@ -39,6 +39,7 @@ public class KichenTool : MonoBehaviour
         {
             if (trans.childCount == 0)
             {
+                SFXManager.Instance.PlaySFX(SFXType.placeItem);
                 ingredient.transform.SetParent((trans));
                 ingredient.transform.position =  trans.position;
                 return;
@@ -125,6 +126,18 @@ public class KichenTool : MonoBehaviour
 
         currentIngredientBases.Sort();
         var currentIngredientBasesStr = string.Join(",", currentIngredientBases);
+
+        if (info.id == "Knife")
+        {
+            
+            SFXManager.Instance.PlaySFX(SFXType.cutVeg);
+        }
+        else
+        {
+            
+            SFXManager.Instance.PlaySFX(SFXType.cook);
+        }
+        
 
         RemoveAllIngredient();
 

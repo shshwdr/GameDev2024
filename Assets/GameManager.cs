@@ -4,7 +4,7 @@ using Sinbad;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-public class GameManager : MonoBehaviour
+public class GameManager : Singleton<GameManager>
 {
     // Start is called before the first frame update
     void Start()
@@ -23,5 +23,10 @@ public class GameManager : MonoBehaviour
         {
             SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
         }
+    }
+
+    public bool isInBattleView(Vector3 position)
+    {
+        return position.x > -3.18f && position.y < 1.74 && position.y > -1.74;
     }
 }

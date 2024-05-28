@@ -25,6 +25,7 @@ public class Enemy : MonoBehaviour
      public float hitMoveSpeed = 0.7f;
      public float eatMoveSpeed = 0.3f;
      private Vector3 lastAttacker;
+     private bool hasEntered = false;
     public void Init(EnemyInfo info)
     {
         animator = GetComponentInChildren<Animator>();
@@ -38,6 +39,8 @@ public class Enemy : MonoBehaviour
 
     public void TakeDamage(int damage, Vector3 attackerPosition)
     {
+        
+        SFXManager.Instance.PlaySFX(SFXType.seagullHit);
         lastAttacker = attackerPosition;
         progressBar.gameObject.SetActive(true);
         currentHP -= damage;
@@ -81,6 +84,7 @@ public class Enemy : MonoBehaviour
             
             Vector2 movementDirection = oppositeLastTarget - transform.position;
             updateDirection(movementDirection);
+            
         }
 
         if (isBeforeEating)
@@ -96,6 +100,14 @@ public class Enemy : MonoBehaviour
             
             return;
         }
+
+
+        if (!hasEntered && isInBattleView())
+        {
+            SFXManager.Instance.PlaySFX(SFXType.seagullEnter);
+            hasEntered = true;
+        }
+        
         if (target)
         {
             if (Vector3.Distance(transform.position, target.position) < 0.1f)
@@ -106,6 +118,8 @@ public class Enemy : MonoBehaviour
                     return;
                 }
                 animator.SetTrigger("eat");
+                
+                SFXManager.Instance.PlaySFX(SFXType.seagullEat);
                 isBeforeEating = true;
                 isEating = true;
             }
@@ -131,6 +145,10 @@ public class Enemy : MonoBehaviour
         
     }
 
+    public bool isInBattleView()
+    {
+        return GameManager.Instance.isInBattleView((transform.position));
+    }
     public void Eat()
     {
         isBeforeEating = false;

@@ -77,7 +77,7 @@ public class Customer : MonoBehaviour
                 target = EnemyManager.Instance.enemySpawnTransforms.RandomItem();
             }
 
-            if (target != null)
+            if (target != null && GameManager.Instance.isInBattleView( target.position))
             {
                 transform.position = Vector3.MoveTowards(transform.position, target.position, info.moveSpeed * Time.deltaTime);
                 if (Vector3.Distance(transform.position, target.position) < 0.1f)
@@ -92,6 +92,11 @@ public class Customer : MonoBehaviour
                 for (int i = 0; i < EnemyManager.Instance.enemyTrans.childCount; i++)
                 {
                     var enemyTrans = EnemyManager.Instance.enemyTrans.GetChild(i);
+
+                    if (!GameManager.Instance.isInBattleView(enemyTrans.position))
+                    {
+                        continue;
+                    }
                     var distance = Vector3.Distance(enemyTrans.position, transform.position);
                     if (distance < closestDistance)
                     {
@@ -111,5 +116,8 @@ public class Customer : MonoBehaviour
         enemy.TakeDamage(info.attack,transform.position);
         attackTimer = info.attackInterval;
         //target = null;
+        
+        
+        SFXManager.Instance.PlaySFX(SFXType.customerHit);
     }
 }
