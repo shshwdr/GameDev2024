@@ -51,7 +51,6 @@ public class DishInfo:BaseInfo
     public Dictionary<string,int> ingredients;
     public string kichenUtil;
     public string description;
-    public List<string> sourceIngredients;
     public bool isHot;
     public float time;
     public string image;

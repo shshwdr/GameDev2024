@@ -140,6 +140,7 @@ public class DragController : MonoBehaviour
                             if (customer && draggingIngredient is Dish dish && dish.Info.isFinalDish && customer.hasOrdered)
                             {
                                 customer.EatDish(dish);
+                                used = true;
                                 draggingIngredient = null;
                                 return;
                             }
@@ -150,9 +151,15 @@ public class DragController : MonoBehaviour
                 if (draggingIngredient is Ingredient ingredient)
                 {
                     IngredientManager.Instance.AddIngredient(ingredient.Info.id);
+                    Destroy(draggingIngredient.gameObject);
+                    draggingIngredient = null;
                 }
-                Destroy(draggingIngredient.gameObject);
-                draggingIngredient = null;
+                else
+                {
+                    //todo: move it back
+                    Destroy(draggingIngredient.gameObject);
+                    draggingIngredient = null;
+                }
             }
         }
     }
