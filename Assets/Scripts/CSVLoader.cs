@@ -48,12 +48,14 @@ public class DishInfo:BaseInfo
 {
     public int cost;
     public bool isFinalDish;
-    public List<string> ingredients;
+    public Dictionary<string,int> ingredients;
     public string kichenUtil;
     public string description;
     public List<string> sourceIngredients;
     public bool isHot;
     public float time;
+    public string image;
+    public Dictionary<string, int> buff;
 }
 public class CSVLoader : Singleton<CSVLoader>
 {

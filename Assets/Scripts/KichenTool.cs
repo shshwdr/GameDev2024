@@ -1,13 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class KichenTool : MonoBehaviour
 { 
     KichenToolInfo info;
     public KichenToolInfo Info => info;
-    
+    private Dictionary<string,int> currentIngredientBases = new Dictionary<string,int>();
     
     public Transform kichenToolParent;
     List<Transform> kichenToolTransforms = new List<Transform>();
@@ -117,20 +118,34 @@ public class KichenTool : MonoBehaviour
     void TryUse()
     {
         
-        var currentIngredientBases = new List<string>();
+        currentIngredientBases = new Dictionary<string, int>();
                 
         foreach (var trans in kichenToolTransforms)
         {
-            currentIngredientBases.Add(trans.GetChild(0).GetComponent<IngredientBase>().Id);
+            var id = trans.GetChild(0).GetComponent<IngredientBase>().Id;
+            if (currentIngredientBases.ContainsKey(id))
+            {
+                currentIngredientBases[id]++;
+            }
+            else
+            {
+                currentIngredientBases.Add(id, 1);
+            }
         }
-
-        currentIngredientBases.Sort();
-        var currentIngredientBasesStr = string.Join(",", currentIngredientBases);
 
         if (info.id == "Knife")
         {
+            var ingredientInfo = CSVLoader.Instance.IngredientInfoDict[ currentIngredientBases.Keys.ToList()[0]];
+            if (ingredientInfo.isMeat)
+            {
+                SFXManager.Instance.PlaySFX(SFXType.cutMeat);
+            }
+            else
+            {
+                SFXManager.Instance.PlaySFX(SFXType.cutVeg);
+            }
             
-            SFXManager.Instance.PlaySFX(SFXType.cutVeg);
+            
         }
         else
         {
@@ -147,12 +162,47 @@ public class KichenTool : MonoBehaviour
             {
                 
                 var  dishIngredientBases = dishInfo.ingredients;
-                dishIngredientBases.Sort();
-                var dishIngredientBasesStr = string.Join(",", dishIngredientBases);
-                if (currentIngredientBasesStr == dishIngredientBasesStr)
+
+                if (info.id == "Knife")
                 {
-                    currentDishInfo = dishInfo;
-                    break;
+                    if (dishIngredientBases.Count == 1 &&
+                        dishIngredientBases.Keys.ToList()[0] == currentIngredientBases.Keys.ToList()[0])
+                    {
+                        currentDishInfo = dishInfo;
+                        break;
+                    }
+                }
+                else
+                {
+                    if (dishIngredientBases.Count == 1 &&
+                        dishIngredientBases.Keys.ToList()[0] == "Anything")
+                    {
+                        currentDishInfo = dishInfo;
+                        break;
+                    }
+
+                    var checkIngredients = new Dictionary<string, int>(dishIngredientBases);
+                    
+                    bool isMatch = true;
+                    foreach (var ingredient in dishIngredientBases)
+                    {
+                        if (currentIngredientBases.ContainsKey(ingredient.Key) &&
+                            currentIngredientBases[ingredient.Key] >= ingredient.Value)
+                        {
+                            
+                        }
+                        else
+                        {
+                            isMatch = false;
+                            break;
+                        }
+                    }
+
+                    if (isMatch)
+                    {
+                        currentDishInfo = dishInfo;
+                        break;
+                    }
                 }
             }
         }
@@ -171,7 +221,7 @@ public class KichenTool : MonoBehaviour
     public void CreateDish(DishInfo info)
     {
         var dish = Instantiate(Resources.Load<GameObject>("Dish/Dish"), kichenToolTransforms[0]);
-        dish.GetComponent<Dish>().Init(info);
+        dish.GetComponent<Dish>().Init(info,currentIngredientBases);
     }
 
     private float cookTime = 0;

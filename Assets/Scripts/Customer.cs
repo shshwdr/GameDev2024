@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class Customer : MonoBehaviour
 {
     Transform target;
     private float duration;
+    private float initialDuration;
     private bool isFighting = false;
     private bool isLeaving = false;
 
@@ -18,6 +20,7 @@ public class Customer : MonoBehaviour
     private CustomerInfo info;
     public CustomerInfo Info => info;
     CustomerRequirementInfo requirement;
+    private float moveSpeed;
 
     public void Init(CustomerInfo info)
     {
@@ -32,15 +35,56 @@ public class Customer : MonoBehaviour
     public void EatDish(Dish dish)
     {
         progressBar.gameObject.SetActive(true);
+
+        bool satisfyRequirement = false;
+        switch (requirement.requirementType)
+        {
+             case "ingredient":
+                if (dish.ingredients.ContainsKey(requirement.subType))
+                {
+                    satisfyRequirement = true;
+                }
+                break;
+            case "hot":
+                if (requirement.subType == "TRUE" && dish.Info.isHot)
+                {
+                    satisfyRequirement = true;
+                }else if (requirement.subType == "FALSE" && !dish.Info.isHot)
+                {
+                    satisfyRequirement = true;
+                }
+                break;
+        }
+        
+        CustomerLeaveAndFight(dish.Info,satisfyRequirement);
         Destroy(dish.gameObject);
-        CustomerLeaveAndFight();
     }
 
-    public void CustomerLeaveAndFight()
+    public void CustomerLeaveAndFight(DishInfo dishInfo, bool satisfy)
     {
         isFighting = true;
-        dialogueBubble.showDialogue("For the Food Stand!", 4);
-        duration = info.duration;
+        initialDuration = info.duration;
+        moveSpeed = info.moveSpeed;
+        if (satisfy)
+        {
+            dialogueBubble.showDialogue("Exactly What I Want!", 4);
+        }
+        else
+        {
+            dialogueBubble.showDialogue("Hmm ok...", 4);
+        }
+
+        if (dishInfo.buff.ContainsKey("Duration"))
+        {
+            initialDuration+=dishInfo.buff["Duration"];
+        }
+        
+        if (dishInfo.buff.ContainsKey("MoveSpeed"))
+        {
+            moveSpeed += moveSpeed * dishInfo.buff["MoveSpeed"]/100f;
+        }
+
+        duration = initialDuration;
     }
 
     private void Update()
@@ -57,7 +101,7 @@ public class Customer : MonoBehaviour
             if (target != null)
             {
                 transform.position =
-                    Vector3.MoveTowards(transform.position, target.position, info.moveSpeed * Time.deltaTime);
+                    Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
                 if (Vector3.Distance(transform.position, target.position) < 0.1f)
                 {
                     Destroy(gameObject);
@@ -66,7 +110,7 @@ public class Customer : MonoBehaviour
         }
         else if (isFighting)
         {
-            progressBar.SetProgress(duration, 15);
+            progressBar.SetProgress(duration, initialDuration);
             duration -= Time.deltaTime;
 
             if (duration <= 0)
@@ -79,7 +123,7 @@ public class Customer : MonoBehaviour
 
             if (target != null && GameManager.Instance.isInBattleView( target.position))
             {
-                transform.position = Vector3.MoveTowards(transform.position, target.position, info.moveSpeed * Time.deltaTime);
+                transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
                 if (Vector3.Distance(transform.position, target.position) < 0.1f)
                 {
                     Attack(target);

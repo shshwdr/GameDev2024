@@ -16,7 +16,7 @@ public class ProgressBar : MonoBehaviour
         if (label)
         {
             
-            label.text = $"{progress} / {max}";
+            label.text = $"{(int)progress} / {max}";
         }
     }
     

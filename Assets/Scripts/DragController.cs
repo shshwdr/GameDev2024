@@ -10,10 +10,18 @@ public class DragController : MonoBehaviour
 
     public LayerMask test;
 
+    private GameObject mouseOverObj;
+
     // Update is called once per frame
     void Update()
     {
         Vector2 mousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        
+        var layerMask = LayerMask.NameToLayer("Draggable");
+        //RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero, Mathf.Infinity, test);
+        
+        RaycastHit2D[] hits = Physics2D.RaycastAll(mousePosition, Vector2.zero);
+
         if (Input.GetMouseButtonDown(0))
         {
             if (draggingIngredient == null)
@@ -22,9 +30,10 @@ public class DragController : MonoBehaviour
 
                 // Cast a ray from the mouse position
                 //only raycast certain layer
-                var layerMask = LayerMask.NameToLayer("Draggable");
+                //var layerMask = LayerMask.NameToLayer("Draggable");
                 RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero, Mathf.Infinity, test);
                 //RaycastHit2D hit = Physics2D.Raycast(mousePosition, Vector2.zero);
+                //RaycastHit2D hit = hits.Length>0?hits[0]:default(RaycastHit2D);
                 if (hit)
                 {
                     var ingredient = hit.transform.GetComponent<Ingredient>();
@@ -68,6 +77,7 @@ public class DragController : MonoBehaviour
             }
         }
 
+        GameObject thisMouseOverObj = null;
         if (Input.GetMouseButton(0))
         {
             if (draggingIngredient != null)
@@ -75,12 +85,38 @@ public class DragController : MonoBehaviour
                 draggingIngredient.transform.position = mousePosition;
             }
         }
+        else
+        {
+            
+            if (hits.Length > 0)
+            {
+                foreach (var hit in hits)
+                {
+                    var dish = hit.transform.GetComponent<Dish>();
+                    if (dish != null)
+                    {
+                        dish.OnMouseEnter();
+                        thisMouseOverObj = dish.gameObject;
+                        break;
+                    }
+                }
+            }
+
+        }
+
+        if (mouseOverObj != thisMouseOverObj)
+        {
+            if (mouseOverObj)
+            {
+                mouseOverObj.GetComponent<Dish>().OnMouseExit();
+            }
+            mouseOverObj = thisMouseOverObj;
+        }
 
         if (Input.GetMouseButtonUp(0))
         {
             if (draggingIngredient != null)
             {
-                RaycastHit2D[] hits = Physics2D.RaycastAll(mousePosition, Vector2.zero);
                 if (hits.Length > 0)
                 {
                     bool used = false;

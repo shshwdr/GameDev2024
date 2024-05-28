@@ -1988,7 +1988,7 @@ MonoBehaviour:
   enemySpawnParent: {fileID: 1207824345}
   enemySpawnTransforms: []
   enemyTrans: {fileID: 889040487}
-  spawnTime: 3
+  spawnTime: 5
   spawnTimer: 0
 --- !u!1 &1654194350
 GameObject:

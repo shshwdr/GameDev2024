@@ -1,5 +1,8 @@
-﻿id,name,cost,time,isFinalDish,ingredients,kichenUtil,description,sourceIngredients,isHot
-Beef Stew,Beef Stew,,6,1,Beef Cubes|Beef Cubes|Potato Cubes,Pot,"Beef Cube * 2, Potato Cube * 1 , cook with Pot",Beef|Potato,1
-Potato Salad,Potato Salad,,4,1,Potato Cubes|Potato Cubes|Potato Cubes,Plate,"Potateo Cube * 3, place in plate",Potato,0
-Beef Cubes,Beef Cubes,,2,,Beef,Knife,,,
-Potato Cubes,Potato Cubes,,2,,Potato,Knife,,,
+﻿id,name,cost,time,isFinalDish,ingredients,kichenUtil,description,sourceIngredients,isHot,buff,image
+Beef Potato Stew,Beef Potato Stew,,6,1,Beef Cubes:1|Potato Cubes:1,Pot,,,1,Duration:20,Beef Stew
+Beef Stew,Beef Stew,,6,1,Beef Cubes:2,Pot,,,1,Duration:10,Beef Stew
+Stew,Stew,,6,1,Anything:1,Pot,,,1,Duration:5,Beef Stew
+Potato Salad,Potato Salad,,4,1,Potato Cubes:1,Plate,,,0,MoveSpeed:80,Potato Salad
+Mixed Salad,Mixed Salad,,4,1,Anything:1,Plate,,,,MoveSpeed:40,Potato Salad
+Beef Cubes,Beef Cubes,,2,,Beef:1,Knife,,Beef,,,Beef Cubes
+Potato Cubes,Potato Cubes,,2,,Potato:1,Knife,,Potato,,,Potato Cubes
