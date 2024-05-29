@@ -54,7 +54,8 @@ public class Enemy : MonoBehaviour
 
         if (currentHP <= 0)
         {
-            Destroy(gameObject);
+            RoundManager.Instance.ChasedEnemy();
+            EnemyDestroy();
         }
     }
 
@@ -114,7 +115,7 @@ public class Enemy : MonoBehaviour
             {
                 if (isBack)
                 {
-                    Destroy(gameObject);
+                    EnemyDestroy();
                     return;
                 }
                 animator.SetTrigger("eat");
@@ -127,6 +128,13 @@ public class Enemy : MonoBehaviour
             Vector2 movementDirection = target.position - transform.position;
             updateDirection(movementDirection);
         }
+    }
+
+    public void EnemyDestroy()
+    {
+        EnemyManager.Instance.remvoeEnemy(this);
+        
+        Destroy(gameObject);
     }
 
     void updateDirection(Vector2 movementDirection )

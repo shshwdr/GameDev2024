@@ -56,6 +56,16 @@ public class DishInfo:BaseInfo
     public string image;
     public Dictionary<string, int> buff;
 }
+
+public class EnemyRoundInfo
+{
+    public int preTime;
+    public List<string> enemies;
+    public int enemyCount;
+    public float minInterval;
+    public float maxInterval;
+
+}
 public class CSVLoader : Singleton<CSVLoader>
 {
     
@@ -67,6 +77,7 @@ public class CSVLoader : Singleton<CSVLoader>
     public Dictionary<string, EnemyInfo> EnemyInfoDict = new Dictionary<string, EnemyInfo>();
     public Dictionary<string, CustomerInfo> CustomerInfoDict = new Dictionary<string, CustomerInfo>();
     public List<CustomerRequirementInfo> CustomerRequirementInfos = new List<CustomerRequirementInfo>();
+    public List<EnemyRoundInfo> EnemyRoundInfos = new List<EnemyRoundInfo>();
     public void Init()
     {
         var ingredientInfos = CsvUtil.LoadObjects<IngredientInfo>("ingredient");
@@ -96,5 +107,6 @@ public class CSVLoader : Singleton<CSVLoader>
              CustomerInfoDict[info.id] = info;
          }
          CustomerRequirementInfos = CsvUtil.LoadObjects<CustomerRequirementInfo>("customerRequirement");
+          EnemyRoundInfos = CsvUtil.LoadObjects<EnemyRoundInfo>("enemyRound");
     }
 }

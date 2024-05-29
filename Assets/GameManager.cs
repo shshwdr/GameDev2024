@@ -14,6 +14,7 @@ public class GameManager : Singleton<GameManager>
         KichenToolManager.Instance.Init();
         EnemyManager.Instance.Init();
         CustomerManager.Instance.Init();
+        RoundManager.Instance.Init();
     }
 
     // Update is called once per frame
