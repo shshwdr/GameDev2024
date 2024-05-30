@@ -1,2 +1,2 @@
-﻿id,name,moveSpeed,attack,attackInterval,duration
-Man,Man,0.4,1,1,20
+﻿id,name,moveSpeed,attack,attackInterval,duration,criticalRate
+Man,Man,0.4,1,1,20,10

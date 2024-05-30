@@ -42,6 +42,7 @@ public class CustomerInfo : BaseInfo
     public int attack;
     public float attackInterval;
     public float duration;
+    public float criticalRate;
 }
 
 public class DishInfo:BaseInfo

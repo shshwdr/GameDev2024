@@ -21,16 +21,22 @@ public class Customer : MonoBehaviour
     public CustomerInfo Info => info;
     CustomerRequirementInfo requirement;
     private float moveSpeed;
+    private float criticalRate;
+    private float attack;
+    private float attackInterval;
     public bool hasOrdered = false;
+    private Animator animator;
+    private bool isAttacking = false;
 
     public void Init(CustomerInfo info)
     {
         this.info = info;
-
+        animator = GetComponentInChildren<Animator>();
         progressBar.gameObject.SetActive(false);
         //fill requirement
         requirement = CSVLoader.Instance.CustomerRequirementInfos.RandomItem();
         dialogueBubble.hideDialogue();
+        animator.SetBool("move",true);
     }
 
     public void ShowRequirementBubble()
@@ -39,14 +45,25 @@ public class Customer : MonoBehaviour
         {
             hasOrdered = true;
         }
+        animator.SetTrigger("order");
         dialogueBubble.showDialogue(requirement.description);
     }
 
+    private DishInfo dishInfo;
+    private bool satisfyRequirement;
+    public void FinishEating()
+    {
+        
+        CustomerLeaveAndFight();
+    }
     public void EatDish(Dish dish)
     {
+        
+        animator.SetBool("move",false);
+        animator.SetTrigger("eat");
         progressBar.gameObject.SetActive(true);
 
-        bool satisfyRequirement = false;
+        satisfyRequirement = false;
         switch (requirement.requirementType)
         {
              case "ingredient":
@@ -65,18 +82,18 @@ public class Customer : MonoBehaviour
                 }
                 break;
         }
-        
-        CustomerLeaveAndFight(dish.Info,satisfyRequirement);
+
+        dishInfo = dish.Info;
         Destroy(dish.gameObject);
     }
 
-    public void CustomerLeaveAndFight(DishInfo dishInfo, bool satisfy)
+    public void CustomerLeaveAndFight()
     {
         CustomerManager.Instance.removeCustomer(this);
         isFighting = true;
         initialDuration = info.duration;
         moveSpeed = info.moveSpeed;
-        if (satisfy)
+        if (satisfyRequirement)
         {
             dialogueBubble.showDialogue("Exactly What I Want!", 4);
         }
@@ -87,12 +104,12 @@ public class Customer : MonoBehaviour
 
         if (dishInfo.buff.ContainsKey("Duration"))
         {
-            initialDuration+=dishInfo.buff["Duration"];
+            initialDuration+=dishInfo.buff["Duration"] * (satisfyRequirement?1.5f:1);
         }
         
         if (dishInfo.buff.ContainsKey("MoveSpeed"))
         {
-            moveSpeed += moveSpeed * dishInfo.buff["MoveSpeed"]/100f;
+            moveSpeed += moveSpeed * dishInfo.buff["MoveSpeed"]* (satisfyRequirement?1.5f:1) /100f ;
         }
 
         duration = initialDuration;
@@ -100,8 +117,10 @@ public class Customer : MonoBehaviour
 
     private void Update()
     {
+        
         if (attackTimer > 0)
         {
+            animator.SetBool("move",false);
             attackTimer -= Time.deltaTime;
             return;
         }
@@ -111,6 +130,8 @@ public class Customer : MonoBehaviour
             progressBar.gameObject.SetActive(false);
             if (target != null)
             {
+                
+                animator.SetBool("move",true);
                 transform.position =
                     Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
                 if (Vector3.Distance(transform.position, target.position) < 0.1f)
@@ -134,6 +155,7 @@ public class Customer : MonoBehaviour
 
             if (target != null && GameManager.Instance.isInBattleView( target.position))
             {
+                animator.SetBool("move",true);
                 transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
                 if (Vector3.Distance(transform.position, target.position) < 0.1f)
                 {
