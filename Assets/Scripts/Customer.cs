@@ -2,7 +2,9 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Unity.VisualScripting;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Customer : MonoBehaviour
 {
@@ -32,6 +34,7 @@ public class Customer : MonoBehaviour
     {
         this.info = info;
         animator = GetComponentInChildren<Animator>();
+        spriteRenderer = animator.GetComponent<SpriteRenderer>();
         progressBar.gameObject.SetActive(false);
         //fill requirement
         requirement = CSVLoader.Instance.CustomerRequirementInfos.RandomItem();
@@ -44,8 +47,11 @@ public class Customer : MonoBehaviour
         if (!hasOrdered)
         {
             hasOrdered = true;
+            
+            animator.SetBool("move",false);
+            animator.SetTrigger("order");
         }
-        animator.SetTrigger("order");
+        
         dialogueBubble.showDialogue(requirement.description);
     }
 
@@ -58,7 +64,6 @@ public class Customer : MonoBehaviour
     }
     public void EatDish(Dish dish)
     {
-        
         animator.SetBool("move",false);
         animator.SetTrigger("eat");
         progressBar.gameObject.SetActive(true);
@@ -83,16 +88,32 @@ public class Customer : MonoBehaviour
                 break;
         }
 
+        if (satisfyRequirement)
+        {
+            
+            SFXManager.Instance.PlaySFX(SFXType.customerEatHappy);
+        }
+        else
+        {
+            
+            SFXManager.Instance.PlaySFX(SFXType.customerEat);
+        }
         dishInfo = dish.Info;
         Destroy(dish.gameObject);
     }
 
     public void CustomerLeaveAndFight()
     {
+        RoundManager.Instance.AddMoney((int)(dishInfo.cost*(satisfyRequirement?1.5f:1)));
+        
         CustomerManager.Instance.removeCustomer(this);
         isFighting = true;
         initialDuration = info.duration;
         moveSpeed = info.moveSpeed;
+        attack = info.attack;
+        attackInterval = info.attackInterval;
+        criticalRate = info.criticalRate;
+        
         if (satisfyRequirement)
         {
             dialogueBubble.showDialogue("Exactly What I Want!", 4);
@@ -134,6 +155,9 @@ public class Customer : MonoBehaviour
                 animator.SetBool("move",true);
                 transform.position =
                     Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+                
+                Vector2 movementDirection = target.position - transform.position;
+                updateDirection(movementDirection);
                 if (Vector3.Distance(transform.position, target.position) < 0.1f)
                 {
                     Destroy(gameObject);
@@ -153,10 +177,13 @@ public class Customer : MonoBehaviour
                 target = EnemyManager.Instance.enemySpawnTransforms.RandomItem();
             }
 
-            if (target != null && GameManager.Instance.isInBattleView( target.position))
+            if (target != null && !target.GetComponentInChildren<Enemy>().isDead &&  GameManager.Instance.isInBattleView( target.position))
             {
                 animator.SetBool("move",true);
                 transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
+                
+                Vector2 movementDirection = target.position - transform.position;
+                updateDirection(movementDirection);
                 if (Vector3.Distance(transform.position, target.position) < 0.1f)
                 {
                     Attack(target);
@@ -186,15 +213,47 @@ public class Customer : MonoBehaviour
             }
         }
     }
+    
+    
 
     void Attack(Transform trans)
     {
+
+        var isCritical = Random.Range(0, 100) < criticalRate;
+
+        if (isCritical)
+        {
+            animator.SetTrigger("kick");
+        }
+        else
+        {
+            animator.SetTrigger("attack");
+        }
+        
         var enemy = trans.GetComponentInChildren<Enemy>();
-        enemy.TakeDamage(info.attack,transform.position);
-        attackTimer = info.attackInterval;
+        enemy.TakeDamage((int)attack,transform.position,isCritical);
+        attackTimer = attackInterval;
         //target = null;
         
         
         SFXManager.Instance.PlaySFX(SFXType.customerHit);
+    }
+    
+    
+    private SpriteRenderer spriteRenderer;
+    void updateDirection(Vector2 movementDirection )
+    {
+
+        if (movementDirection.x > 0)
+        {
+            // Moving right
+            spriteRenderer.flipX = true;
+        }
+        else if (movementDirection.x < 0)
+        {
+            // Moving left
+            spriteRenderer.flipX = false;
+        }
+        
     }
 }

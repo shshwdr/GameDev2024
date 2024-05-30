@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Pool;
 using UnityEngine;
 
 public enum RoundState { battle, result,shop,None}
@@ -20,6 +21,7 @@ public class RoundManager : Singleton<RoundManager>
     public int chasedEnemyInRound = 0;
     public List<Recipe> recipesInRound = new List<Recipe>();
     public ResultMenu resultMenu;
+    public ShopMenu shopMenu;
     public bool isInBattle => state == RoundState.battle;
     public void Init()
     {
@@ -27,6 +29,12 @@ public class RoundManager : Singleton<RoundManager>
         StartRound();
     }
 
+    public void ConsumeMoney(int amount)
+    {
+        money -= amount;
+        
+        EventPool.Trigger("updateMoney");
+    }
     void StartRound()
     {
         info = CSVLoader.Instance.EnemyRoundInfos[roundCount];
@@ -38,16 +46,18 @@ public class RoundManager : Singleton<RoundManager>
         MusicManager.Instance.StartBattle();
     }
 
-    public void GetMoney(int amount)
+    public void AddMoney(int amount)
     {
+        
         money += amount;
         moneyEarnInRound += amount;
+        EventPool.Trigger("updateMoney");
     }
 
-    public void CookMeal(Dish dish)
+    public void CookMeal(Dish dish) 
     {
         var recipe = new Recipe(){dishName = dish.Info.id,kichenUtil = dish.Info.kichenUtil,ingredients = dish.ingredients};
-    recipesInRound.Add((recipe));
+        recipesInRound.Add((recipe));
     }
 
     public void ChasedEnemy()
@@ -70,6 +80,12 @@ public class RoundManager : Singleton<RoundManager>
 
     public void OpenShop()
     {
+        shopMenu.ShowShop();
+    }
+
+    public void FinishShop()
+    {
+        
         StartRound();
     }
 }

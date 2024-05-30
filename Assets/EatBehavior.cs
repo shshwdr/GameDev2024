@@ -7,7 +7,10 @@ public class EatBehavior : StateMachineBehaviour
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        animator.GetComponentInParent<Enemy>().Eat();
+        if (animator.GetComponentInParent<Enemy>())
+        {
+            animator.GetComponentInParent<Enemy>().Eat();
+        }
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks

@@ -106,14 +106,13 @@ public class KichenTool : MonoBehaviour
         bool hasSlot = false;
         foreach (var trans in kichenToolTransforms)
         {
-            if (trans.childCount == 0)
+            if (trans.childCount != 0)
             {
                 hasSlot = true;
-                return ;
+                TryUse();
             }
         }
 
-        TryUse();
     } 
     void TryUse()
     {
@@ -122,14 +121,17 @@ public class KichenTool : MonoBehaviour
                 
         foreach (var trans in kichenToolTransforms)
         {
-            var id = trans.GetChild(0).GetComponent<IngredientBase>().Id;
-            if (currentIngredientBases.ContainsKey(id))
+            if (trans.childCount > 0)
             {
-                currentIngredientBases[id]++;
-            }
-            else
-            {
-                currentIngredientBases.Add(id, 1);
+                var id = trans.GetChild(0).GetComponent<IngredientBase>().Id;
+                if (currentIngredientBases.ContainsKey(id))
+                {
+                    currentIngredientBases[id]++;
+                }
+                else
+                {
+                    currentIngredientBases.Add(id, 1);
+                }
             }
         }
 
@@ -222,6 +224,11 @@ public class KichenTool : MonoBehaviour
     {
         var dish = Instantiate(Resources.Load<GameObject>("Dish/Dish"), kichenToolTransforms[0]);
         dish.GetComponent<Dish>().Init(info,currentIngredientBases);
+
+        if (info.isFinalDish)
+        {
+            RoundManager.Instance.CookMeal(dish.GetComponent<Dish>());
+        }
     }
 
     private float cookTime = 0;

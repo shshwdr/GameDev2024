@@ -37,21 +37,32 @@ public class Enemy : MonoBehaviour
          progressBar.gameObject.SetActive(false);
     }
 
-    public void TakeDamage(int damage, Vector3 attackerPosition)
+    public void TakeDamage(int damage, Vector3 attackerPosition,bool isCritical)
     {
-        
+        if (isDead)
+        {
+            return;
+        }
         SFXManager.Instance.PlaySFX(SFXType.seagullHit);
-        lastAttacker = attackerPosition;
-        progressBar.gameObject.SetActive(true);
-        currentHP -= damage;
-        currentHP = math.max(currentHP, 0);
-        progressBar.SetProgress(currentHP, info.hp);
+        if (!isCritical)
+        {
+            lastAttacker = attackerPosition;
+            progressBar.gameObject.SetActive(true);
+            currentHP -= damage;
+            currentHP = math.max(currentHP, 0);
         
-        //hit back
+            //hit back
         
-        animator.SetTrigger("hit");
-        
+            animator.SetTrigger("hit");
+        }
+        else
+        {
+            progressBar.gameObject.SetActive(false);
+            currentHP = 0;
+            animator.SetTrigger("bigHit");
+        }
 
+        progressBar.SetProgress(currentHP, info.hp);
         if (currentHP <= 0)
         {
             RoundManager.Instance.ChasedEnemy();
@@ -78,6 +89,10 @@ public class Enemy : MonoBehaviour
     }
     private void Update()
     {
+        if (isDead)
+        {
+            return;
+        }
         if (isHitting)
         {
             var oppositeLastTarget = (transform.position - lastAttacker).normalized + transform.position;
@@ -133,13 +148,23 @@ public class Enemy : MonoBehaviour
     public void EnemyDestroy()
     {
         EnemyManager.Instance.remvoeEnemy(this);
+        isDead = true;
+        Invoke("DestoryInternal", 1);
+    }
+
+    public bool isDead = false;
+    public void DestoryInternal()
+    {
         
         Destroy(gameObject);
     }
 
     void updateDirection(Vector2 movementDirection )
     {
-
+        if (isDead)
+        {
+            return;
+        }
         if (movementDirection.x > 0)
         {
             // Moving right
@@ -159,6 +184,10 @@ public class Enemy : MonoBehaviour
     }
     public void Eat()
     {
+        if (isDead)
+        {
+            return;
+        }
         isBeforeEating = false;
         var ingredient = target.parent.GetComponentInChildren<Ingredient>();
         if (ingredient)

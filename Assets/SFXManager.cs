@@ -12,6 +12,7 @@ public enum SFXType{
     seagullHit,
     customerEnter,
     customerEat,
+    customerEatHappy,
     customerHit,
     gameover
 }
@@ -27,6 +28,7 @@ public class SFXManager : Singleton<SFXManager>
      public  List<AudioClip> seagullHitSFX;
      public  List<AudioClip> customerEnterSFX;
      public  List<AudioClip> customerEatSFX;
+     public  List<AudioClip> customerEatHappySFX;
      public  List<AudioClip> customerHitSFX;
      
      public AudioClip gameoverSFX;
@@ -61,6 +63,9 @@ public class SFXManager : Singleton<SFXManager>
                  break;
              case SFXType.customerEat:
                  audioSource.PlayOneShot(customerEatSFX.RandomItem());
+                 break;
+             case SFXType.customerEatHappy:
+                 audioSource.PlayOneShot(customerEatHappySFX.RandomItem());
                  break;
              case SFXType.customerHit:
                  audioSource.PlayOneShot(customerHitSFX.RandomItem());

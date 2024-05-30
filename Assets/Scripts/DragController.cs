@@ -52,7 +52,7 @@ public class DragController : MonoBehaviour
                             if (IngredientManager.Instance.CanConsumeIngredient(ingredient.Info.id))
                             {
                                 IngredientManager.Instance.ConsumeIngredient(ingredient.Info.id);
-                                var draggingingredient = Instantiate(Resources.Load<GameObject>("Ingredient/ingredient"),
+                                var draggingingredient = Instantiate(Resources.Load<GameObject>("Dish/ingredient"),
                                     ingredient.transform.position, quaternion.identity, draggingTrans);
                                 draggingingredient.GetComponent<Ingredient>()
                                     .Init(ingredient.GetComponent<Ingredient>().Info);

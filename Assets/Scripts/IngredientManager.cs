@@ -57,7 +57,7 @@ public class IngredientManager : Singleton<IngredientManager>
     public GameObject CreateIngredient(IngredientInfo info,Transform trans)
     {
         
-        var ingredient = Instantiate(Resources.Load<GameObject>("Ingredient/ingredient"), trans);
+        var ingredient = Instantiate(Resources.Load<GameObject>("Dish/ingredient"), trans);
         ingredient.GetComponent<Ingredient>().Init(info);
         return ingredient;
     }

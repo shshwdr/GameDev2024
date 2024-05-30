@@ -1,4 +1,5 @@
-﻿id,name,startCount,cost,isMeat
-Knife,Knife,,,
-Pot,Pot,,,
-Plate,Plate,,,
+﻿id,name,startCount,cost
+Knife,Knife,1,0
+Pot,Pot,,100
+Plate,Plate,1,
+Pan,Pan,,200

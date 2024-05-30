@@ -14,7 +14,7 @@ public class Ingredient : IngredientBase
     public void Init(IngredientInfo info)
     {
         this.info = info;
-        spriteRenderer.sprite = Resources.Load<Sprite>("Ingredient/" + info.name);
+        spriteRenderer.sprite = Resources.Load<Sprite>("Dish/" + info.name);
     }
 
     public void putIntoPot()

@@ -15,6 +15,8 @@ public class KichenToolInfo:BaseInfo
     
     public string id;
     public string name;
+    public int cost;
+    public int startCount;
 }
 
 public class BaseInfo
@@ -92,7 +94,7 @@ public class CSVLoader : Singleton<CSVLoader>
          {
              DishInfoDict[info.id] = info;
          }
-         var kichenToolInfos = CsvUtil.LoadObjects<KichenToolInfo>("kichenTool");
+         var kichenToolInfos = CsvUtil.LoadObjects<KichenToolInfo>("KichenTool");
          foreach (var info in kichenToolInfos)
          {
              KichenToolInfoDict[info.id] = info;
