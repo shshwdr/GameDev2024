@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 3bee193b8b43c9b42998305ab5d1762e
+guid: b4249ee477a013b44bb3dfa353d576d9
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -45,8 +45,8 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 6
-  spritePivot: {x: 0, y: 0}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -141,13 +141,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: seagull_hit_no_outline_0
+      name: customer1_eating_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,20 +155,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 31335f6c332da024483c9467b0aec0a8
-      internalID: 132960827
+      spriteID: e00ef1f4b169e6848b2d0276e3d7887d
+      internalID: -797851773
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: seagull_hit_no_outline_1
+      name: customer1_eating_1
       rect:
         serializedVersion: 2
-        x: 80
+        x: 96
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,20 +176,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1947d5803a557ff4c947e981fc62c06f
-      internalID: -6332035
+      spriteID: 6fc4a83f8814553428221a288e704704
+      internalID: 1730590244
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: seagull_hit_no_outline_2
+      name: customer1_eating_2
       rect:
         serializedVersion: 2
-        x: 160
+        x: 192
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,20 +197,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 26d8d51139345ff45a33f3a572e35696
-      internalID: -1664884329
+      spriteID: 11db8b747abf7c641a9ee41aacd00f1a
+      internalID: -1236174147
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: seagull_hit_no_outline_3
+      name: customer1_eating_3
       rect:
         serializedVersion: 2
-        x: 240
+        x: 288
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,20 +218,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 030b084762e473f429549aaccd0e541e
-      internalID: 1653708928
+      spriteID: cf06f3a9336538242bd7d4b2f9a98f0a
+      internalID: 912810962
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: seagull_hit_no_outline_4
+      name: customer1_eating_4
       rect:
         serializedVersion: 2
-        x: 320
+        x: 384
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,41 +239,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c70874eee5cd7784e8d079f8180e3e23
-      internalID: -2038956651
+      spriteID: 0138e2f5b04657f49bdc5914f4db3b21
+      internalID: 1492177057
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: seagull_hit_no_outline_5
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 0
-        width: 80
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2efef1716aa41b94c8391963342588cf
-      internalID: 1310200163
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: seagull_hit_no_outline_6
+      name: customer1_eating_5
       rect:
         serializedVersion: 2
         x: 480
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -281,20 +260,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ffb444f27744193448010a18d441db13
-      internalID: -825726787
+      spriteID: f89f5ec7f5d96fd47bb1360b4e5e1b31
+      internalID: 803259899
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: seagull_hit_no_outline_7
+      name: customer1_eating_6
       rect:
         serializedVersion: 2
-        x: 560
+        x: 576
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -302,20 +281,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 3cf57d854c24d8f4997e9d33d8c70f36
-      internalID: -778225333
+      spriteID: b3e33e91d3dab734f821549435cc4789
+      internalID: -713558526
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: seagull_hit_no_outline_8
+      name: customer1_eating_7
       rect:
         serializedVersion: 2
-        x: 640
+        x: 672
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -323,20 +302,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f4964858d1e775c4889122244225f63a
-      internalID: 1198266642
+      spriteID: e4621777671e46747a2c8677efc2d65c
+      internalID: -1781305467
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: seagull_hit_no_outline_9
+      name: customer1_eating_8
       rect:
         serializedVersion: 2
-        x: 720
+        x: 768
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -344,20 +323,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4b812a75403da1d4689e915e3ef4b2e9
-      internalID: 1446564109
+      spriteID: 151371ccfb0800741b538db168c9fb8e
+      internalID: -2061839223
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: seagull_hit_no_outline_10
+      name: customer1_eating_9
       rect:
         serializedVersion: 2
-        x: 800
+        x: 864
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -365,41 +344,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9c6929ffae4f7054b9810c65044c0d21
-      internalID: -1832129944
+      spriteID: af88deba66386324b9f6402f5766f487
+      internalID: -2126585818
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: seagull_hit_no_outline_11
-      rect:
-        serializedVersion: 2
-        x: 880
-        y: 0
-        width: 80
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 967d8baea7292734688f2fa1d0c400ac
-      internalID: 1505868076
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: seagull_hit_no_outline_12
+      name: customer1_eating_10
       rect:
         serializedVersion: 2
         x: 960
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -407,20 +365,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 36b4ba175ce22604f8e946ba96e71e5c
-      internalID: 1172394552
+      spriteID: a6ee77dd21f1afe499c075edf30a0b15
+      internalID: 507410858
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: seagull_hit_no_outline_13
+      name: customer1_eating_11
       rect:
         serializedVersion: 2
-        x: 1040
+        x: 1056
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -428,20 +386,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f4b0901c90f4954499e680bf5e2c1f5
-      internalID: -844159558
+      spriteID: 6c14821ea4b6e164a990162a59c49c6a
+      internalID: 1073955459
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: seagull_hit_no_outline_14
+      name: customer1_eating_12
       rect:
         serializedVersion: 2
-        x: 1120
+        x: 1152
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -449,20 +407,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 81ffa9cdb0265ed4fa3c72fea4a19f0c
-      internalID: 177597714
+      spriteID: fa382ba16a4576e43ab0ef2a5c3b19fb
+      internalID: -211261569
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: seagull_hit_no_outline_15
+      name: customer1_eating_13
       rect:
         serializedVersion: 2
-        x: 1200
+        x: 1248
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -470,20 +428,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d08ebfe9197ae9b44b15df8aff9072f2
-      internalID: 404299523
+      spriteID: af45b024b6c36a34e977f120d6410751
+      internalID: -557722190
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: seagull_hit_no_outline_16
+      name: customer1_eating_14
       rect:
         serializedVersion: 2
-        x: 1280
+        x: 1344
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -491,41 +449,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f575b39536f550c4e912193216e75aae
-      internalID: 1617998199
+      spriteID: 815476cdbb3e68c4abcee784bff3f0d1
+      internalID: 1597648002
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: seagull_hit_no_outline_17
-      rect:
-        serializedVersion: 2
-        x: 1360
-        y: 0
-        width: 80
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 993369cde9416d348bd1379ce6f19a11
-      internalID: -1580958443
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: seagull_hit_no_outline_18
+      name: customer1_eating_15
       rect:
         serializedVersion: 2
         x: 1440
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -533,20 +470,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fde314b7a1c289640974183f85e86535
-      internalID: -814038983
+      spriteID: c5d6e59388640fd4389402b55ea46ff0
+      internalID: 114177294
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: seagull_hit_no_outline_19
+      name: customer1_eating_16
       rect:
         serializedVersion: 2
-        x: 1520
+        x: 1536
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -554,8 +491,50 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d1fc19f2e1c38c940a5e48f701402462
-      internalID: -735196081
+      spriteID: a0ae33e4c063ba044bb70a3b5bc36d99
+      internalID: 1606965551
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: customer1_eating_17
+      rect:
+        serializedVersion: 2
+        x: 1632
+        y: 0
+        width: 96
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fde50610c7688324086175bedb52048a
+      internalID: -494297158
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: customer1_eating_18
+      rect:
+        serializedVersion: 2
+        x: 1728
+        y: 0
+        width: 96
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f116656536498054bbd0ca134387c98f
+      internalID: -1047458757
       vertices: []
       indices: 
       edges: []
@@ -571,26 +550,25 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      seagull_hit_no_outline_0: 132960827
-      seagull_hit_no_outline_1: -6332035
-      seagull_hit_no_outline_10: -1832129944
-      seagull_hit_no_outline_11: 1505868076
-      seagull_hit_no_outline_12: 1172394552
-      seagull_hit_no_outline_13: -844159558
-      seagull_hit_no_outline_14: 177597714
-      seagull_hit_no_outline_15: 404299523
-      seagull_hit_no_outline_16: 1617998199
-      seagull_hit_no_outline_17: -1580958443
-      seagull_hit_no_outline_18: -814038983
-      seagull_hit_no_outline_19: -735196081
-      seagull_hit_no_outline_2: -1664884329
-      seagull_hit_no_outline_3: 1653708928
-      seagull_hit_no_outline_4: -2038956651
-      seagull_hit_no_outline_5: 1310200163
-      seagull_hit_no_outline_6: -825726787
-      seagull_hit_no_outline_7: -778225333
-      seagull_hit_no_outline_8: 1198266642
-      seagull_hit_no_outline_9: 1446564109
+      customer1_eating_0: -797851773
+      customer1_eating_1: 1730590244
+      customer1_eating_10: 507410858
+      customer1_eating_11: 1073955459
+      customer1_eating_12: -211261569
+      customer1_eating_13: -557722190
+      customer1_eating_14: 1597648002
+      customer1_eating_15: 114177294
+      customer1_eating_16: 1606965551
+      customer1_eating_17: -494297158
+      customer1_eating_18: -1047458757
+      customer1_eating_2: -1236174147
+      customer1_eating_3: 912810962
+      customer1_eating_4: 1492177057
+      customer1_eating_5: 803259899
+      customer1_eating_6: -713558526
+      customer1_eating_7: -1781305467
+      customer1_eating_8: -2061839223
+      customer1_eating_9: -2126585818
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 8998a6acb7a2535488b0ec153f74644f
+guid: ec62b28852cdd314cb5cf959e9108b66
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -45,8 +45,8 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 6
-  spritePivot: {x: 0, y: 0}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -141,13 +141,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: seagull_hungry_no_outline_0
+      name: customer1_ordering_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,20 +155,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 251337807a69c674ca15014296a2885a
-      internalID: -1302480216
+      spriteID: 1a60a775b084b8646941a9f9b064a805
+      internalID: -1029122413
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: seagull_hungry_no_outline_1
+      name: customer1_ordering_1
       rect:
         serializedVersion: 2
-        x: 80
+        x: 96
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,20 +176,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9f9f0039033c0cd46bdca25d3b6cb3a1
-      internalID: 2016520136
+      spriteID: 7965d88409904a0478f537ad8a31f797
+      internalID: 521217200
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: seagull_hungry_no_outline_2
+      name: customer1_ordering_2
       rect:
         serializedVersion: 2
-        x: 160
+        x: 192
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,20 +197,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9cecce85ea927ad4bb7aec422f128b90
-      internalID: 661056742
+      spriteID: dc980f2098d1a3842a25cfaa37a71e2b
+      internalID: -20497111
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: seagull_hungry_no_outline_3
+      name: customer1_ordering_3
       rect:
         serializedVersion: 2
-        x: 240
+        x: 288
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,20 +218,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: cdc5e5416fa8a064499b8eeb416b83bb
-      internalID: -297930278
+      spriteID: c827bfa4a4301164eb14b731a77fd139
+      internalID: -2005592038
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: seagull_hungry_no_outline_4
+      name: customer1_ordering_4
       rect:
         serializedVersion: 2
-        x: 320
+        x: 384
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,41 +239,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b98ded3d7a41f6741a3d744a69d1a8e8
-      internalID: -2008680717
+      spriteID: 7697be344ee7d744597c7c19b90308e7
+      internalID: -941965931
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: seagull_hungry_no_outline_5
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 0
-        width: 80
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 2b8649de8a704434a8e99995f7988c97
-      internalID: -1109242481
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: seagull_hungry_no_outline_6
+      name: customer1_ordering_5
       rect:
         serializedVersion: 2
         x: 480
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -281,8 +260,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 52f93c68d064dc443a8439634b387b33
-      internalID: -1028078233
+      spriteID: 1f28a7cb2f8825c4bb9f4a8332771a2b
+      internalID: -2043288069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: customer1_ordering_6
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 96
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 892e77c100e3db34898fdfa02aa395b8
+      internalID: -1950603422
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: customer1_ordering_7
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 0
+        width: 96
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cecbc901cbe20334482c7c5f936f2623
+      internalID: 1851211213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: customer1_ordering_8
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 96
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 96ec67f8eebdce141acbd402b2ddc905
+      internalID: 1330209645
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: customer1_ordering_9
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 0
+        width: 96
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8795ed86d44d0ae45999f9f000bfa417
+      internalID: 2037064564
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: customer1_ordering_10
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 96
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0a8f24a2d48a0ac4086ebc9cb36b105b
+      internalID: 2035824974
       vertices: []
       indices: 
       edges: []
@@ -298,13 +382,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      seagull_hungry_no_outline_0: -1302480216
-      seagull_hungry_no_outline_1: 2016520136
-      seagull_hungry_no_outline_2: 661056742
-      seagull_hungry_no_outline_3: -297930278
-      seagull_hungry_no_outline_4: -2008680717
-      seagull_hungry_no_outline_5: -1109242481
-      seagull_hungry_no_outline_6: -1028078233
+      customer1_ordering_0: -1029122413
+      customer1_ordering_1: 521217200
+      customer1_ordering_10: 2035824974
+      customer1_ordering_2: -20497111
+      customer1_ordering_3: -2005592038
+      customer1_ordering_4: -941965931
+      customer1_ordering_5: -2043288069
+      customer1_ordering_6: -1950603422
+      customer1_ordering_7: 1851211213
+      customer1_ordering_8: 1330209645
+      customer1_ordering_9: 2037064564
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

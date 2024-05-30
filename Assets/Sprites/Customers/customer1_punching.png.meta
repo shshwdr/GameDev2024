@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d3a3333192c6bed47ba814f9a2717ead
+guid: f353340e282e01849b30b61ee3244034
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -45,8 +45,8 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 6
-  spritePivot: {x: 0, y: 0}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -141,13 +141,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: seagull_flying_no_outline_0
+      name: customer1_punching_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,20 +155,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4914b6e4d7b4ce543846be5437c82579
-      internalID: 1858987037
+      spriteID: cea63e9f39adbda41981140da4b36bdc
+      internalID: -1821028800
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: seagull_flying_no_outline_1
+      name: customer1_punching_1
       rect:
         serializedVersion: 2
-        x: 80
+        x: 96
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,20 +176,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 269e49f523f50694694be40f30c93cc2
-      internalID: 431642533
+      spriteID: 0187f42970fa4074aba350ebd3c59672
+      internalID: 1932593696
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: seagull_flying_no_outline_2
+      name: customer1_punching_2
       rect:
         serializedVersion: 2
-        x: 160
+        x: 192
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,20 +197,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9e1ff84799d686443a120225b53ce2ef
-      internalID: -283972056
+      spriteID: e541bbd05327b3048a322a5ed559f60c
+      internalID: -1590853202
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: seagull_flying_no_outline_3
+      name: customer1_punching_3
       rect:
         serializedVersion: 2
-        x: 240
+        x: 288
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,20 +218,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 347c397a634517e4f8f3415864121688
-      internalID: -1723696596
+      spriteID: 5cf3655a4e6b6164586ae6fcdf415977
+      internalID: -516357335
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: seagull_flying_no_outline_4
+      name: customer1_punching_4
       rect:
         serializedVersion: 2
-        x: 320
+        x: 384
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,41 +239,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 0432d9590d961a446aa67bb0b93ab511
-      internalID: -1456203035
+      spriteID: 31dbe5e2ae845c447847c7c01bc9da3e
+      internalID: -438776233
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: seagull_flying_no_outline_5
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 0
-        width: 80
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 5be9100b8647bbf4e88b3f526cc00f9e
-      internalID: 1152753609
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: seagull_flying_no_outline_6
+      name: customer1_punching_5
       rect:
         serializedVersion: 2
         x: 480
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -281,8 +260,113 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9738e644bd0d6e14993a2e227aee03dd
-      internalID: -68071468
+      spriteID: a53ab625444fe8341ad67101f668f416
+      internalID: 1643581084
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: customer1_punching_6
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 0
+        width: 96
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ae5566ceff9943b43b108e81c9bebde2
+      internalID: 480101982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: customer1_punching_7
+      rect:
+        serializedVersion: 2
+        x: 672
+        y: 0
+        width: 96
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: afce6d9b7c0e65a45b90a91095683c1f
+      internalID: -1400735059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: customer1_punching_8
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 0
+        width: 96
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cd3518dfcae66ff49a65771e86aa7b26
+      internalID: 1746761725
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: customer1_punching_9
+      rect:
+        serializedVersion: 2
+        x: 864
+        y: 0
+        width: 96
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b9cf7a8d0bc062f40859a80d4aa7f27e
+      internalID: 441727971
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: customer1_punching_10
+      rect:
+        serializedVersion: 2
+        x: 960
+        y: 0
+        width: 96
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7aa1276006af1274ab86ed5b33833760
+      internalID: -1555169006
       vertices: []
       indices: 
       edges: []
@@ -298,13 +382,17 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      seagull_flying_no_outline_0: 1858987037
-      seagull_flying_no_outline_1: 431642533
-      seagull_flying_no_outline_2: -283972056
-      seagull_flying_no_outline_3: -1723696596
-      seagull_flying_no_outline_4: -1456203035
-      seagull_flying_no_outline_5: 1152753609
-      seagull_flying_no_outline_6: -68071468
+      customer1_punching_0: -1821028800
+      customer1_punching_1: 1932593696
+      customer1_punching_10: -1555169006
+      customer1_punching_2: -1590853202
+      customer1_punching_3: -516357335
+      customer1_punching_4: -438776233
+      customer1_punching_5: 1643581084
+      customer1_punching_6: 480101982
+      customer1_punching_7: -1400735059
+      customer1_punching_8: 1746761725
+      customer1_punching_9: 441727971
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0

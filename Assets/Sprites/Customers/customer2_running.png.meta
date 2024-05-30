@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 953416df2d8723443822697580f4f502
+guid: 404d43a610460e644bae13fc9d54e76f
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -45,8 +45,8 @@ TextureImporter:
   spriteMode: 2
   spriteExtrude: 1
   spriteMeshType: 1
-  alignment: 6
-  spritePivot: {x: 0, y: 0}
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
@@ -141,13 +141,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: seagull_eating_no_outline_0
+      name: customer2_running_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -155,20 +155,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 01898cf1c0ec63140aead510f990d4f7
-      internalID: 215106435
+      spriteID: 9300eb6daef241a4bb5acb7bf0fa09c5
+      internalID: -2086597609
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: seagull_eating_no_outline_1
+      name: customer2_running_1
       rect:
         serializedVersion: 2
-        x: 80
+        x: 96
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -176,20 +176,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: c2c893794c933eb41858ac6a4e91d319
-      internalID: 957038369
+      spriteID: 066f79a9d929a5e419de71895d02f246
+      internalID: -1716581507
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: seagull_eating_no_outline_2
+      name: customer2_running_2
       rect:
         serializedVersion: 2
-        x: 160
+        x: 192
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,20 +197,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 9191cba43032fa740867f12283e1f052
-      internalID: 774290190
+      spriteID: 5ef8190e705df1645b4946e9de91921f
+      internalID: -1567893518
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: seagull_eating_no_outline_3
+      name: customer2_running_3
       rect:
         serializedVersion: 2
-        x: 240
+        x: 288
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -218,20 +218,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: e891447c7f178ea49a1ba24ee606907d
-      internalID: -1391885318
+      spriteID: 9f6bb3154d3e31d428876d85207e4a60
+      internalID: -658066767
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: seagull_eating_no_outline_4
+      name: customer2_running_4
       rect:
         serializedVersion: 2
-        x: 320
+        x: 384
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -239,41 +239,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 4ef1dd2ce8872b74fa6b013903caabef
-      internalID: -1858142615
+      spriteID: b22b905ad61e0e14ead6ea4bd6bf1351
+      internalID: -424669047
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: seagull_eating_no_outline_5
-      rect:
-        serializedVersion: 2
-        x: 400
-        y: 0
-        width: 80
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 1c4efa02a0f9a9142916d884247098ba
-      internalID: -291639241
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: seagull_eating_no_outline_6
+      name: customer2_running_5
       rect:
         serializedVersion: 2
         x: 480
         y: 0
-        width: 80
-        height: 64
+        width: 96
+        height: 80
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -281,29 +260,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 5a1337f4d6e135749924b256aa92abcd
-      internalID: 1289028331
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: seagull_eating_no_outline_7
-      rect:
-        serializedVersion: 2
-        x: 560
-        y: 0
-        width: 80
-        height: 64
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 471558877f46e8f4cb8cc26f9a0fb36c
-      internalID: 122150758
+      spriteID: 64c84fa6b7d52054887d9595b7a4dece
+      internalID: 113823966
       vertices: []
       indices: 
       edges: []
@@ -319,14 +277,12 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
-      seagull_eating_no_outline_0: 215106435
-      seagull_eating_no_outline_1: 957038369
-      seagull_eating_no_outline_2: 774290190
-      seagull_eating_no_outline_3: -1391885318
-      seagull_eating_no_outline_4: -1858142615
-      seagull_eating_no_outline_5: -291639241
-      seagull_eating_no_outline_6: 1289028331
-      seagull_eating_no_outline_7: 122150758
+      customer2_running_0: -2086597609
+      customer2_running_1: -1716581507
+      customer2_running_2: -1567893518
+      customer2_running_3: -658066767
+      customer2_running_4: -424669047
+      customer2_running_5: 113823966
   spritePackingTag: 
   pSDRemoveMatte: 0
   pSDShowRemoveMatteOption: 0
