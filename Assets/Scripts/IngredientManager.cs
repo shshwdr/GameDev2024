@@ -10,6 +10,18 @@ public class IngredientManager : Singleton<IngredientManager>
 
     public Dictionary<string, int> ingredientCountDict = new Dictionary<string, int>();
 
+    public bool hasIngredient()
+    {
+        foreach (var pair in ingredientCountDict)
+        {
+            if (pair.Value > 0)
+            {
+                return true;
+            }
+        }
+
+        return false;
+    }
     void updateIngredientCount()
     {
         
@@ -66,6 +78,10 @@ public class IngredientManager : Singleton<IngredientManager>
     {
         ingredientCountDict[ingredient] -= amount;
         updateIngredientCount();
+        if (!hasIngredient())
+        {
+            GameoverMenu.Instance.ShowGameoverMenu();
+        }
     }
 
     public bool CanConsumeIngredient(string ingredient, int amount = 1)

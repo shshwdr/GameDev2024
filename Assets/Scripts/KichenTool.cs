@@ -15,6 +15,8 @@ public class KichenTool : MonoBehaviour
 
     private DishInfo currentDishInfo;
     private bool isCooking = false;
+    
+    public AudioSource audioSource;
 
     public ProgressBar progressBar;
     
@@ -149,7 +151,6 @@ public class KichenTool : MonoBehaviour
     } 
     void TryUse()
     {
-        
         currentIngredientBases = new Dictionary<string, int>();
                 
         foreach (var trans in kichenToolTransforms)
@@ -173,19 +174,21 @@ public class KichenTool : MonoBehaviour
             var ingredientInfo = CSVLoader.Instance.IngredientInfoDict[ currentIngredientBases.Keys.ToList()[0]];
             if (ingredientInfo.isMeat)
             {
-                SFXManager.Instance.PlaySFX(SFXType.cutMeat);
+                audioSource.clip = cookSFX.RandomItem();
+                //SFXManager.Instance.PlaySFX(SFXType.cutMeat);
             }
             else
             {
-                SFXManager.Instance.PlaySFX(SFXType.cutVeg);
+                audioSource.clip = cookSFX2.RandomItem();
+                //SFXManager.Instance.PlaySFX(SFXType.cutVeg);
             }
             
             
         }
         else
         {
-            
-            SFXManager.Instance.PlaySFX(SFXType.cook);
+            audioSource.clip = cookSFX.RandomItem();
+            //SFXManager.Instance.PlaySFX(SFXType.cook);
         }
         
 
@@ -212,6 +215,7 @@ public class KichenTool : MonoBehaviour
                     if (dishIngredientBases.Count == 1 &&
                         dishIngredientBases.Keys.ToList()[0] == "Anything")
                     {
+                        RecipeManager.Instance.AddRecipe(dishInfo);
                         currentDishInfo = dishInfo;
                         break;
                     }
@@ -219,12 +223,16 @@ public class KichenTool : MonoBehaviour
                     var checkIngredients = new Dictionary<string, int>(dishIngredientBases);
                     
                     bool isMatch = true;
+                    bool fullMatch = currentIngredientBases.Count == dishIngredientBases.Count;
                     foreach (var ingredient in dishIngredientBases)
                     {
                         if (currentIngredientBases.ContainsKey(ingredient.Key) &&
                             currentIngredientBases[ingredient.Key] >= ingredient.Value)
                         {
-                            
+                            if (currentIngredientBases[ingredient.Key] != ingredient.Value)
+                            {
+                                fullMatch = false;
+                            }
                         }
                         else
                         {
@@ -235,6 +243,10 @@ public class KichenTool : MonoBehaviour
 
                     if (isMatch)
                     {
+                        if (fullMatch || dishInfo.ingredients.Keys.Contains("Anything"))
+                        {
+                            RecipeManager.Instance.AddRecipe(dishInfo);
+                        }
                         currentDishInfo = dishInfo;
                         break;
                     }
@@ -242,6 +254,7 @@ public class KichenTool : MonoBehaviour
             }
         }
 
+        audioSource.Play();
         isCooking = true;
         cookTime = currentDishInfo.time;
         progressBar.gameObject.SetActive(true);
@@ -251,8 +264,12 @@ public class KichenTool : MonoBehaviour
     {
         
         CreateDish(currentDishInfo);
+        
+        audioSource.Stop();
     }
-    
+
+    public List<AudioClip> cookSFX;
+    public List<AudioClip> cookSFX2;
     public void CreateDish(DishInfo info)
     {
         var dish = Instantiate(Resources.Load<GameObject>("Dish/Dish"), kichenToolTransforms[0]);

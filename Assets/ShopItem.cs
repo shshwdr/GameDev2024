@@ -31,6 +31,7 @@ public class ShopItem : MonoBehaviour
             gameObject.SetActive(true);
             purchaseButton.onClick.AddListener(() =>
             {
+                SFXManager.Instance.PlaySFX((SFXType.purchase));
                 RoundManager.Instance.ConsumeMoney(cost);
 
                 RecipePopup.Instance.Show((RecipeManager.Instance.GetUnlockRecipe()));

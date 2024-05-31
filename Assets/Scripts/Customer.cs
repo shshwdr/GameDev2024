@@ -144,7 +144,10 @@ public class Customer : MonoBehaviour
 
     private void Update()
     {
-        
+        if (GameManager.Instance.isGameOver)
+        {
+            return;
+        }
         if (attackTimer > 0)
         {
             animator.SetBool("move",false);
@@ -239,13 +242,21 @@ public class Customer : MonoBehaviour
         //target = null;
         StartCoroutine((TrueAttack(trans, isCritical)));
         
-        SFXManager.Instance.PlaySFX(SFXType.customerHit);
         attackTimer = attackInterval;
     }
 
     private float animTime = 0.2f;
     IEnumerator TrueAttack(Transform trans,bool isCritical)
     {
+        
+        if (isCritical)
+        {
+            SFXManager.Instance.PlaySFX(SFXType.customerKick);
+        }
+        else
+        {
+            SFXManager.Instance.PlaySFX(SFXType.customerHit);
+        }
         yield return  new WaitForSeconds(animTime);
         var enemy = trans.GetComponentInChildren<Enemy>();
         if (enemy)

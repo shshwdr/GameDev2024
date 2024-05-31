@@ -21,6 +21,6 @@ public class RecipeRow : MonoBehaviour
         item.GetComponent<RecipeItem>().image.sprite = Resources.Load<Sprite>("KichenToolImage/" + recipe.kichenUtil);
         
         item = Instantiate(recipeItem, transform);
-        item.GetComponent<RecipeItem>().image.sprite = Resources.Load<Sprite>("Dish/" + recipe.dishName);
+        item.GetComponent<RecipeItem>().image.sprite = Resources.Load<Sprite>("Dish/" + CSVLoader.Instance.DishInfoDict[recipe.dishName].image);
     }
 }

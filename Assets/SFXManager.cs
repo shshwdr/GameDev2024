@@ -4,9 +4,6 @@ using UnityEngine;
 
 public enum SFXType{
     placeItem,
-    cutVeg,
-    cutMeat,
-    cook,
     seagullEnter,
     seagullEat,
     seagullHit,
@@ -14,15 +11,14 @@ public enum SFXType{
     customerEat,
     customerEatHappy,
     customerHit,
+    customerKick,
+    purchase,
     gameover
 }
 public class SFXManager : Singleton<SFXManager>
 {
     public AudioSource audioSource;
     public List<AudioClip> placeItemSFX;
-    public  List<AudioClip> cutVegSFX;
-    public  List<AudioClip> cutMeatSFX;
-     public  List<AudioClip> cookSFX;
      public  List<AudioClip> seagullEnterSFX;
      public  List<AudioClip> seagullEatSFX;
      public  List<AudioClip> seagullHitSFX;
@@ -30,6 +26,8 @@ public class SFXManager : Singleton<SFXManager>
      public  List<AudioClip> customerEatSFX;
      public  List<AudioClip> customerEatHappySFX;
      public  List<AudioClip> customerHitSFX;
+     public  List<AudioClip> customerKickSFX;
+     public List<AudioClip> purchaseSFX;
      
      public AudioClip gameoverSFX;
 
@@ -40,14 +38,8 @@ public class SFXManager : Singleton<SFXManager>
              case SFXType.placeItem:
                  audioSource.PlayOneShot(placeItemSFX.RandomItem());
                  break;
-             case SFXType.cutVeg:
-                 audioSource.PlayOneShot(cutVegSFX.RandomItem());
-                 break;
-             case SFXType.cutMeat:
-                 audioSource.PlayOneShot(cutMeatSFX.RandomItem());
-                 break;
-             case SFXType.cook:
-                 audioSource.PlayOneShot(cookSFX.RandomItem());
+             case SFXType.purchase:
+                 audioSource.PlayOneShot(purchaseSFX.RandomItem());
                  break;
              case SFXType.seagullEnter:
                  audioSource.PlayOneShot(seagullEnterSFX.RandomItem());
@@ -68,6 +60,9 @@ public class SFXManager : Singleton<SFXManager>
                  audioSource.PlayOneShot(customerEatHappySFX.RandomItem());
                  break;
              case SFXType.customerHit:
+                 audioSource.PlayOneShot(customerHitSFX.RandomItem());
+                 break;
+             case SFXType.customerKick:
                  audioSource.PlayOneShot(customerHitSFX.RandomItem());
                  break;
              case SFXType.gameover:

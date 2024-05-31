@@ -15,6 +15,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5361085990090845797, guid: 00308bfe412ee09488876bfbc6a831e0, type: 3}
+      propertyPath: cookSFX.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5361085990090845797, guid: 00308bfe412ee09488876bfbc6a831e0, type: 3}
+      propertyPath: cookSFX2.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5361085990090845797, guid: 00308bfe412ee09488876bfbc6a831e0, type: 3}
+      propertyPath: cookSFX.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 3572a87c080cdad479c6eb1ecfc0dea0, type: 3}
+    - target: {fileID: 5361085990090845797, guid: 00308bfe412ee09488876bfbc6a831e0, type: 3}
+      propertyPath: cookSFX.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: 03f3515dbe3a1d042bcc95534e778980, type: 3}
+    - target: {fileID: 5361085990090845797, guid: 00308bfe412ee09488876bfbc6a831e0, type: 3}
+      propertyPath: cookSFX2.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 75452d00fa088d44a8c8e388b89ea38f, type: 3}
     - target: {fileID: 5361085990090845798, guid: 00308bfe412ee09488876bfbc6a831e0, type: 3}
       propertyPath: m_RootOrder
       value: 0

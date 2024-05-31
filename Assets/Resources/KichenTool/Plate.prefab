@@ -11,6 +11,18 @@ PrefabInstance:
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 2403da3cf1cbd6643b484f56c2687d06, type: 3}
+    - target: {fileID: 5361085990090845797, guid: 00308bfe412ee09488876bfbc6a831e0, type: 3}
+      propertyPath: cookSFX.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 5361085990090845797, guid: 00308bfe412ee09488876bfbc6a831e0, type: 3}
+      propertyPath: cookSFX.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: 751c271da30983740afabbe3f6522dee, type: 3}
+    - target: {fileID: 5361085990090845797, guid: 00308bfe412ee09488876bfbc6a831e0, type: 3}
+      propertyPath: cookSFX.Array.data[1]
+      value: 
+      objectReference: {fileID: 8300000, guid: d980473678649d0408119d7a09fced62, type: 3}
     - target: {fileID: 5361085990090845798, guid: 00308bfe412ee09488876bfbc6a831e0, type: 3}
       propertyPath: m_RootOrder
       value: 0

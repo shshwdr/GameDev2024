@@ -16,6 +16,23 @@ public class RecipeManager : Singleton<RecipeManager>
         }    
     }
 
+    public void AddRecipe(DishInfo info)
+    {
+        for(int i = 0;i<isUnlocked.Count;i++)
+        {
+            var l = isUnlocked[i];
+            var recipe = recipes[i];
+            if (recipe.dishName == info.id)
+            {
+                PopupManager.Instance.Show("New Recipe Unlocked!");
+                isUnlocked[i] = true;
+                return;
+            }
+            if (!l)
+            {
+            }
+        }
+    }
     public void unlockRecipe()
     {
         

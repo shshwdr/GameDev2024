@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Unity.Mathematics;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -44,6 +45,7 @@ public class Enemy : MonoBehaviour
             return;
         }
         SFXManager.Instance.PlaySFX(SFXType.seagullHit);
+        this.isCritical = isCritical;
         if (!isCritical)
         {
             lastAttacker = attackerPosition;
@@ -89,6 +91,10 @@ public class Enemy : MonoBehaviour
     }
     private void Update()
     {
+        if (GameManager.Instance.isGameOver)
+        {
+            return;
+        }
         if (isDead)
         {
             return;
@@ -135,7 +141,6 @@ public class Enemy : MonoBehaviour
                 }
                 animator.SetTrigger("eat");
                 
-                SFXManager.Instance.PlaySFX(SFXType.seagullEat);
                 isBeforeEating = true;
                 isEating = true;
             }
@@ -145,17 +150,25 @@ public class Enemy : MonoBehaviour
         }
     }
 
+    private bool isCritical = false;
     public void EnemyDestroy()
     {
         EnemyManager.Instance.removeEnemy(this);
         isDead = true;
+        StartCoroutine(DestoryInternal());
         Invoke("DestoryInternal", 1);
     }
 
     public bool isDead = false;
-    public void DestoryInternal()
+    IEnumerator DestoryInternal()
     {
-        
+        yield return  new WaitForSeconds(1f);
+        if (isCritical)
+        {
+            
+            transform.DOMoveY(transform.position.y - 5, 0.7f);
+            yield return  new WaitForSeconds(0.7f);
+        }
         Destroy(gameObject);
     }
 
@@ -188,6 +201,7 @@ public class Enemy : MonoBehaviour
         {
             return;
         }
+        SFXManager.Instance.PlaySFX(SFXType.seagullEat);
         isBeforeEating = false;
         var ingredient = target.parent.GetComponentInChildren<Ingredient>();
         if (ingredient)
@@ -202,7 +216,11 @@ public class Enemy : MonoBehaviour
             //
             // IngredientManager.Instance.ConsumeIngredient(ingredientInfo.id);
         }
-        
+
+        if (!IngredientManager.Instance.hasIngredient())
+        {
+            GameoverMenu.Instance.ShowGameoverMenu();
+        }
         target = EnemyManager.Instance.enemySpawnTransforms.RandomItem();
         isBack = true;
     }

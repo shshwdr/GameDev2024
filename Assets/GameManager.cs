@@ -6,7 +6,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : Singleton<GameManager>
 {
-    
+    public bool isGameOver = false;
     // Start is called before the first frame update
     void Start()
     {
@@ -24,8 +24,13 @@ public class GameManager : Singleton<GameManager>
     {
         if (Input.GetKeyDown(KeyCode.R))
         {
-            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            Restart();
         }
+    }
+
+    public void Restart()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
     public bool isInBattleView(Vector3 position)

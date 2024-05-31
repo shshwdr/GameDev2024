@@ -111,6 +111,14 @@ PrefabInstance:
       propertyPath: m_LocalPosition.y
       value: -0.58
       objectReference: {fileID: 0}
+    - target: {fileID: 5361085990090845797, guid: 00308bfe412ee09488876bfbc6a831e0, type: 3}
+      propertyPath: cookSFX.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5361085990090845797, guid: 00308bfe412ee09488876bfbc6a831e0, type: 3}
+      propertyPath: cookSFX.Array.data[0]
+      value: 
+      objectReference: {fileID: 8300000, guid: a9b5e64e5047b4f48a1700cacae24a85, type: 3}
     - target: {fileID: 5361085990090845798, guid: 00308bfe412ee09488876bfbc6a831e0, type: 3}
       propertyPath: m_RootOrder
       value: 0
