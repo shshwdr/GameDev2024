@@ -240,6 +240,7 @@ public class Customer : MonoBehaviour
         StartCoroutine((TrueAttack(trans, isCritical)));
         
         SFXManager.Instance.PlaySFX(SFXType.customerHit);
+        attackTimer = attackInterval;
     }
 
     private float animTime = 0.2f;
@@ -251,7 +252,6 @@ public class Customer : MonoBehaviour
         {
             enemy.TakeDamage((int)attack,transform.position,isCritical);
         }
-        attackTimer = attackInterval;
     }
     
     
