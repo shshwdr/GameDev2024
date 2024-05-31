@@ -47,7 +47,7 @@ public class EnemyManager : Singleton<EnemyManager>
 
     private void Update()
     {
-        if (RoundManager.Instance.isInBattle && spawnCount < RoundManager.Instance.info.enemyCount)
+        if (RoundManager.Instance.isInBattle && !CustomerManager.Instance.FinishedSpawn)
         {
             spawnTimer += Time.deltaTime;
             if (spawnTimer > spawnTime)
@@ -65,14 +65,17 @@ public class EnemyManager : Singleton<EnemyManager>
     }
 
     public List<Enemy> enemies = new List<Enemy>();
-    public void remvoeEnemy(Enemy enemy)
+    public void removeEnemy(Enemy enemy)
     {
         enemies.Remove((enemy));
-
-        if (enemies.Count == 0 && spawnCount == RoundManager.Instance.info.enemyCount)
+        if (enemies.Count == 0 && CustomerManager.Instance.FinishedSpawn)
         {
             RoundManager.Instance.FinishBattle();
         }
+        // if (enemies.Count == 0 && spawnCount == RoundManager.Instance.info.enemyCount)
+        // {
+        //     RoundManager.Instance.FinishBattle();
+        // }
     }
 
     public void clear()

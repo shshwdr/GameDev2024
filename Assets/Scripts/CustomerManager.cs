@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Unity.Mathematics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class CustomerManager : Singleton<CustomerManager>
 {
@@ -15,7 +16,18 @@ public class CustomerManager : Singleton<CustomerManager>
     public float spawnTime = 5;
     public float spawnTimer = 0;
 
-
+    public void serve()
+    {
+        serveCount++;
+        if (serveCount == RoundManager.Instance.info.customerCount)
+        {
+            FinishedSpawn = true;
+            if (EnemyManager.Instance.enemies.Count == 0)
+            {
+                RoundManager.Instance.FinishBattle();
+            }
+        }
+    }
     public void Init()
     {
         foreach (Transform trans in customerSpawnParent)
@@ -33,6 +45,10 @@ public class CustomerManager : Singleton<CustomerManager>
         customer.transform.position = customerStartTrans.position;
         customer.GetComponent<Customer>().Init(customerInfo);
         customers.Add(customer.GetComponent<Customer>());
+        
+        
+        spawnCount++;
+
     }
 
 
@@ -45,9 +61,19 @@ public class CustomerManager : Singleton<CustomerManager>
         SpawnCustomer((customerInfo));
     }
 
+    public void StartBattle()
+    {
+        
+        var info = RoundManager.Instance.info;
+        spawnTime = Random.Range(info.customerMinInterval, info.customerMaxInterval);
+    }
+
+    private int spawnCount = 0;
+    private int serveCount = 0;
+    public bool FinishedSpawn = false;
     private void Update()
     {
-        if (RoundManager.Instance.isInBattle)
+        if (RoundManager.Instance.isInBattle&& spawnCount < RoundManager.Instance.info.enemyCount)
         {
             spawnTimer += Time.deltaTime;
             if (spawnTimer > spawnTime && customers.Count < customerSpawnTransforms.Count)
@@ -84,6 +110,10 @@ public class CustomerManager : Singleton<CustomerManager>
         }
         customers.Clear();
         spawnTimer = 0;
+        
+        spawnCount = 0;
+        serveCount = 0;
+        FinishedSpawn = false;
     }
 
     public void removeCustomer(Customer cus)

@@ -10,6 +10,9 @@ public class DragController : MonoBehaviour
 
     public LayerMask test;
 
+    private Transform originParentTransform;
+    private Vector3 originPosition;
+
     private GameObject mouseOverObj;
 
     // Update is called once per frame
@@ -41,7 +44,8 @@ public class DragController : MonoBehaviour
                     {
                         if (ingredient.isInPot)
                         {
-                            
+                            originParentTransform = ingredient.transform.parent;
+                            originPosition = ingredient.transform.position;
                             draggingIngredient = ingredient;
                             ingredient.transform.parent = null;
                             //var kichenTool = ingredient.GetComponentInParent<KichenTool>();
@@ -122,6 +126,7 @@ public class DragController : MonoBehaviour
                     bool used = false;
                     foreach (var hit in hits)
                     {
+                        //扔在厨具上，检查是否需要切和是否是刀
                         var kichenTool = hit.transform.GetComponent<KichenTool>();
                         if (kichenTool != null && kichenTool.CanAddIngredient(draggingIngredient as IngredientBase))
                         {
@@ -136,13 +141,37 @@ public class DragController : MonoBehaviour
                     {
                         foreach (var hit in hits)
                         {
+                            //扔在顾客上，检查是否是菜以及是否是已经order了的顾客
                             var customer = hit.transform.GetComponent<Customer>();
-                            if (customer && draggingIngredient is Dish dish && dish.Info.isFinalDish && customer.hasOrdered)
+                            if (customer && draggingIngredient is Dish dish && dish.Info.isFinalDish && customer.hasOrdered && !customer.hasServed)
                             {
                                 customer.EatDish(dish);
                                 used = true;
                                 draggingIngredient = null;
                                 return;
+                            }
+                            else
+                            {
+                                if (customer)
+                                {
+                                    if (draggingIngredient is Dish dish2 && dish2.Info.isFinalDish)
+                                    {
+                                        if (customer.hasServed)
+                                        {
+                                            
+                                            PopupManager.Instance.Show("They have eaten!");
+                                        }
+                                        else
+                                        {
+                                            
+                                            PopupManager.Instance.Show("They haven't ordered!");
+                                        }
+                                    }
+                                    else
+                                    {
+                                        PopupManager.Instance.Show("It's not cooked!");
+                                    }
+                                }
                             }
                         }
                     }

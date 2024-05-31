@@ -62,11 +62,15 @@ public class Customer : MonoBehaviour
         
         CustomerLeaveAndFight();
     }
+
+    public bool hasServed = false;
     public void EatDish(Dish dish)
     {
+        hasServed = true;
         animator.SetBool("move",false);
         animator.SetTrigger("eat");
         progressBar.gameObject.SetActive(true);
+        
 
         satisfyRequirement = false;
         switch (requirement.requirementType)
@@ -134,6 +138,8 @@ public class Customer : MonoBehaviour
         }
 
         duration = initialDuration;
+        
+        CustomerManager.Instance.serve();
     }
 
     private void Update()

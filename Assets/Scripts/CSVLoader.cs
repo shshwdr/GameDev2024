@@ -8,6 +8,7 @@ public class IngredientInfo:BaseInfo
     public int startCount;
     public int cost;
     public bool isMeat;
+    public bool needCut;
 }
 
 public class KichenToolInfo:BaseInfo
@@ -67,6 +68,10 @@ public class EnemyRoundInfo
     public int enemyCount;
     public float minInterval;
     public float maxInterval;
+    public int customerCount;
+    public float customerMinInterval;
+    public float customerMaxInterval;
+
 
 }
 public class CSVLoader : Singleton<CSVLoader>

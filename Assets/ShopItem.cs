@@ -32,9 +32,11 @@ public class ShopItem : MonoBehaviour
             purchaseButton.onClick.AddListener(() =>
             {
                 RoundManager.Instance.ConsumeMoney(cost);
-                KichenToolManager.Instance.AddUtil();
+
+                RecipePopup.Instance.Show((RecipeManager.Instance.GetUnlockRecipe()));
+                RecipeManager.Instance.unlockRecipe();
                 
-                InitUtil();
+                InitRecipe();
             });
             updateItem();
         }
@@ -89,7 +91,7 @@ public class ShopItem : MonoBehaviour
     public void updateItem()
     {
         
-        costLabel.text = cost.ToString();
+        costLabel.text = "Gold: "+cost.ToString();
 
         if (RoundManager.Instance.money >= cost)
         {

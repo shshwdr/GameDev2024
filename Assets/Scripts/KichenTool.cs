@@ -52,6 +52,7 @@ public class KichenTool : MonoBehaviour
     {
         if (isCooking)
         {
+            PopupManager.Instance.Show("It's cooking!");
             return false;
         }
         bool hasSlot = false;
@@ -60,11 +61,43 @@ public class KichenTool : MonoBehaviour
             if (trans.childCount == 0)
             {
                 hasSlot = true;
+            }
+        }
+
+        if (!hasSlot)
+        {
+            PopupManager.Instance.Show("Max 3 items!");
+            return false;
+        }
+
+        if (info.name == "Knife")
+        {
+            if (ingredient is Ingredient ing && ing.Info.needCut)
+            {
+                return true;
+            }
+            else
+            {
+                PopupManager.Instance.Show("Can't cut this!");
+                return false;
+            }
+        }
+        else
+        {
+            if (ingredient is Ingredient ing && ing.Info.needCut)
+            {
+                
+                PopupManager.Instance.Show("Cut it first!");
+                return false;
+            }
+            else
+            {
                 return true;
             }
         }
 
-        return false;
+
+        return true;
     }
 
     public void RemoveIngredient(IngredientBase ingredient)

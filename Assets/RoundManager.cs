@@ -10,6 +10,31 @@ public class Recipe
     public string dishName;
     public string kichenUtil;
     public Dictionary<string, int> ingredients;
+
+    public string ToString()
+    {
+        var str = "";
+        List<string> ing = new List<string>();
+        foreach (var pair in ingredients)
+        {
+            for (int i = 0; i < pair.Value; i++)
+            {
+                ing.Add((pair.Key));
+            }
+        }
+        ing.Sort();
+        for (int i = 0; i < ing.Count; i++)
+        {
+            str += ing[i];
+            if (i != ing.Count - 1)
+            {
+                str += ",";
+            }
+        }
+
+        str += kichenUtil;
+        return str;
+    }
 }
 public class RoundManager : Singleton<RoundManager>
 {
@@ -40,6 +65,7 @@ public class RoundManager : Singleton<RoundManager>
         info = CSVLoader.Instance.EnemyRoundInfos[roundCount];
         state = RoundState.battle;
         EnemyManager.Instance.StartBattle();
+        CustomerManager.Instance.StartBattle();
         moneyEarnInRound = 0;
         chasedEnemyInRound = 0;
         recipesInRound.Clear();

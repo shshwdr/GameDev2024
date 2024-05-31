@@ -147,7 +147,7 @@ public class Enemy : MonoBehaviour
 
     public void EnemyDestroy()
     {
-        EnemyManager.Instance.remvoeEnemy(this);
+        EnemyManager.Instance.removeEnemy(this);
         isDead = true;
         Invoke("DestoryInternal", 1);
     }

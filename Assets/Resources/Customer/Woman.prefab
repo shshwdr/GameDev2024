@@ -7,9 +7,13 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 519036609349737681, guid: bdef1b1768fda3d4faf65070b9e7d496, type: 3}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 22100000, guid: 39a370082e86f5f42afe8004f2c03e21, type: 2}
     - target: {fileID: 6556563298219765795, guid: bdef1b1768fda3d4faf65070b9e7d496, type: 3}
       propertyPath: m_Name
-      value: Customer
+      value: Woman
       objectReference: {fileID: 0}
     - target: {fileID: 6556563298219765796, guid: bdef1b1768fda3d4faf65070b9e7d496, type: 3}
       propertyPath: m_RootOrder
