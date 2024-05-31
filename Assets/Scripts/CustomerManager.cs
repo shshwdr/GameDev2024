@@ -73,7 +73,7 @@ public class CustomerManager : Singleton<CustomerManager>
     public bool FinishedSpawn = false;
     private void Update()
     {
-        if (RoundManager.Instance.isInBattle&& spawnCount < RoundManager.Instance.info.enemyCount)
+        if (RoundManager.Instance.isInBattle && spawnCount < RoundManager.Instance.info.customerCount)
         {
             spawnTimer += Time.deltaTime;
             if (spawnTimer > spawnTime && customers.Count < customerSpawnTransforms.Count)
@@ -81,8 +81,9 @@ public class CustomerManager : Singleton<CustomerManager>
                 spawnTimer -= spawnTime;
                 SpawnRandomCustomer();
             }
+        }
 
-            //move all customer forward
+        //move all customer forward
             for (int i = 0; i < customers.Count; i++)
             {
                 if ((customers[i].transform.position - customerSpawnTransforms[i].position).magnitude > 0.1f)
@@ -98,7 +99,6 @@ public class CustomerManager : Singleton<CustomerManager>
                     }
                 }
             }
-        }
     }
 
     public void clear()

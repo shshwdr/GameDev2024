@@ -186,7 +186,9 @@ public class DragController : MonoBehaviour
                 else
                 {
                     //todo: move it back
-                    Destroy(draggingIngredient.gameObject);
+                    draggingIngredient.transform.parent = originParentTransform;
+                    draggingIngredient.transform.position = originPosition;
+                    //Destroy(draggingIngredient.gameObject);
                     draggingIngredient = null;
                 }
             }

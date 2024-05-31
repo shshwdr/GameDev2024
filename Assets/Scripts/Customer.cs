@@ -183,7 +183,7 @@ public class Customer : MonoBehaviour
                 target = EnemyManager.Instance.enemySpawnTransforms.RandomItem();
             }
 
-            if (target != null && !target.GetComponentInChildren<Enemy>().isDead &&  GameManager.Instance.isInBattleView( target.position))
+            if (target != null &&target.GetComponentInChildren<Enemy>()!=null && !target.GetComponentInChildren<Enemy>().isDead &&  GameManager.Instance.isInBattleView( target.position))
             {
                 animator.SetBool("move",true);
                 transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
@@ -236,13 +236,22 @@ public class Customer : MonoBehaviour
             animator.SetTrigger("attack");
         }
         
-        var enemy = trans.GetComponentInChildren<Enemy>();
-        enemy.TakeDamage((int)attack,transform.position,isCritical);
-        attackTimer = attackInterval;
         //target = null;
-        
+        StartCoroutine((TrueAttack(trans, isCritical)));
         
         SFXManager.Instance.PlaySFX(SFXType.customerHit);
+    }
+
+    private float animTime = 0.2f;
+    IEnumerator TrueAttack(Transform trans,bool isCritical)
+    {
+        yield return  new WaitForSeconds(animTime);
+        var enemy = trans.GetComponentInChildren<Enemy>();
+        if (enemy)
+        {
+            enemy.TakeDamage((int)attack,transform.position,isCritical);
+        }
+        attackTimer = attackInterval;
     }
     
     
