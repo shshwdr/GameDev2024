@@ -541,7 +541,7 @@ MonoBehaviour:
   m_ChildAlignment: 0
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 200, y: 100}
+  m_CellSize: {x: 320, y: 100}
   m_Spacing: {x: 0, y: 0}
   m_Constraint: 0
   m_ConstraintCount: 2
@@ -1577,11 +1577,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1722653792225850337, guid: d573998afbbd00e43afc9cccbbdf3140, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 493
+      value: 589
       objectReference: {fileID: 0}
     - target: {fileID: 1722653792225850337, guid: d573998afbbd00e43afc9cccbbdf3140, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -17
+      value: -314
       objectReference: {fileID: 0}
     - target: {fileID: 1722653792225850337, guid: d573998afbbd00e43afc9cccbbdf3140, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -6490,7 +6490,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6383492851215260310, guid: a208b48b62b678848bf7680d2c98e9c9, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 300
       objectReference: {fileID: 0}
     - target: {fileID: 6383492851215260310, guid: a208b48b62b678848bf7680d2c98e9c9, type: 3}
       propertyPath: m_SizeDelta.y

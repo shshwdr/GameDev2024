@@ -132,9 +132,9 @@ public class Customer : MonoBehaviour
             initialDuration+=dishInfo.buff["Duration"] * (satisfyRequirement?1.5f:1);
         }
         
-        if (dishInfo.buff.ContainsKey("MoveSpeed"))
+        if (dishInfo.buff.ContainsKey("Speed"))
         {
-            moveSpeed += moveSpeed * dishInfo.buff["MoveSpeed"]* (satisfyRequirement?1.5f:1) /100f ;
+            moveSpeed += moveSpeed * dishInfo.buff["Speed"]* (satisfyRequirement?1.5f:1) /100f ;
         }
 
         duration = initialDuration;

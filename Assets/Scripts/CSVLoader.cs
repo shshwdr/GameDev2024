@@ -59,6 +59,17 @@ public class DishInfo:BaseInfo
     public float time;
     public string image;
     public Dictionary<string, int> buff;
+
+    public string buffString()
+    {
+        var str = "";
+        foreach (var b in buff)
+        {
+            str+=b.Key+" +"+b.Value;
+        }
+
+        return str;
+    }
 }
 
 public class EnemyRoundInfo
