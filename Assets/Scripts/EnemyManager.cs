@@ -25,12 +25,13 @@ public class EnemyManager : Singleton<EnemyManager>
         
     }
 
-    public void SpawnEnemy(EnemyInfo enemyInfo)
+    public Enemy SpawnEnemy(EnemyInfo enemyInfo)
     {
         var enemy = Instantiate(Resources.Load<GameObject>("Enemy/" + enemyInfo.name),
             enemySpawnTransforms.RandomItem().position, quaternion.identity, enemyTrans);
         enemy.GetComponent<Enemy>().Init(enemyInfo);
         enemies.Add(enemy.GetComponent<Enemy>());
+        return enemy.GetComponent<Enemy>();
     }
 
     public void SpawnRandomEnemy()
@@ -47,6 +48,11 @@ public class EnemyManager : Singleton<EnemyManager>
 
     private void Update()
     {
+        if (TutorialManager.Instance.isIntutorial)
+        {
+            return;
+        }
+        
         if (RoundManager.Instance.isInBattle && !CustomerManager.Instance.FinishedSpawn)
         {
             spawnTimer += Time.deltaTime;
@@ -68,6 +74,14 @@ public class EnemyManager : Singleton<EnemyManager>
     public void removeEnemy(Enemy enemy)
     {
         enemies.Remove((enemy));
+        if (enemies.Count == 0 && TutorialManager.Instance.isIntutorial && TutorialManager.Instance.stage == TutorialStage.fight)
+        {
+            
+            if (TutorialManager.Instance.isIntutorial)
+            {
+                TutorialManager.Instance.ShowDialogues();
+            }
+        } 
         if (enemies.Count == 0 && CustomerManager.Instance.FinishedSpawn)
         {
             RoundManager.Instance.FinishBattle();

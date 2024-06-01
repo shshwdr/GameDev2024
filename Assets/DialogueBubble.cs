@@ -21,6 +21,10 @@ public class DialogueBubble : MonoBehaviour
 
     public void hideDialogue()
     {
-        bubbleOb.SetActive(false);
+        if (this && bubbleOb)
+        {
+            
+            bubbleOb.SetActive(false);
+        }
     }
 }

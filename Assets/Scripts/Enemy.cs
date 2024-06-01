@@ -36,6 +36,7 @@ public class Enemy : MonoBehaviour
          currentHP = info.hp;
          progressBar.SetProgress(currentHP, info.hp);
          progressBar.gameObject.SetActive(false);
+         moveSpeed = info.moveSpeed;
     }
 
     public void TakeDamage(int damage, Vector3 attackerPosition,bool isCritical)
@@ -62,6 +63,8 @@ public class Enemy : MonoBehaviour
             progressBar.gameObject.SetActive(false);
             currentHP = 0;
             animator.SetTrigger("bigHit");
+            spriteRenderer.sortingLayerName = "UI";
+            spriteRenderer.sortingOrder = 1000;
         }
 
         progressBar.SetProgress(currentHP, info.hp);
@@ -144,11 +147,13 @@ public class Enemy : MonoBehaviour
                 isBeforeEating = true;
                 isEating = true;
             }
-            transform.position = Vector3.MoveTowards(transform.position, target.position, info.moveSpeed * Time.deltaTime);
+            transform.position = Vector3.MoveTowards(transform.position, target.position, moveSpeed * Time.deltaTime);
             Vector2 movementDirection = target.position - transform.position;
             updateDirection(movementDirection);
         }
     }
+
+    public float moveSpeed;
 
     private bool isCritical = false;
     public void EnemyDestroy()

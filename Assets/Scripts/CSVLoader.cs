@@ -72,6 +72,15 @@ public class DishInfo:BaseInfo
     }
 }
 
+public class TutorialDialogueInfo
+{
+    public string dialogue;
+    public string speaker;
+    public string actionAfterDialogue;
+    public string animWhenDialogue;
+
+}
+
 public class EnemyRoundInfo
 {
     public int preTime;
@@ -97,6 +106,7 @@ public class CSVLoader : Singleton<CSVLoader>
     public Dictionary<string, CustomerInfo> CustomerInfoDict = new Dictionary<string, CustomerInfo>();
     public List<CustomerRequirementInfo> CustomerRequirementInfos = new List<CustomerRequirementInfo>();
     public List<EnemyRoundInfo> EnemyRoundInfos = new List<EnemyRoundInfo>();
+    public List<TutorialDialogueInfo> TutorialDialogueInfos = new List<TutorialDialogueInfo>();
     public void Init()
     {
         var ingredientInfos = CsvUtil.LoadObjects<IngredientInfo>("ingredient");
@@ -127,5 +137,6 @@ public class CSVLoader : Singleton<CSVLoader>
          }
          CustomerRequirementInfos = CsvUtil.LoadObjects<CustomerRequirementInfo>("customerRequirement");
           EnemyRoundInfos = CsvUtil.LoadObjects<EnemyRoundInfo>("enemyRound");
+          TutorialDialogueInfos = CsvUtil.LoadObjects<TutorialDialogueInfo>("tutorialDialogue");
     }
 }
