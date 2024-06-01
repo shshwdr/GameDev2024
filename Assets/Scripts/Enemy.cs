@@ -62,6 +62,8 @@ public class Enemy : MonoBehaviour
             progressBar.gameObject.SetActive(false);
             currentHP = 0;
             animator.SetTrigger("bigHit");
+            spriteRenderer.sortingLayerName = "UI";
+            spriteRenderer.sortingOrder = 1000;
         }
 
         progressBar.SetProgress(currentHP, info.hp);

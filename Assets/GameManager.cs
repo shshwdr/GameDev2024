@@ -7,6 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : Singleton<GameManager>
 {
     public bool isGameOver = false;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -17,6 +18,7 @@ public class GameManager : Singleton<GameManager>
         CustomerManager.Instance.Init();
         RoundManager.Instance.Init();
         RecipeManager.Instance.Init();
+        TutorialManager.Instance.Init();
     }
 
     // Update is called once per frame

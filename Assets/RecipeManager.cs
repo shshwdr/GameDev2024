@@ -19,7 +19,6 @@ public class RecipeManager : Singleton<RecipeManager>
     public void AddRecipe(DishInfo info)
     {
         var newRecipe = new Recipe(){dishName = info.id,kichenUtil = info.kichenUtil,ingredients = info.ingredients};
-        RecipePopup.Instance.Show(newRecipe);
         for(int i = 0;i<isUnlocked.Count;i++)
         {
             var l = isUnlocked[i];
@@ -27,7 +26,12 @@ public class RecipeManager : Singleton<RecipeManager>
             if (recipe.dishName == info.id)
             {
                // PopupManager.Instance.Show("New Recipe Unlocked!");
-                isUnlocked[i] = true;
+               if (isUnlocked[i] == false)
+               {
+                   
+                   isUnlocked[i] = true;
+                   RecipePopup.Instance.Show(newRecipe);
+               }
                 return;
             }
             if (!l)
