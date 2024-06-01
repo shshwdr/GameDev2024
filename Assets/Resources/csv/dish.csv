@@ -1,7 +1,30 @@
-﻿id,name,cost,time,isFinalDish,ingredients,kichenUtil,description,isHot,buff,image
-Beef Potato Stew,Beef Potato Stew,6,8,1,Beef:1|Potato Cubes:1,Pot,,1,Duration:20,Beef Stew
-Beef Stew,Beef Stew,6,8,1,Beef:2,Pot,,1,Duration:10,Beef Stew
-Stew,Stew,6,8,1,Anything:1,Pot,,1,Duration:5,Beef Stew
-Potato Salad,Potato Salad,4,6,1,Potato Cubes:1,Plate,,0,Speed:80,Potato Salad
-Mixed Salad,Mixed Salad,4,6,1,Anything:1,Plate,,,Speed:40,Potato Salad
-Potato Cubes,Potato Cubes,,2,,Potato:1,Knife,,,,Potato Cubes
+id,name,cost,time,isFinalDish,ingredients,kichenUtil,description,sourceIngredients,isHot,isVegan,buff,image,art prompt
+Beef Potato Stew,Beef Potato Stew,,6,1,Beef Cubes:1|Potato Cubes:1,Pot,,,1,,Duration:20,Beef Stew,
+Beef Stew,Beef Stew,,6,1,Beef Cubes:2,Pot,,,1,,Duration:10,Beef Stew,
+Stew,Stew,,6,1,Anything:1,Pot,,,1,,Duration:5,Beef Stew,
+Potato Salad,Potato Salad,,4,1,Potato Cubes:1,Plate,,,0,,MoveSpeed:80,Potato Salad,
+Mixed Salad,Mixed Salad,,4,1,Anything:1,Plate,,,,,MoveSpeed:40,Potato Salad,
+Beef Cubes,Beef Cubes,,2,,Beef:1,Knife,,Beef,,,,Beef Cubes,
+Potato Cubes,Potato Cubes,,2,,Potato:1,Knife,,Potato,,,,Potato Cubes,
+Chopped Veg,Chopped Veg,,2,0,Vegetables:1,Knife,,Vegetables,,,,Chopped Veg,
+Chopped Meat,Chopped Meat,,2,0,Meat:1,Knife,,Meat,,,,Chopped Meat,
+Chopped Seafood,Chopped Seafood,,2,0,Seafood:1,Knife,,Seafood,,,,Chopped Seafood,
+Salad (or Something),Salad (or Something),,5,1,Anything:1,Plate,Some leaves made with actual nature!,,0,0,MoveSpeed:30,Salad (or Something),[add dressing/cheese topping to make clear it is not vegan]
+Streamlined Sandwich,Streamlined Sandwich,,3,1,Grains:1,Plate,No need for all the filler,,0,1,Duration:4,Streamlined Sandwich,[just bread with nothing in between]
+The Illogical Burger,The Illogical Burger,,4,1,Grains:1|Chopped Veg:1,Plate,Defies the transitive patty principle,,0,1,Duration:8,The Illogical Burger,[vegetables for buns?]
+Jumbo Jumble Bowl,Jumbo Jumble Bowl,,4,1,Grains:1|Chopped Veg:2,Plate,Unleashing fusion's chaotic potential,,0,1,MoveSpeed:45,Jumbo Jumble Bowl,
+Meal of the Masochist,Meal of the Masochist,,4,1,Chopped Veg:1|Vegan Protein:1,Plate,So disgusting that you know it's healthy,,0,1,CritRate:30,Meal of the Masochist,"[just a bush, sapling, or other wild plant?]"
+Charcuberie,Charcuberie,,5,1,Dairy:1|Meat:1,Plate,Cultured and cured in just over 3 seconds,,0,0,AttackPower:3,Charcuberie,[Rubik's cube made of smaller meat and cheese cubes]
+Mushy Sushi,Mushy Sushi,,5,1,Grains:1|Chopped Seafood:1,Plate,"The fish is fresh enough, probably",,0,0,AttackSpeed:3,Mushy Sushi,
+Stir Fry Surprise,Stir Fry Surprise,,6,1,Anything:1,Pan,"Something new in every bite—often, it's food!",,1,0,AttackPower:1,Stir Fry Surprise,
+Greasy Meat Heap,Greasy Meat Heap,,5,1,Chopped Meat:1|Chopped Seafood:1,Pan,For thrill-seekers chasing that next cardiac event,,1,0,AttackPower:2,Greasy Meat Heap,
+Sustenance Substitute,Sustenance Substitute,,4,1,Vegan Protein:1,Pan,A deceptively edible-looking pseudo-food,,1,1,CritRate:20,Sustenance Substitute,
+Warm Plant,Warm Plant,,4,1,Chopped Veg:1,Pan,"It's organic, but . . . you sure you want to eat it?",,1,1,MoveSpeed:60,,
+Breakfast of Peons,Breakfast of Peons,,5,1,Dairy:1|Grains:1,Pan,A staple at the International Hostel of Peasantry,,1,0,Duration:20,Breakfast of Peons,
+Scampering Scampi Scramble,Scampering Scampi Scramble,,7,1,Dairy:2|Seafood:1,Pan,Faster than words can say,,1,0,MoveSpeed:90,Scampering Scampi Scramble,
+Suspicious Stew,Suspicious Stew,,7,1,Anything:1,Pot,You can almost identify what's floating in it,,1,0,AttackSpeed:1,Suspicious Stew,
+Reverse Bread Bowl,Reverse Bread Bowl,,6,1,Grains:2,Pot,A sponge for your soup!,,1,1,Duration:12,Reverse Bread Bowl,[ball of bread in a puddle of soup]
+Coodles,Coodles,,5,1,Chopped Veg:2,Pot,More optometry than al dente,,1,1,MoveSpeed:75,Coodles,[carrot noodles]
+Mumbo Gumbo,Mumbo Gumbo,,6,1,Chopped Seafood:1,Pot,With just a pinch of swamp sorcery,,1,0,AttackSpeed:2,Mumbo Gumbo,
+Mac or Cheese,Mac or Cheese,,6,1,Dairy:1|Grains:1,Pot,Don't be greedy—you can't have it all,,1,0,Duration:16,Mac or Cheese,
+Pandora's Pot,Pandora's Pot,,8,1,Chopped Meat:1|Vegan Protein:2,Pot,"After stewing in contradictions, it radiates pure evil",,1,0,CritRate:50,Pandora's Pot,
