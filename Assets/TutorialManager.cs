@@ -50,6 +50,11 @@ public class TutorialManager : Singleton<TutorialManager>
 
     public void Init()
     {
+        if (GameManager.Instance.skipTutorial)
+        {
+            button.gameObject.SetActive(false);
+            return;
+        }
         isIntutorial = true;
         
         var enemy = EnemyManager.Instance.SpawnEnemy(CSVLoader.Instance.EnemyInfoDict.Values.ToList()[0]);

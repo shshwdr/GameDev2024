@@ -1,3 +1,7 @@
 ﻿id,name,startCount,cost,isMeat,needCut
-Potato,Potato,10,1,0,1
-Beef,Beef,10,2,1,0
+Vegetable,Vegetable,10,1,0,1
+Grains,Grains,10,2,0,0
+Meat,Meat,,2,1,1
+Seafood,Seafood,,2,1,1
+Dairy,Dairy,,2,0,0
+Vegan Protein,Vegan Protein,,2,0,0
