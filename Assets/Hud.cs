@@ -15,7 +15,7 @@ public class Hud : MonoBehaviour
 
     void UpdateMoney()
     {
-        moneyLabel.text = "Gold: "+ RoundManager.Instance.money.ToString();
+        moneyLabel.text = RoundManager.Instance.money.ToString();
     }
 
     // Update is called once per frame

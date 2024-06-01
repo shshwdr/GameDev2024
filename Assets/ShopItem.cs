@@ -92,7 +92,7 @@ public class ShopItem : MonoBehaviour
     public void updateItem()
     {
         
-        costLabel.text = "Gold: "+cost.ToString();
+        costLabel.text = cost.ToString();
 
         if (RoundManager.Instance.money >= cost)
         {
