@@ -60,8 +60,9 @@ public class RoundManager : Singleton<RoundManager>
         
         EventPool.Trigger("updateMoney");
     }
-    void StartRound()
+    public void StartRound()
     {
+        clear();
         info = CSVLoader.Instance.EnemyRoundInfos[roundCount];
         state = RoundState.battle;
         EnemyManager.Instance.StartBattle();
@@ -90,10 +91,16 @@ public class RoundManager : Singleton<RoundManager>
     {
         chasedEnemyInRound++;
     }
-    public void FinishBattle()
+
+    public void clear()
     {
+        
         CustomerManager.Instance.clear();
         EnemyManager.Instance.clear();
+    }
+    public void FinishBattle()
+    {
+        clear();
         state = RoundState.result;
         ShowResult();
         MusicManager.Instance.StartShop();

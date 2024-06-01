@@ -38,16 +38,15 @@ public class CustomerManager : Singleton<CustomerManager>
 
     private List<Customer> customers = new List<Customer>();
 
-    public void SpawnCustomer(CustomerInfo customerInfo)
+    public Customer SpawnCustomer(CustomerInfo customerInfo)
     {
         var customer = Instantiate(Resources.Load<GameObject>("Customer/" + customerInfo.name),
             customerStartTrans.position, quaternion.identity, customerTrans);
         customer.transform.position = customerStartTrans.position;
         customer.GetComponent<Customer>().Init(customerInfo);
         customers.Add(customer.GetComponent<Customer>());
-        
-        
-        spawnCount++;
+        return customer.GetComponent<Customer>();
+
 
     }
 
@@ -59,6 +58,7 @@ public class CustomerManager : Singleton<CustomerManager>
         var customerInfos = CSVLoader.Instance.CustomerInfoDict.Values.ToList();
         var customerInfo = customerInfos.RandomItem();
         SpawnCustomer((customerInfo));
+        spawnCount++;
     }
 
     public void StartBattle()
@@ -73,6 +73,27 @@ public class CustomerManager : Singleton<CustomerManager>
     public bool FinishedSpawn = false;
     private void Update()
     {
+        
+        //move all customer forward
+        for (int i = 0; i < customers.Count; i++)
+        {
+            if ((customers[i].transform.position - customerSpawnTransforms[i].position).magnitude > 0.1f)
+            {
+                customers[i].transform.position = Vector3.MoveTowards(customers[i].transform.position,
+                    customerSpawnTransforms[i].position, 1f * Time.deltaTime);
+            }
+            else
+            {
+                if (i == 0)
+                {
+                    customers[i].ShowRequirementBubble();
+                }
+            }
+        }
+        if (TutorialManager.Instance.isIntutorial)
+        {
+            return;
+        }
         if (RoundManager.Instance.isInBattle && spawnCount < RoundManager.Instance.info.customerCount)
         {
             spawnTimer += Time.deltaTime;
@@ -83,22 +104,6 @@ public class CustomerManager : Singleton<CustomerManager>
             }
         }
 
-        //move all customer forward
-            for (int i = 0; i < customers.Count; i++)
-            {
-                if ((customers[i].transform.position - customerSpawnTransforms[i].position).magnitude > 0.1f)
-                {
-                    customers[i].transform.position = Vector3.MoveTowards(customers[i].transform.position,
-                        customerSpawnTransforms[i].position, 1f * Time.deltaTime);
-                }
-                else
-                {
-                    if (i == 0)
-                    {
-                        customers[i].ShowRequirementBubble();
-                    }
-                }
-            }
     }
 
     public void clear()

@@ -258,6 +258,7 @@ public class KichenTool : MonoBehaviour
         isCooking = true;
         cookTime = currentDishInfo.time;
         progressBar.gameObject.SetActive(true);
+        
     }
 
     void FinishCook()
@@ -266,6 +267,14 @@ public class KichenTool : MonoBehaviour
         CreateDish(currentDishInfo);
         
         audioSource.Stop();
+
+        if (currentDishInfo.isFinalDish)
+        {
+            if (TutorialManager.Instance.isIntutorial)
+            {
+                TutorialManager.Instance.ShowDialogues();
+            }
+        }
     }
 
     public List<AudioClip> cookSFX;

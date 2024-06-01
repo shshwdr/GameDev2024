@@ -29,6 +29,7 @@ public class Dish : IngredientBase
          {
              nameLabel.text = info.name+"\nbuff: "+SerializeDictionary(info.buff);
          }
+         ui.SetActive(false);
     }
     
     static string SerializeDictionary(Dictionary<string, int> dictionary)

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.Mathematics;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class DragController : MonoBehaviour
 {
@@ -27,6 +28,11 @@ public class DragController : MonoBehaviour
 
         if (Input.GetMouseButtonDown(0))
         {
+            if (EventSystem.current.IsPointerOverGameObject())
+            {
+                // If true, the mouse is over a UI element, so ignore other input
+                return;
+            }
             if (draggingIngredient == null)
             {
                 // Get the mouse position in world coordinates

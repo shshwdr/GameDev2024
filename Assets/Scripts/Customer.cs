@@ -38,12 +38,29 @@ public class Customer : MonoBehaviour
         progressBar.gameObject.SetActive(false);
         //fill requirement
         requirement = CSVLoader.Instance.CustomerRequirementInfos.RandomItem();
-        dialogueBubble.hideDialogue();
+        HideDialogue();
         animator.SetBool("move",true);
+    }
+
+    public void HideDialogue()
+    {
+        
+        dialogueBubble.hideDialogue();
     }
 
     public void ShowRequirementBubble()
     {
+        if (TutorialManager.Instance.isIntutorial)
+        {
+            if (TutorialManager.Instance.stage == TutorialStage.start)
+            {
+                
+                hasOrdered = true;
+                TutorialManager.Instance.ShowDialogues();
+            }
+            return;
+        }
+        
         if (!hasOrdered)
         {
             hasOrdered = true;
@@ -55,11 +72,19 @@ public class Customer : MonoBehaviour
         dialogueBubble.showDialogue(requirement.description);
     }
 
+    public void ShowDialogue(string dialogue)
+    {
+        dialogueBubble.showDialogue(dialogue);
+    }
     private DishInfo dishInfo;
     private bool satisfyRequirement;
     public void FinishEating()
     {
         
+        if (TutorialManager.Instance.isIntutorial)
+        {
+            TutorialManager.Instance.ShowDialogues();
+        }
         CustomerLeaveAndFight();
     }
 
@@ -113,18 +138,24 @@ public class Customer : MonoBehaviour
         CustomerManager.Instance.removeCustomer(this);
         isFighting = true;
         initialDuration = info.duration;
+        if (TutorialManager.Instance.isIntutorial)
+        {
+            initialDuration = 1000;
+        }
         moveSpeed = info.moveSpeed;
         attack = info.attack;
         attackInterval = info.attackInterval;
         criticalRate = info.criticalRate;
-        
-        if (satisfyRequirement)
+        if (!TutorialManager.Instance.isIntutorial)
         {
-            dialogueBubble.showDialogue("Exactly What I Want!", 4);
-        }
-        else
-        {
-            dialogueBubble.showDialogue("Hmm ok...", 4);
+            if (satisfyRequirement)
+            {
+                dialogueBubble.showDialogue("Exactly What I Want!", 4);
+            }
+            else
+            {
+                dialogueBubble.showDialogue("Hmm ok...", 4);
+            }
         }
 
         if (dishInfo.buff.ContainsKey("Duration"))
