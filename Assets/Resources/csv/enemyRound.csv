@@ -1,3 +1,6 @@
 ﻿preTime,enemies,enemyCount,minInterval,maxInterval,customerCount,customerMinInterval,customerMaxInterval
-0,Seagull,3,3,6,3,3,6
-5,Seagull,6,5,10,4,5,10
+0,Seagull,3,6,10,3,3,6
+5,Seagull,6,6,10,4,5,10
+5,Seagull,6,6,9,4,7,11
+5,Seagull,6,5,9,4,8,11
+5,Seagull,6,5,8,4,8,12

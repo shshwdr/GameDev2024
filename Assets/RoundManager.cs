@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using Pool;
+using Unity.Mathematics;
 using UnityEngine;
 
 public enum RoundState { battle, result,shop,None}
@@ -63,7 +64,8 @@ public class RoundManager : Singleton<RoundManager>
     public void StartRound()
     {
         clear();
-        info = CSVLoader.Instance.EnemyRoundInfos[roundCount];
+        roundCount = math.min(roundCount, CSVLoader.Instance.EnemyRoundInfos.Count - 1);
+        info = CSVLoader.Instance.EnemyRoundInfos[ roundCount];
         state = RoundState.battle;
         EnemyManager.Instance.StartBattle();
         CustomerManager.Instance.StartBattle();
@@ -118,7 +120,7 @@ public class RoundManager : Singleton<RoundManager>
 
     public void FinishShop()
     {
-        
+        roundCount++;
         StartRound();
     }
 }

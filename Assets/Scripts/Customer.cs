@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
+using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -97,8 +98,6 @@ public class Customer : MonoBehaviour
     public void EatDish(Dish dish)
     {
         HideDialogue();
-        money.SetActive(true);
-        money.transform.DOLocalMoveY(20, 1);
         hasServed = true;
         animator.SetBool("move",false);
         animator.SetTrigger("eat");
@@ -124,6 +123,10 @@ public class Customer : MonoBehaviour
                 break;
         }
 
+        dishInfo = dish.Info;
+        money.SetActive(true);
+        money.GetComponentInChildren<TMP_Text>(true).text =((int)(dishInfo.cost * (satisfyRequirement ? 1.5f : 1))).ToString();
+        money.transform.DOLocalMoveY(20, 1);
         if (satisfyRequirement)
         {
             
@@ -134,7 +137,6 @@ public class Customer : MonoBehaviour
             
             SFXManager.Instance.PlaySFX(SFXType.customerEat);
         }
-        dishInfo = dish.Info;
         Destroy(dish.gameObject);
     }
 

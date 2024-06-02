@@ -25,7 +25,7 @@ public class ShopItem : MonoBehaviour
     {
         countLabel.gameObject.SetActive(false);
         icon.sprite = Resources.Load<Sprite>("KichenToolImage/" + "Recipe");
-        cost = 1;
+        cost = 2;
         if (RecipeManager.Instance.hasUnlockedRecipe())
         {
             gameObject.SetActive(true);
@@ -36,8 +36,8 @@ public class ShopItem : MonoBehaviour
 
                 RecipePopup.Instance.Show((RecipeManager.Instance.GetUnlockRecipe()));
                 RecipeManager.Instance.unlockRecipe();
-                
-                InitRecipe();
+                gameObject.SetActive(false);
+                //InitRecipe();
             });
             updateItem();
         }
@@ -61,6 +61,7 @@ public class ShopItem : MonoBehaviour
             purchaseButton.onClick.RemoveAllListeners();
             purchaseButton.onClick.AddListener(() =>
             {
+                SFXManager.Instance.PlaySFX((SFXType.purchase));
                 RoundManager.Instance.ConsumeMoney(cost);
                 KichenToolManager.Instance.AddUtil();
                 
@@ -83,6 +84,7 @@ public class ShopItem : MonoBehaviour
         purchaseButton.onClick.RemoveAllListeners();
         purchaseButton.onClick.AddListener(() =>
         {
+            SFXManager.Instance.PlaySFX((SFXType.purchase));
             RoundManager.Instance.ConsumeMoney(cost);
             IngredientManager.Instance.AddIngredient(name,count);
         });
