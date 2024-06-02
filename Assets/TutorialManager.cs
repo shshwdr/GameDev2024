@@ -23,6 +23,10 @@ public class TutorialManager : Singleton<TutorialManager>
             if (stage == TutorialStage.dialogue)
             {
                 var dialogueInfo = CSVLoader.Instance.TutorialDialogueInfos[dialogueIndex];
+                // if (dialogueInfo.animWhenDialogue == "order")
+                // {
+                //     customer.PlayOrder();
+                // }
                 if (dialogueInfo.actionAfterDialogue == "finishDialogue")
                 {
                     isIntutorial = false;
@@ -69,7 +73,7 @@ public class TutorialManager : Singleton<TutorialManager>
 
     IEnumerator createCustomer()
     {
-        yield return  new WaitForSeconds(0.01f);
+        yield return  new WaitForSeconds(4f);
         customer = CustomerManager.Instance.SpawnCustomer(CSVLoader. Instance.CustomerInfoDict.Values.ToList()[0]);
     }
 

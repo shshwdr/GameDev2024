@@ -91,6 +91,7 @@ public class EnemyRoundInfo
     public int customerCount;
     public float customerMinInterval;
     public float customerMaxInterval;
+    public int hpAdd;
 
 
 }

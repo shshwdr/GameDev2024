@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class RecipeManager : Singleton<RecipeManager>
@@ -10,6 +11,14 @@ public class RecipeManager : Singleton<RecipeManager>
     {
         foreach (var dishInfo in CSVLoader.Instance.DishInfoDict.Values)
         {
+            foreach (var ingredient in dishInfo.ingredients.Keys)
+            {
+                if (!CSVLoader.Instance.DishInfoDict.ContainsKey(ingredient) &&
+                   ! CSVLoader.Instance.IngredientInfoDict.ContainsKey(ingredient))
+                {
+                    Debug.LogError("Recipe " + dishInfo.id + " has ingredient " + ingredient + " which is not a dish or ingredient");
+                }
+            }
             var recipe = new Recipe(){dishName = dishInfo.id,kichenUtil = dishInfo.kichenUtil,ingredients = dishInfo.ingredients};
             recipes.Add((recipe));
             isUnlocked.Add(false);

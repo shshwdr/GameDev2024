@@ -27,14 +27,16 @@ public class Enemy : MonoBehaviour
      public float eatMoveSpeed = 0.3f;
      private Vector3 lastAttacker;
      private bool hasEntered = false;
+     private int maxHP;
     public void Init(EnemyInfo info)
     {
         animator = GetComponentInChildren<Animator>();
         spriteRenderer = animator.GetComponent<SpriteRenderer>();
          this.info = info;
          target = IngredientManager.Instance.IngredientTransforms().RandomItem().GetComponentInChildren<Ingredient>().eatTransform;
-         currentHP = info.hp;
-         progressBar.SetProgress(currentHP, info.hp);
+         currentHP = info.hp+RoundManager.Instance.hpAdd();
+         maxHP = currentHP;
+         progressBar.SetProgress(currentHP, maxHP);
          progressBar.gameObject.SetActive(false);
          moveSpeed = info.moveSpeed;
     }
@@ -67,7 +69,7 @@ public class Enemy : MonoBehaviour
             spriteRenderer.sortingOrder = 1000;
         }
 
-        progressBar.SetProgress(currentHP, info.hp);
+        progressBar.SetProgress(currentHP, maxHP);
         if (currentHP <= 0)
         {
             RoundManager.Instance.ChasedEnemy();

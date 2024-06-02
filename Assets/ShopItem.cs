@@ -25,7 +25,7 @@ public class ShopItem : MonoBehaviour
     {
         countLabel.gameObject.SetActive(false);
         icon.sprite = Resources.Load<Sprite>("KichenToolImage/" + "Recipe");
-        cost = 2;
+        cost = 10;
         if (RecipeManager.Instance.hasUnlockedRecipe())
         {
             gameObject.SetActive(true);
@@ -78,7 +78,7 @@ public class ShopItem : MonoBehaviour
     public void InitIngredient(string name)
     {
         icon.sprite = Resources.Load<Sprite>("Dish/" + name);
-        int count = Random.Range(2, 5);
+        int count = Random.Range(2, 5+RoundManager.Instance.hpAdd());
         countLabel.text = count.ToString();
         cost = CSVLoader.Instance.IngredientInfoDict[name].cost * count;
         purchaseButton.onClick.RemoveAllListeners();

@@ -55,6 +55,11 @@ public class RoundManager : Singleton<RoundManager>
         StartRound();
     }
 
+    public int hpAdd()
+    {
+        return info!=null?info.hpAdd:0;
+    }
+
     public void ConsumeMoney(int amount)
     {
         money -= amount;

@@ -59,7 +59,7 @@ public class Customer : MonoBehaviour
         {
             if (TutorialManager.Instance.stage == TutorialStage.start)
             {
-                
+                PlayOrder();
                 hasOrdered = true;
                 TutorialManager.Instance.ShowDialogues();
             }
@@ -75,6 +75,13 @@ public class Customer : MonoBehaviour
             dialogueBubble.showDialogue(requirement.description);
         }
         
+    }
+
+    public void PlayOrder()
+    {
+        
+        animator.SetBool("move",false);
+        animator.SetTrigger("order");
     }
 
     public void ShowDialogue(string dialogue)
@@ -225,6 +232,11 @@ public class Customer : MonoBehaviour
                     Destroy(gameObject);
                 }
             }
+            else
+            {
+                
+                target = EnemyManager.Instance.enemySpawnTransforms.RandomItem();
+            }
         }
         else if (isFighting)
         {
@@ -237,6 +249,7 @@ public class Customer : MonoBehaviour
 
                 dialogueBubble.showDialogue("I'm hungry..", 4);
                 target = EnemyManager.Instance.enemySpawnTransforms.RandomItem();
+                return;
             }
 
             if (target != null &&target.GetComponentInChildren<Enemy>()!=null && !target.GetComponentInChildren<Enemy>().isDead &&  GameManager.Instance.isInBattleView( target.position))
