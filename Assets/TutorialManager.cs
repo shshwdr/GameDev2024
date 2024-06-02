@@ -37,7 +37,7 @@ public class TutorialManager : Singleton<TutorialManager>
                     button.gameObject.SetActive(false);
                     if (dialogueInfo.actionAfterDialogue == "fight")
                     {
-                        EnemyManager.Instance.SpawnEnemy(CSVLoader.Instance.EnemyInfoDict.Values.ToList()[0]);
+                        EnemyManager.Instance.SpawnEnemy(CSVLoader.Instance.EnemyInfoDict.Values.ToList()[0],2);
                     }
                     return;
                 }
@@ -69,7 +69,7 @@ public class TutorialManager : Singleton<TutorialManager>
 
     IEnumerator createCustomer()
     {
-        yield return  new WaitForSeconds(4);
+        yield return  new WaitForSeconds(0.01f);
         customer = CustomerManager.Instance.SpawnCustomer(CSVLoader. Instance.CustomerInfoDict.Values.ToList()[0]);
     }
 

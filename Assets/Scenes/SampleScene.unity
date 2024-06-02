@@ -347,7 +347,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 1000
+  m_text: 0
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f71af2fddd7a44f4d92d197066fa5259, type: 2}
   m_sharedMaterial: {fileID: 4200642769926625889, guid: f71af2fddd7a44f4d92d197066fa5259, type: 2}
@@ -7405,7 +7405,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGameOver: 0
-  skipTutorial: 1
+  skipTutorial: 0
 --- !u!1 &1616158933
 GameObject:
   m_ObjectHideFlags: 0
@@ -9371,15 +9371,39 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1692444056423483374, guid: 29db979850e8f1b4287a880276f60306, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 300
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1692444056423483374, guid: 29db979850e8f1b4287a880276f60306, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 120
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1692444056423483374, guid: 29db979850e8f1b4287a880276f60306, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 115.7
+      objectReference: {fileID: 0}
+    - target: {fileID: 1692444057557034815, guid: 29db979850e8f1b4287a880276f60306, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1692444057557034815, guid: 29db979850e8f1b4287a880276f60306, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1692444057557034815, guid: 29db979850e8f1b4287a880276f60306, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1692444057557034815, guid: 29db979850e8f1b4287a880276f60306, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1692444057557034815, guid: 29db979850e8f1b4287a880276f60306, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 265.785
+      objectReference: {fileID: 0}
+    - target: {fileID: 1692444057557034815, guid: 29db979850e8f1b4287a880276f60306, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1923772980068884703, guid: 29db979850e8f1b4287a880276f60306, type: 3}
       propertyPath: m_Pivot.x

@@ -72,9 +72,9 @@ public class Customer : MonoBehaviour
             
             animator.SetBool("move",false);
             animator.SetTrigger("order");
+            dialogueBubble.showDialogue(requirement.description);
         }
         
-        dialogueBubble.showDialogue(requirement.description);
     }
 
     public void ShowDialogue(string dialogue)

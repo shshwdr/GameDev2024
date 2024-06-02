@@ -11,6 +11,8 @@ GameObject:
   - component: {fileID: 1692444056423483374}
   - component: {fileID: 1692444056423483372}
   - component: {fileID: 1692444056423483375}
+  - component: {fileID: 7313779391320867247}
+  - component: {fileID: 8688400590163486159}
   m_Layer: 5
   m_Name: Image
   m_TagString: Untagged
@@ -36,8 +38,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 96.3}
-  m_SizeDelta: {x: 250, y: 80}
+  m_AnchoredPosition: {x: 0, y: 112.9}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1692444056423483372
 CanvasRenderer:
@@ -77,6 +79,46 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &7313779391320867247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692444056423483361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30649d3a9faa99c48a7b1166b86bf2a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Padding:
+    m_Left: 0
+    m_Right: 0
+    m_Top: 0
+    m_Bottom: 0
+  m_ChildAlignment: 4
+  m_Spacing: 0
+  m_ChildForceExpandWidth: 1
+  m_ChildForceExpandHeight: 1
+  m_ChildControlWidth: 0
+  m_ChildControlHeight: 0
+  m_ChildScaleWidth: 0
+  m_ChildScaleHeight: 0
+  m_ReverseArrangement: 0
+--- !u!114 &8688400590163486159
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692444056423483361}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 2
 --- !u!1 &1692444057557034814
 GameObject:
   m_ObjectHideFlags: 0
@@ -88,6 +130,7 @@ GameObject:
   - component: {fileID: 1692444057557034815}
   - component: {fileID: 1692444057557034813}
   - component: {fileID: 1692444057557034812}
+  - component: {fileID: 814362219749186801}
   m_Layer: 5
   m_Name: Text (TMP)
   m_TagString: Untagged
@@ -111,8 +154,8 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 265.785, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1692444057557034813
@@ -143,7 +186,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: I want some potatos
+  m_text: I want some potatos and more and more
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: f71af2fddd7a44f4d92d197066fa5259, type: 2}
   m_sharedMaterial: {fileID: 4200642769926625889, guid: f71af2fddd7a44f4d92d197066fa5259, type: 2}
@@ -212,6 +255,20 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!114 &814362219749186801
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1692444057557034814}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3245ec927659c4140ac4f8d17403cc18, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_HorizontalFit: 2
+  m_VerticalFit: 2
 --- !u!1 &2957713329128081680
 GameObject:
   m_ObjectHideFlags: 0
@@ -222,6 +279,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1923772980068884703}
   - component: {fileID: 2248879217939495317}
+  - component: {fileID: 2973959240906553307}
   m_Layer: 5
   m_Name: dialogueBubble
   m_TagString: Untagged
@@ -264,3 +322,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bubbleOb: {fileID: 1692444056423483361}
   label: {fileID: 1692444057557034812}
+--- !u!225 &2973959240906553307
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2957713329128081680}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
