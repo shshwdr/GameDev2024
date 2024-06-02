@@ -77,6 +77,9 @@ public class DragController : MonoBehaviour
                         var dish = hit.transform.GetComponent<Dish>();
                         if (dish)
                         {
+                            
+                            originParentTransform = dish.transform.parent;
+                            originPosition = dish.transform.position;
                             draggingIngredient = dish;
                             dish.transform.parent = null;
                             //var kichenTool = ingredient.GetComponentInParent<KichenTool>();

@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using TMPro;
 using Unity.VisualScripting;
@@ -16,7 +17,9 @@ public class Dish : IngredientBase
 
      public GameObject ui;
      public TMP_Text nameLabel;
-     
+
+     public Transform buffTrans;
+     public TMP_Text buffValue;
     public void Init(DishInfo info,Dictionary<string,int> ingredients)
     {
          this.info = info;
@@ -27,8 +30,16 @@ public class Dish : IngredientBase
          nameLabel.text = info.name;
          if (info.buff.Count > 0)
          {
-             nameLabel.text = info.name+"\nbuff: "+SerializeDictionary(info.buff);
+             nameLabel.text = $"{info.name}\n{info.description}\n";
+             var go =  Instantiate(Resources.Load<GameObject>("buff/" + info.buff.Keys.ToList()[0]),buffTrans);
+             go.transform.position = buffTrans.position;
+             buffValue.text = info.buff.Values.ToList()[0].ToString();
          }
+         else
+         {
+             buffValue.text = "";
+         }
+
          ui.SetActive(false);
     }
     
@@ -37,12 +48,14 @@ public class Dish : IngredientBase
         StringBuilder sb = new StringBuilder();
 
         bool first = true;
+
         foreach (var kvp in dictionary)
         {
             if (!first)
             {
                 sb.Append(",");
             }
+
 
             sb.Append(kvp.Key);
             sb.Append(" add ");

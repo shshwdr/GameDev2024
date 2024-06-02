@@ -9,6 +9,7 @@ public class GameoverMenu : Singleton<GameoverMenu>
     public Button button;
     public void ShowGameoverMenu()
     {
+        SFXManager.Instance.PlaySFX(SFXType.gameover);
         GameManager.Instance.isGameOver = true;
         gameoverMenu.SetActive(true);
         button.onClick.AddListener(() => {  GameManager.Instance.Restart();});

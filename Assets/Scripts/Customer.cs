@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using Unity.VisualScripting;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -29,6 +30,9 @@ public class Customer : MonoBehaviour
     public bool hasOrdered = false;
     private Animator animator;
     private bool isAttacking = false;
+
+    public GameObject money;
+    public Transform buff;
 
     public void Init(CustomerInfo info)
     {
@@ -81,6 +85,7 @@ public class Customer : MonoBehaviour
     public void FinishEating()
     {
         
+        money.SetActive(false);
         if (TutorialManager.Instance.isIntutorial)
         {
             TutorialManager.Instance.ShowDialogues();
@@ -91,10 +96,12 @@ public class Customer : MonoBehaviour
     public bool hasServed = false;
     public void EatDish(Dish dish)
     {
+        HideDialogue();
+        money.SetActive(true);
+        money.transform.DOLocalMoveY(20, 1);
         hasServed = true;
         animator.SetBool("move",false);
         animator.SetTrigger("eat");
-        progressBar.gameObject.SetActive(true);
         
 
         satisfyRequirement = false;
@@ -158,19 +165,32 @@ public class Customer : MonoBehaviour
             }
         }
 
+        var go =  Instantiate(Resources.Load<GameObject>("buff/" + dishInfo.buff.Keys.ToList()[0]),buff);
+        go.transform.position = buff.position;
+        
         if (dishInfo.buff.ContainsKey("Duration"))
         {
             initialDuration+=dishInfo.buff["Duration"] * (satisfyRequirement?1.5f:1);
         }
         
-        if (dishInfo.buff.ContainsKey("Speed"))
+        if (dishInfo.buff.ContainsKey("MoveSpeed"))
         {
-            moveSpeed += moveSpeed * dishInfo.buff["Speed"]* (satisfyRequirement?1.5f:1) /100f ;
+            moveSpeed += moveSpeed * dishInfo.buff["MoveSpeed"]* (satisfyRequirement?1.5f:1) /100f ;
+        }
+        if (dishInfo.buff.ContainsKey("CritRate"))
+        {
+            criticalRate += dishInfo.buff["CritRate"]* (satisfyRequirement?1.5f:1) ;
+        }
+        if (dishInfo.buff.ContainsKey("AttackPower"))
+        {
+            attack+=dishInfo.buff["AttackPower"] * (satisfyRequirement?1.5f:1);
         }
 
         duration = initialDuration;
         
         CustomerManager.Instance.serve();
+        
+        progressBar.gameObject.SetActive(true);
     }
 
     private void Update()

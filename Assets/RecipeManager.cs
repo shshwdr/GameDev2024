@@ -48,6 +48,7 @@ public class RecipeManager : Singleton<RecipeManager>
             if (!l)
             {
                 isUnlocked[i] = true;
+                break;
             }
         }
     }

@@ -7,7 +7,7 @@ public class MusicManager : Singleton<MusicManager>
     public AudioSource audioSource;
     public AudioClip battleClip;
     public AudioClip shopClip;
-
+    public AudioClip tutorialClip;
     public void StartBattle()
     {
         audioSource.clip = battleClip;
@@ -16,6 +16,12 @@ public class MusicManager : Singleton<MusicManager>
     public void StartShop()
     {
         audioSource.clip = shopClip;
+        audioSource.Play();
+    }
+
+    public void StartTutorial()
+    {
+        audioSource.clip = tutorialClip;
         audioSource.Play();
     }
 }

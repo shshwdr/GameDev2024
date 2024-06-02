@@ -116,6 +116,7 @@ public class CSVLoader : Singleton<CSVLoader>
         }
         
          var dishInfos = CsvUtil.LoadObjects<DishInfo>("dish");
+         dishInfos.Reverse();
          foreach (var info in dishInfos)
          {
              DishInfoDict[info.id] = info;

@@ -50,7 +50,7 @@ public class ShopMenu : MonoBehaviour
             }
             else
             {
-                shopItem.InitIngredient(keys.ElementAt(math.min( i,keys.Count)-1));
+                shopItem.InitIngredient(keys.ToList().RandomItem());
             }
 
             i++;

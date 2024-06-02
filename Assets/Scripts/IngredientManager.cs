@@ -29,8 +29,16 @@ public class IngredientManager : Singleton<IngredientManager>
         {
             if (item.childCount>0)
             {
-                var ingredient = item.GetComponentInChildren<Ingredient>();
+                var ingredient = item.GetComponentInChildren<Ingredient>(true);
                 var ingredientCount = ingredientCountDict[ingredient.Info.id];
+                if (ingredientCount == 0)
+                {
+                    ingredient.gameObject.SetActive(false);
+                }
+                else
+                {
+                    ingredient.gameObject.SetActive(true);
+                }
                 ingredient.countLabel.text = ingredientCount.ToString();
             }
         }
@@ -40,7 +48,7 @@ public class IngredientManager : Singleton<IngredientManager>
         List<Transform> list = new List<Transform>();
         foreach (var item in ingredientTransforms)
         {
-            if (item.childCount>0)
+            if (item.childCount>0 && item.GetComponentInChildren<Ingredient>())
             {
                 list.Add(item);
             }

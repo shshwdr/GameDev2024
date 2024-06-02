@@ -63,7 +63,7 @@ public class SFXManager : Singleton<SFXManager>
                  audioSource.PlayOneShot(customerHitSFX.RandomItem());
                  break;
              case SFXType.customerKick:
-                 audioSource.PlayOneShot(customerHitSFX.RandomItem());
+                 audioSource.PlayOneShot(customerKickSFX.RandomItem());
                  break;
              case SFXType.gameover:
                  audioSource.PlayOneShot(gameoverSFX);

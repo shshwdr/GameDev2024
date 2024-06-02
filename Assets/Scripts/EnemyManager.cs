@@ -33,6 +33,15 @@ public class EnemyManager : Singleton<EnemyManager>
         enemies.Add(enemy.GetComponent<Enemy>());
         return enemy.GetComponent<Enemy>();
     }
+    
+    public Enemy SpawnEnemy(EnemyInfo enemyInfo,int i)
+    {
+        var enemy = Instantiate(Resources.Load<GameObject>("Enemy/" + enemyInfo.name),
+            enemySpawnTransforms[i].position, quaternion.identity, enemyTrans);
+        enemy.GetComponent<Enemy>().Init(enemyInfo);
+        enemies.Add(enemy.GetComponent<Enemy>());
+        return enemy.GetComponent<Enemy>();
+    }
 
     public void SpawnRandomEnemy()
     {

@@ -26,6 +26,7 @@ public class TutorialManager : Singleton<TutorialManager>
                 if (dialogueInfo.actionAfterDialogue == "finishDialogue")
                 {
                     isIntutorial = false;
+                    button.gameObject.SetActive(false);
                     RoundManager.Instance.StartRound();
                     return;
                 }
@@ -55,10 +56,11 @@ public class TutorialManager : Singleton<TutorialManager>
             button.gameObject.SetActive(false);
             return;
         }
+        MusicManager.Instance.StartTutorial();
         isIntutorial = true;
         
-        var enemy = EnemyManager.Instance.SpawnEnemy(CSVLoader.Instance.EnemyInfoDict.Values.ToList()[0]);
-        enemy.moveSpeed *= 2;
+        var enemy = EnemyManager.Instance.SpawnEnemy(CSVLoader.Instance.EnemyInfoDict.Values.ToList()[0],0);
+        enemy.moveSpeed *= 4;
         stage = TutorialStage.start;
         cook = GameObject.FindObjectOfType<Cook>();
 
