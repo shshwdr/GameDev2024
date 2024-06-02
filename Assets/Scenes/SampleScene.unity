@@ -7405,7 +7405,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isGameOver: 0
-  skipTutorial: 0
+  renderTrans: {fileID: 1419451868}
+  skipTutorial: 1
 --- !u!1 &1616158933
 GameObject:
   m_ObjectHideFlags: 0

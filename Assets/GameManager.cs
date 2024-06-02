@@ -7,7 +7,7 @@ using UnityEngine.SceneManagement;
 public class GameManager : Singleton<GameManager>
 {
     public bool isGameOver = false;
-
+    public Transform renderTrans;
     public bool skipTutorial = true;
     // Start is called before the first frame update
     void Start()

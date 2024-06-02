@@ -73,6 +73,16 @@ public class Enemy : MonoBehaviour
         if (currentHP <= 0)
         {
             RoundManager.Instance.ChasedEnemy();
+
+            if (eatenInfo != null)
+            {
+                var draggingingredient = Instantiate(Resources.Load<GameObject>("Dish/ingredient"),
+                    transform.position, quaternion.identity,GameManager.Instance.renderTrans);
+                draggingingredient.GetComponent<Ingredient>()
+                    .Init(eatenInfo);
+                draggingingredient.GetComponent<Ingredient>().putIntoPot();
+            }
+            
             EnemyDestroy();
         }
     }
@@ -169,6 +179,7 @@ public class Enemy : MonoBehaviour
     public bool isDead = false;
     IEnumerator DestoryInternal()
     {
+        
         yield return  new WaitForSeconds(1f);
         if (isCritical)
         {
@@ -202,6 +213,8 @@ public class Enemy : MonoBehaviour
     {
         return GameManager.Instance.isInBattleView((transform.position));
     }
+
+    private IngredientInfo eatenInfo;
     public void Eat()
     {
         if (isDead)
@@ -217,6 +230,8 @@ public class Enemy : MonoBehaviour
             {
                 
                 IngredientManager.Instance.ConsumeIngredient(ingredient.Info.id);
+
+                eatenInfo = ingredient.Info;
             }
             // var ingredientInfo = ingredient.Info;
             // var ingredientOb = IngredientManager.Instance.CreateIngredient(ingredientInfo, HoldingItemTransform);

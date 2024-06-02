@@ -14,7 +14,7 @@ public class RecipeManager : Singleton<RecipeManager>
             foreach (var ingredient in dishInfo.ingredients.Keys)
             {
                 if (!CSVLoader.Instance.DishInfoDict.ContainsKey(ingredient) &&
-                   ! CSVLoader.Instance.IngredientInfoDict.ContainsKey(ingredient))
+                   ! CSVLoader.Instance.IngredientInfoDict.ContainsKey(ingredient)&&ingredient!="Anything")
                 {
                     Debug.LogError("Recipe " + dishInfo.id + " has ingredient " + ingredient + " which is not a dish or ingredient");
                 }
