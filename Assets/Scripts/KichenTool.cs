@@ -258,7 +258,8 @@ public class KichenTool : MonoBehaviour
         isCooking = true;
         cookTime = currentDishInfo.time;
         progressBar.gameObject.SetActive(true);
-        
+        var cookAnimator = TutorialManager.Instance.cook.GetComponentInChildren<Animator>();
+        cookAnimator.SetInteger("cook",cookAnimator.GetInteger("cook")+1);
     }
 
     void FinishCook()
@@ -275,6 +276,9 @@ public class KichenTool : MonoBehaviour
                 TutorialManager.Instance.ShowDialogues();
             }
         }
+        
+        var cookAnimator = TutorialManager.Instance.cook.GetComponentInChildren<Animator>();
+        cookAnimator.SetInteger("cook",cookAnimator.GetInteger("cook")-1);
     }
 
     public List<AudioClip> cookSFX;
