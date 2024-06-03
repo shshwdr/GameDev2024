@@ -18,6 +18,7 @@ public class PauseMenu : MonoBehaviour
     }
     public void Restart()
     {
+        Hide();
         GameManager.Instance.Restart();
     }
 

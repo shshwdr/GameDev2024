@@ -1,3 +1,5 @@
 ﻿id,name,moveSpeed,attack,attackInterval,duration,criticalRate
-Man,Man,0.4,2,1,20,10
-Woman,Woman,0.4,1,0.6,30,20
+Man,Man,0.4,2,0.8,20,10
+Woman,Woman,0.4,1,0.8,25,20
+Girl,Girl,0.55,1,0.8,15,30
+Boy,Boy,0.7,1,0.8,15,25

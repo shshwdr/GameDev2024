@@ -38,6 +38,11 @@ public class GameManager : Singleton<GameManager>
 
     public bool isInBattleView(Vector3 position)
     {
-        return position.x > -3.18f && position.y < 1.74 && position.y > -1.74;
+        return position.x > -3.18f&& position.x<0 && position.y < 1.74 && position.y > -1.74;
+    }
+
+    public Vector3 randomInBattleView()
+    {
+        return new Vector3(Random.Range(-3.18f, 0f), Random.Range(-1.74f, 1.74f), 0);
     }
 }

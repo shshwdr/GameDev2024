@@ -45,6 +45,9 @@ public class Customer : MonoBehaviour
         requirement = getRequirement();// CSVLoader.Instance.CustomerRequirementInfos.RandomItem();
         HideDialogue();
         animator.SetBool("move",true);
+        
+        tempTarget = GameManager.Instance.randomInBattleView();
+        tempTarget.z = transform.position.z;
     }
 
     public CustomerRequirementInfo getRequirement()
@@ -228,8 +231,11 @@ public class Customer : MonoBehaviour
         duration = initialDuration;
         
         CustomerManager.Instance.serve();
-        
-        progressBar.gameObject.SetActive(true);
+
+        if (!TutorialManager.Instance.isIntutorial)
+        {
+            progressBar.gameObject.SetActive(true);
+        }
     }
 
     private void Update()
@@ -273,7 +279,7 @@ public class Customer : MonoBehaviour
             progressBar.SetProgress(duration, initialDuration);
             duration -= Time.deltaTime;
 
-            if (duration <= 0)
+            if (duration <= 0 && !TutorialManager.Instance.isIntutorial)
             {
                 isLeaving = true;
 
@@ -315,10 +321,25 @@ public class Customer : MonoBehaviour
                 }
 
                 target = closestedTrans;
+
+                if (target == null && (!TutorialManager.Instance.isIntutorial || TutorialManager.Instance.stage == TutorialStage.fight))
+                {
+                    animator.SetBool("move",true);
+                    transform.position = Vector3.MoveTowards(transform.position, tempTarget, moveSpeed * Time.deltaTime);
+                
+                    Vector2 movementDirection = tempTarget - transform.position;
+                    updateDirection(movementDirection);
+                }
             }
         }
     }
-    
+
+    public Vector3 tempTarget;
+
+    public void MoveAnim(bool isMove)
+    {
+        animator.SetBool("move",isMove);
+    }
     
 
     void Attack(Transform trans)
@@ -341,7 +362,7 @@ public class Customer : MonoBehaviour
         attackTimer = attackInterval;
     }
 
-    private float animTime = 0.2f;
+    private float animTime = 0.5f;
     IEnumerator TrueAttack(Transform trans,bool isCritical)
     {
         

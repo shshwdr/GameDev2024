@@ -81,9 +81,11 @@ public class CustomerManager : Singleton<CustomerManager>
             {
                 customers[i].transform.position = Vector3.MoveTowards(customers[i].transform.position,
                     customerSpawnTransforms[i].position, 1f * Time.deltaTime);
+                customers[i].MoveAnim(true);
             }
             else
             {
+                customers[i].MoveAnim(false);
                 if (i == 0)
                 {
                     customers[i].ShowRequirementBubble();

@@ -39,6 +39,11 @@ public class RecipeMenu : MonoBehaviour
         {
             recipeRows[i].gameObject.SetActive(true);
             var info = CSVLoader.Instance.DishInfoDict[RecipeManager.Instance.recipes[j].dishName];
+
+            if (!info.isFinalDish)
+            {
+                continue;
+            }
             if (RecipeManager.Instance.isUnlocked[j])
             {
                 recipeRows[i].Init(info,true);
