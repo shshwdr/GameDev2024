@@ -11,7 +11,7 @@ public class TutorialManager : Singleton<TutorialManager>
     public bool isIntutorial;
     public TutorialStage stage;
     private Customer customer;
-    private Cook cook;
+    public Cook cook;
     private int dialogueIndex = -1;
     public Button button;
 
@@ -55,6 +55,7 @@ public class TutorialManager : Singleton<TutorialManager>
 
     public void Init()
     {
+        cook = GameObject.FindObjectOfType<Cook>();
         if (GameManager.Instance.skipTutorial)
         {
             button.gameObject.SetActive(false);
@@ -66,7 +67,6 @@ public class TutorialManager : Singleton<TutorialManager>
         var enemy = EnemyManager.Instance.SpawnEnemy(CSVLoader.Instance.EnemyInfoDict.Values.ToList()[0],0);
         enemy.moveSpeed *= 4;
         stage = TutorialStage.start;
-        cook = GameObject.FindObjectOfType<Cook>();
 
         StartCoroutine(createCustomer());
     }
