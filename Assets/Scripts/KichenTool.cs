@@ -243,7 +243,7 @@ public class KichenTool : MonoBehaviour
 
                     if (isMatch)
                     {
-                        if (fullMatch || dishInfo.ingredients.Keys.Contains("Anything"))
+                        //if (fullMatch || dishInfo.ingredients.Keys.Contains("Anything"))
                         {
                             RecipeManager.Instance.AddRecipe(dishInfo);
                         }
@@ -258,8 +258,7 @@ public class KichenTool : MonoBehaviour
         isCooking = true;
         cookTime = currentDishInfo.time;
         progressBar.gameObject.SetActive(true);
-        var cookAnimator = TutorialManager.Instance.cook.GetComponentInChildren<Animator>();
-        cookAnimator.SetInteger("cook",cookAnimator.GetInteger("cook")+1);
+        TutorialManager.Instance.cook.StartCook();
     }
 
     void FinishCook()
@@ -277,8 +276,7 @@ public class KichenTool : MonoBehaviour
             }
         }
         
-        var cookAnimator = TutorialManager.Instance.cook.GetComponentInChildren<Animator>();
-        cookAnimator.SetInteger("cook",cookAnimator.GetInteger("cook")-1);
+        TutorialManager.Instance.cook.StopCook();
     }
 
     public List<AudioClip> cookSFX;
@@ -288,10 +286,6 @@ public class KichenTool : MonoBehaviour
         var dish = Instantiate(Resources.Load<GameObject>("Dish/Dish"), kichenToolTransforms[0]);
         dish.GetComponent<Dish>().Init(info,currentIngredientBases);
 
-        if (info.isFinalDish)
-        {
-            RoundManager.Instance.CookMeal(dish.GetComponent<Dish>());
-        }
     }
 
     private float cookTime = 0;

@@ -42,9 +42,39 @@ public class Customer : MonoBehaviour
         spriteRenderer = animator.GetComponent<SpriteRenderer>();
         progressBar.gameObject.SetActive(false);
         //fill requirement
-        requirement = CSVLoader.Instance.CustomerRequirementInfos.RandomItem();
+        requirement = getRequirement();// CSVLoader.Instance.CustomerRequirementInfos.RandomItem();
         HideDialogue();
         animator.SetBool("move",true);
+    }
+
+    public CustomerRequirementInfo getRequirement()
+    {
+        var candidates = new List<CustomerRequirementInfo>();
+        var allRequirements = CSVLoader.Instance.CustomerRequirementInfos;
+        foreach (var r in allRequirements)
+        {
+            if (r.requirementType == "ingredient")
+            {
+                if (IngredientManager.Instance.CanConsumeIngredient(r.subType))
+                {
+                    
+                    candidates.Add(r);
+                }
+            }
+            else
+            {
+                if (KichenToolManager.Instance.ownedTools.Count > 2 || r.subType == "FALSE")
+                {
+                    candidates.Add(r);
+                }
+            }         
+        }
+
+        if (candidates.Count > 0)
+        {
+            return candidates.RandomItem();
+        }
+        return allRequirements.RandomItem();
     }
 
     public void HideDialogue()

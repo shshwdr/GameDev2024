@@ -99,8 +99,8 @@ public class ShopItem : MonoBehaviour
         if (RoundManager.Instance.money >= cost)
         {
             purchaseButton.interactable = true;
-            costLabel.color = Color.white;
-            
+            costLabel.color = new Color(71 / 255f, 216 / 255f, 93 / 255f);
+
         }
         else
         {

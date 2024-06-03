@@ -15,6 +15,18 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3615361873118398102, guid: 00308bfe412ee09488876bfbc6a831e0, type: 3}
+      propertyPath: m_SpriteState.m_PressedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 32cdda5fa667ef14eb6c8e76b594f487, type: 3}
+    - target: {fileID: 3615361873118398102, guid: 00308bfe412ee09488876bfbc6a831e0, type: 3}
+      propertyPath: m_SpriteState.m_HighlightedSprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 8723b598834ef6245be2d864c5b41f1e, type: 3}
+    - target: {fileID: 3615361873118398103, guid: 00308bfe412ee09488876bfbc6a831e0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: ece25a41c7b6c9b48bd53be25170a87c, type: 3}
     - target: {fileID: 5361085990090845797, guid: 00308bfe412ee09488876bfbc6a831e0, type: 3}
       propertyPath: cookSFX.Array.size
       value: 2

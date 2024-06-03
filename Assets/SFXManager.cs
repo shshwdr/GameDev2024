@@ -13,6 +13,7 @@ public enum SFXType{
     customerHit,
     customerKick,
     purchase,
+    splatBig,
     gameover
 }
 public class SFXManager : Singleton<SFXManager>
@@ -28,7 +29,7 @@ public class SFXManager : Singleton<SFXManager>
      public  List<AudioClip> customerHitSFX;
      public  List<AudioClip> customerKickSFX;
      public List<AudioClip> purchaseSFX;
-     
+     public List<AudioClip> splatBig;
      public AudioClip gameoverSFX;
 
      public void PlaySFX(SFXType name)
@@ -64,6 +65,9 @@ public class SFXManager : Singleton<SFXManager>
                  break;
              case SFXType.customerKick:
                  audioSource.PlayOneShot(customerKickSFX.RandomItem());
+                 break;
+             case SFXType.splatBig:
+                 audioSource.PlayOneShot(splatBig.RandomItem());
                  break;
              case SFXType.gameover:
                  audioSource.PlayOneShot(gameoverSFX);
