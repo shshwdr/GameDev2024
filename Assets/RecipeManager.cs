@@ -40,6 +40,11 @@ public class RecipeManager : Singleton<RecipeManager>
                    
                    isUnlocked[i] = true;
                    RecipePopup.Instance.Show(newRecipe);
+                   
+                   if (info.isFinalDish)
+                   {
+                       RoundManager.Instance.CookMeal(info);
+                   }
                }
                 return;
             }
@@ -60,6 +65,21 @@ public class RecipeManager : Singleton<RecipeManager>
                 break;
             }
         }
+    }
+
+    public bool hasUnlockedRecipe(string id)
+    {
+        for(int i = 0;i<isUnlocked.Count;i++)
+        {
+            if (recipes[i].dishName == id)
+            {
+                
+                var l = isUnlocked[i];
+                return l;
+            }
+        }
+
+        return false;
     }
     public bool hasUnlockedRecipe()
     {

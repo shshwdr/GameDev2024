@@ -88,9 +88,9 @@ public class RoundManager : Singleton<RoundManager>
         EventPool.Trigger("updateMoney");
     }
 
-    public void CookMeal(Dish dish) 
+    public void CookMeal(DishInfo dish) 
     {
-        var recipe = new Recipe(){dishName = dish.Info.id,kichenUtil = dish.Info.kichenUtil,ingredients = dish.ingredients};
+        var recipe = new Recipe(){dishName = dish.id};
         recipesInRound.Add((recipe));
     }
 

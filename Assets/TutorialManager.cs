@@ -15,6 +15,7 @@ public class TutorialManager : Singleton<TutorialManager>
     private int dialogueIndex = -1;
     public Button button;
 
+    public GameObject hud;
     private void Start()
     {
         button.onClick.AddListener(()=>
@@ -32,6 +33,8 @@ public class TutorialManager : Singleton<TutorialManager>
                     isIntutorial = false;
                     button.gameObject.SetActive(false);
                     RoundManager.Instance.StartRound();
+                    
+                    hud.SetActive(true);
                     return;
                 }
 
@@ -61,6 +64,7 @@ public class TutorialManager : Singleton<TutorialManager>
             button.gameObject.SetActive(false);
             return;
         }
+        hud.SetActive(false);
         MusicManager.Instance.StartTutorial();
         isIntutorial = true;
         

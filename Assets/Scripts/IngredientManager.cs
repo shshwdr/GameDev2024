@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class IngredientManager : Singleton<IngredientManager>
@@ -94,6 +95,11 @@ public class IngredientManager : Singleton<IngredientManager>
 
     public bool CanConsumeIngredient(string ingredient, int amount = 1)
     {
+        if (!ingredientCountDict.ContainsKey(ingredient))
+        {
+            var dish = CSVLoader.Instance.DishInfoDict[ingredient];
+            return amount <= ingredientCountDict[dish.ingredients.Keys.ToList()[0]];
+        }
         return amount <= ingredientCountDict[ingredient];
     }
 

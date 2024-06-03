@@ -20,7 +20,7 @@ private void Start()
 
 public void Show(  Recipe recipe)
     {
-        recipeRow.Init(recipe);
+        recipeRow.show(recipe.dishName);
         recipePopup.SetActive(true);
     }
     public void Hide()

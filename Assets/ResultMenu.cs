@@ -34,10 +34,16 @@ public class ResultMenu : MonoBehaviour
         _gameObject.SetActive(true);
         chsedLabel.text = $"You chased {RoundManager.Instance.chasedEnemyInRound} enemies";
         earnLabel.text = $"You earned {RoundManager.Instance.moneyEarnInRound} money";
+        List<string> dishNames = new List<string>();
         foreach (var recipe in RoundManager.Instance.recipesInRound)
         {
+            if (dishNames.Contains(recipe.dishName))
+            {
+                continue;
+            }
             var recipeGO = Instantiate(recipeCell, recipeLabel);
-            recipeGO.GetComponent<RecipeRow>().Init((recipe));
+            recipeGO.GetComponent<RecipeRow>().show((recipe.dishName));
+            dishNames.Add(recipe.dishName);
         }
         
     }

@@ -35,6 +35,7 @@ public class ShopMenu : MonoBehaviour
 
         int i = 0;
         var keys = CSVLoader.Instance.IngredientInfoDict.Keys;
+        var keyList = keys.ToList();
         foreach (var shopItem in parent.GetComponentsInChildren<ShopItem>(true))
         {
             if (i == 0)
@@ -50,7 +51,16 @@ public class ShopMenu : MonoBehaviour
             }
             else
             {
-                shopItem.InitIngredient(keys.ToList().RandomItem());
+                if (i == 1)
+                {
+                    
+                    shopItem.InitIngredient(keyList.RandomItem());
+                }
+                else
+                {
+                    
+                    shopItem.InitIngredient(keyList.PickItem());
+                }
             }
 
             i++;

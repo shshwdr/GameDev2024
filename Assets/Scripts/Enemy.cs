@@ -179,8 +179,13 @@ public class Enemy : MonoBehaviour
     public bool isDead = false;
     IEnumerator DestoryInternal()
     {
-        
-        yield return  new WaitForSeconds(1f);
+        yield return  new WaitForSeconds(0.3f);
+        if (isCritical)
+        {
+            SFXManager.Instance.PlaySFX(SFXType.splatBig);
+        }
+
+        yield return  new WaitForSeconds(0.7f);
         if (isCritical)
         {
             
