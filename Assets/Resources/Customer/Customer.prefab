@@ -827,6 +827,10 @@ PrefabInstance:
       propertyPath: m_SizeDelta.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1692444056423483374, guid: 29db979850e8f1b4287a880276f60306, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 91.7
+      objectReference: {fileID: 0}
     - target: {fileID: 1692444057557034812, guid: 29db979850e8f1b4287a880276f60306, type: 3}
       propertyPath: m_text
       value: I want some potatos and more and more\ntest
@@ -849,7 +853,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1692444057557034815, guid: 29db979850e8f1b4287a880276f60306, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 265.785
+      value: 285.785
       objectReference: {fileID: 0}
     - target: {fileID: 1692444057557034815, guid: 29db979850e8f1b4287a880276f60306, type: 3}
       propertyPath: m_AnchoredPosition.y
